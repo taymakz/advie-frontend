@@ -4,30 +4,40 @@
 
 @layer base {
     @font-face {
-        font-family: "iranyekan"; /* 400 */
+        font-family: "iranyekan thin";
         font-display: swap;
-        src: url("../fonts/iranyekan/eot/IRANYekanWebRegular.eot");
-        src: url("../fonts/iranyekan/eot/IRANYekanWebRegulard41d.eot?#iefix") format("embedded-opentype"), url("../fonts/iranyekan/woff/IRANYekanWebRegular.woff") format("woff"), url("../fonts/iranyekan/woff2/IRANYekanWebRegular.woff2") format("woff2"), url("../fonts/iranyekan/ttf/IRANYekanWebRegular.ttf") format("truetype");
+        src: url("../fonts/iranyekan/eot/iranyekan-300.eot");
+        src: url("../fonts/iranyekan/eot/iranyekan-300d41d.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/iranyekan/ttf/iranyekan-300.ttf") format("truetype");
+
     }
     @font-face {
-        font-family: "iranyekan medium"; /* 500 */
+        font-family: "iranyekan base";
+        font-display: swap;
+        src: url("../fonts/iranyekan/eot/iranyekan-400.eot");
+        src: url("../fonts/iranyekan/eot/iranyekan-400d41d.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/iranyekan/ttf/iranyekan-400.ttf") format("truetype");
+
+    }
+    @font-face {
+        font-family: "iranyekan medium";
         font-display: swap;
 
-        src: url("../fonts/iranyekan/eot/IRANYekanWebMedium.eot");
-        src: url("../fonts/iranyekan/eot/IRANYekanWebMediumd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/iranyekan/woff/IRANYekanWebMedium.woff") format("woff"), url("../fonts/iranyekan/woff2/IRANYekanWebMedium.woff2") format("woff2"), url("../fonts/iranyekan/ttf/IRANYekanWebMedium.ttf") format("truetype");
+        src: url("../fonts/iranyekan/eot/iranyekan-500.eot");
+        src: url("../fonts/iranyekan/eot/iranyekan-500d41d.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/iranyekan/ttf/iranyekan-500.ttf") format("truetype");
+
     }
     @font-face {
-        font-family: "iranyekan bold"; /* 600 */
-        font-display: swap;
-        src: url("../fonts/iranyekan/eot/IRANYekanWebBold.eot");
-        src: url("../fonts/iranyekan/eot/IRANYekanWebBoldd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/iranyekan/woff/IRANYekanWebBold.woff") format("woff"), url("../fonts/iranyekan/woff2/IRANYekanWebBold.woff2") format("woff2"), url("../fonts/iranyekan/ttf/IRANYekanWebBold.ttf") format("truetype");
-    }
-    @font-face {
-        font-family: "iranyekan Fanum";
+        font-family: "iranyekan bold";
         font-display: swap;
 
-        src: url("../fonts/iranyekan/woff/iranyekanwebregularfanum.woff") format("woff");
+        src: url("../fonts/iranyekan/eot/iranyekan-700.eot");
+        src: url("../fonts/iranyekan/eot/iranyekan-700d41d.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/iranyekan/ttf/iranyekan-700.ttf") format("truetype");
+
     }
+
     html {
         @apply scroll-smooth;
     }

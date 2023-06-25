@@ -71,7 +71,7 @@ function addToBasket() {
           </a>
           <span class="w-1.5 h-1.5 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400" />
 
-          <p class="ml-1 text-sm font-medium text-slate-500 dark:text-slate-300 font-iranyekanFanum">
+          <p class="ml-1 text-sm font-medium text-slate-500 dark:text-slate-300 ">
             4.95
           </p>
 
@@ -127,7 +127,7 @@ function addToBasket() {
             <USkeleton v-if="loading" class="h-7 w-40 " />
           </div>
           <div v-else>
-            <p class="text-lg text-sky-500 dark:text-sky-500 font-bold font-iranyekanFanum">
+            <p class="text-lg text-sky-500 dark:text-sky-500 font-bold ">
               {{ splitNumber(selectedVariant.final_price) }} تومان
             </p>
           </div>
@@ -135,7 +135,7 @@ function addToBasket() {
         <div class="h-5 flex justify-end">
           <USkeleton v-if="loading || fetchPending" class="h-5 w-32 " />
           <template v-else>
-            <div v-if="selectedVariant.is_special" class="text-sm font-medium text-red-600  font-iranyekanFanum">
+            <div v-if="selectedVariant.is_special" class="text-sm font-medium text-red-600  ">
               <strong> ({{ selectedVariant.special_price_percent }}%)</strong>
               <del>{{ splitNumber(selectedVariant.price) }}</del>
             </div>

@@ -72,13 +72,13 @@ const basketStore = useBasketStore()
                         <div>
                           <del
                             v-if="item.variant.is_special"
-                            class="text-sm md:text-xs font-medium text-red-600 font-iranyekanFanum"
+                            class="text-sm md:text-xs font-medium text-red-600 "
                           >
                             {{ splitNumber(item.variant.price * item.count) }}
                           </del>
                         </div>
                         <div
-                          class="flex items-center gap-x-2 font-bold text-sm md:text-xs text-sky-400 dark:text-sky-500 font-iranyekanFanum"
+                          class="flex items-center gap-x-2 font-bold text-sm md:text-xs text-sky-400 dark:text-sky-500 "
                         >
                           {{ splitNumber(item.total_price) }}
                           <div class="text-xs font-medium">
@@ -148,7 +148,7 @@ const basketStore = useBasketStore()
           <div class="bg-white dark:bg-gray-800 rounded-lg  sticky top-28 py-4 px-6">
             <div class="flex flex-col gap-y-6 ">
               <!-- Items Price -->
-              <div class="flex items-center justify-between font-iranyekanFanum ">
+              <div class="flex items-center justify-between  ">
                 <div class="text-slate-500 dark:text-slate-400 text-sm ">
                   قیمت کالاها ( {{ basketStore.getItemsCount }} )
                 </div>
@@ -164,7 +164,7 @@ const basketStore = useBasketStore()
               <!-- Total Discount Price -->
               <div
                 v-if="basketStore.getTotalPriceAfterDiscount() > 0"
-                class="flex items-center justify-between font-iranyekanFanum"
+                class="flex items-center justify-between "
               >
                 <div class="text-slate-500 dark:text-slate-400 text-sm ">
                   تخفیف کالاها
@@ -181,7 +181,7 @@ const basketStore = useBasketStore()
               </div>
               <!-- Total Cart Price -->
               <div
-                class="flex items-center justify-between font-iranyekanFanum border-t border-gray-300 dark:border-gray-600 pt-4"
+                class="flex items-center justify-between  border-t border-gray-300 dark:border-gray-600 pt-4"
               >
                 <div class="text-slate-500 dark:text-slate-400 text-sm ">
                   مبلغ قابل پرداخت
@@ -226,7 +226,7 @@ const basketStore = useBasketStore()
                 مبلغ قابل پرداخت
               </div>
               <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
-                <div class="font-bold font-iranyekanFanum">
+                <div class="font-bold">
                   {{ splitNumber(basketStore.getTotalPrice()) }}
                 </div>
                 <div class="text-xs">

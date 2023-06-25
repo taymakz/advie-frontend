@@ -162,7 +162,7 @@ function stopTimer() {
               @click="requestNewOTP"
             >
               <template v-if="timer.timerRunning">
-                <span class=" text-gray-500 font-iranyekanFanum"> ارسال مجدد پس از : {{ formattedTime }}</span>
+                <span class=" text-gray-500 "> ارسال مجدد پس از : {{ formattedTime }}</span>
               </template>
               <template v-else>
                 <span class="text-sky-600"> ارسال مجدد کد تایید</span>

@@ -37,7 +37,7 @@ const { elementX, elementY } = useMouseInElement(card)
               {{ product.title_ir }}
             </p>
           </div>
-          <div class="flex  justify-between font-iranyekanFanum mb-1">
+          <div class="flex  justify-between  mb-1">
             <div>
               <div
                 v-if="product.has_any_special_price"
@@ -47,7 +47,7 @@ const { elementX, elementY } = useMouseInElement(card)
               </div>
             </div>
             <div class="flex flex-col  gap-x-1">
-              <div class="font-iranyekanFanum font-bold  text-slate-700 dark:text-slate-200 ">
+              <div class=" font-bold  text-slate-700 dark:text-slate-200 ">
                 {{ splitNumber(product.final_price) }}
               </div>
               <div class="text-xs font-thin text-slate-700 dark:text-slate-200 flex justify-end">
@@ -57,7 +57,7 @@ const { elementX, elementY } = useMouseInElement(card)
           </div>
           <div class="flex justify-end h-6">
             <div>
-              <del v-if="product.has_any_special_price" class="font-iranyekanFanum  text-sm text-red-500">
+              <del v-if="product.has_any_special_price" class="  text-sm text-red-500">
                 {{ splitNumber(product.price) }}
               </del>
             </div>

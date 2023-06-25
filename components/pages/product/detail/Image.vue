@@ -58,7 +58,7 @@ watch(timerExpired, (newVal) => {
             <div
               class="w-16 h-16 p-2 bg-white border border-gray-100 dark:border-gray-800 dark:bg-gray-900  rounded-xl flex flex-col items-center justify-center"
             >
-              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 font-iranyekanFanum">
+              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 ">
                 {{ seconds }}
               </h5>
               <p class="text-sm mt-1 text-red-600 dark:text-red-500">
@@ -68,7 +68,7 @@ watch(timerExpired, (newVal) => {
             <div
               class="w-16 h-16 p-2 bg-white border border-gray-100 dark:border-gray-800 dark:bg-gray-900  rounded-xl flex flex-col items-center justify-center"
             >
-              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 font-iranyekanFanum">
+              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 ">
                 {{ minutes }}
               </h5>
               <p class="text-sm mt-1 text-red-600 dark:text-red-500">
@@ -78,7 +78,7 @@ watch(timerExpired, (newVal) => {
             <div
               class="w-16 h-16 p-2 bg-white border border-gray-100 dark:border-gray-800 dark:bg-gray-900  rounded-xl flex flex-col items-center justify-center"
             >
-              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 font-iranyekanFanum">
+              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 ">
                 {{ hours }}
               </h5>
               <p class="text-sm mt-1 text-red-600 dark:text-red-500">
@@ -89,7 +89,7 @@ watch(timerExpired, (newVal) => {
             <div
               class="w-16 h-16 p-2 bg-white border border-gray-100 dark:border-gray-800 dark:bg-gray-900  rounded-xl flex flex-col items-center justify-center"
             >
-              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 font-iranyekanFanum">
+              <h5 class="text-xl font-semibold text-red-600 dark:text-red-500 ">
                 {{ days }}
               </h5>
               <p class="text-sm mt-1 text-red-600 dark:text-red-500">

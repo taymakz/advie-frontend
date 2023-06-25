@@ -18,6 +18,7 @@ function hideCartDropdown() {
   if (cartDropdown)
     cartDropdown.value = false
 }
+
 onClickOutside(cartDropdownSection, hideCartDropdown)
 
 const route = useRoute()
@@ -41,7 +42,7 @@ watch(() => route.path, () => {
             @click="cartDropdown = !cartDropdown"
           >
             <div
-              class=" bg-sky-600 inline-flex absolute -top-1.5 -right-1.5 w-[18px]  h-[18px] p-1  rounded-full  items-center justify-center cursor-pointer select-none text-xs text-gray-200 font-iranyekanFanum "
+              class=" bg-sky-600 inline-flex absolute -top-1.5 -right-1.5 w-[18px]  h-[18px] p-1  rounded-full  items-center justify-center cursor-pointer select-none text-xs text-gray-200  "
             >
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-25 " />
               {{ basketStore.getItemsCount }}
@@ -52,7 +53,8 @@ watch(() => route.path, () => {
             />
           </div>
           <div
-            class="absolute z-40  top-14 left-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-none rounded-lg overflow-hidden" :class="[{ hidden: !cartDropdown }]"
+            class="absolute z-40  top-14 left-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-none rounded-lg overflow-hidden"
+            :class="[{ hidden: !cartDropdown }]"
           >
             <div v-if="basketStore.getItemsCount > 0">
               <div class="relative w-[400px] h-[400px]  overflow-y-auto main-scroll">
@@ -92,7 +94,7 @@ watch(() => route.path, () => {
                             class="flex items-center  gap-x-2  mb-1 text-xs select-none text-green-500 dark:text-green-400"
                           >
                             <div> {{ item.variant.type.title_ir }} :</div>
-                            <div class="font-iranyekanFanum">
+                            <div>
                               {{ splitNumber(item.variant.value.value) }}
                               {{ item.variant.value.prefix.name }}
                             </div>
@@ -102,13 +104,13 @@ watch(() => route.path, () => {
                               <div class="h-4 ">
                                 <del
                                   v-if="item.variant.is_special"
-                                  class=" text-sm font-medium text-red-600 font-iranyekanFanum"
+                                  class=" text-sm font-medium text-red-600 "
                                 >
                                   {{ splitNumber(item.variant.price * item.count) }}
                                 </del>
                               </div>
                               <div
-                                class="flex items-center gap-x-2 font-bold text-sm text-sky-400 dark:text-sky-500 font-iranyekanFanum"
+                                class="flex items-center gap-x-2 font-bold text-sm text-sky-400 dark:text-sky-500 "
                               >
                                 {{ splitNumber(item.total_price) }}
                                 <div class="text-xs font-medium">
@@ -153,7 +155,8 @@ watch(() => route.path, () => {
                                     @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
                                   >
                                     <Icon
-                                      name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage" size="20"
+                                      name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage"
+                                      size="20"
                                       class="!text-red-600 "
                                     />
                                   </button>
@@ -176,7 +179,7 @@ watch(() => route.path, () => {
                   <p class="text-xs  text-slate-500 dark:text-slate-400 font-iranyekanBold ">
                     مجموع سبد خرید
                   </p>
-                  <div class="text-sky-500 dark:text-sky-400 text-sm font-medium font-iranyekanFanum">
+                  <div class="text-sky-500 dark:text-sky-400 text-sm font-medium ">
                     {{ splitNumber(basketStore.getTotalPrice()) }}
                     <span class="text-xs">تومان</span>
                   </div>

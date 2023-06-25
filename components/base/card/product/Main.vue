@@ -60,17 +60,17 @@ function updateProgress() {
               {{ truncatedText(product.title_ir, 60) }}
             </p>
           </div>
-          <div class="flex  justify-between font-iranyekanFanum mb-1">
+          <div class="flex  justify-between  mb-1">
             <div>
               <div
                 v-if="product.has_any_special_price && !timerExpired"
-                class="bg-red-600 rounded-xl flex items-center justify-center py-0.5 px-0.5 w-10 text-sm lg:text-xs font-medium text-white"
+                class="bg-red-600 rounded-xl  flex  items-center justify-center py-0.5 px-0.5 w-10 text-sm lg:text-xs font-medium text-white"
               >
                 {{ product.special_price_percent }}%
               </div>
             </div>
             <div class="flex flex-col  gap-x-1">
-              <div class="font-iranyekanFanum font-bold  text-slate-700 dark:text-slate-200 ">
+              <div class=" font-bold  text-slate-700 dark:text-slate-200 ">
                 <div v-if="product.has_any_special_price && !timerExpired">
                   {{ splitNumber(product.final_price) }}
                 </div>
@@ -92,7 +92,7 @@ function updateProgress() {
                       v-slot="{ days, hours, minutes, seconds }" :date="remainingTimeAsDate" enable-days
                     >
                       <div
-                        class=" flex items-center justify-center gap-x-1 font-iranyekanFanum text-sm text-red-600 dark:text-red-500"
+                        class=" flex items-center justify-center gap-x-1  text-sm text-red-600 dark:text-red-500"
                       >
                         <div>
                           {{ seconds }}
@@ -113,7 +113,7 @@ function updateProgress() {
                     </LegoCountDown>
                   </div>
                   <div>
-                    <del v-if="product.has_any_special_price" class="font-iranyekanFanum  text-sm text-red-500">
+                    <del v-if="product.has_any_special_price" class="  text-sm text-red-500">
                       {{ splitNumber(product.price) }}
                     </del>
                   </div>

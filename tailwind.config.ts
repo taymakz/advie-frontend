@@ -35,10 +35,10 @@ export default <Partial<Config>>{
 
     extend: {
       fontFamily: {
-        iranyekan: 'iranyekan',
+        iranyekanThin: 'iranyekan thin',
+        iranyekan: 'iranyekan base',
         iranyekanMedium: 'iranyekan medium',
         iranyekanBold: 'iranyekan bold',
-        iranyekanFanum: 'iranyekan Fanum',
       },
 
     },
