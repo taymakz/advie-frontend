@@ -1,14 +1,12 @@
-export const RemoveEmptyProps = (object) => {
+export function RemoveEmptyProps(object) {
   for (const key in object) {
-    //@ts-ignore
-    if (object[key] == "" || object[key] == null) {
-      //@ts-ignore
-      delete object[key];
-    }
-  }
-};
+    if (object[key] === '' || object[key] == null)
 
-export const RangeNumber = (start, end) => {
-  const length = end - start + 1;
-  return Array.from({ length }, (_, i) => start + i);
-};
+      delete object[key]
+  }
+}
+
+export function RangeNumber(start, end) {
+  const length = end - start + 1
+  return Array.from({ length }, (_, i) => start + i)
+}

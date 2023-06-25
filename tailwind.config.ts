@@ -1,33 +1,36 @@
 import type { Config } from 'tailwindcss'
 
+import tailwind_scrollbar from 'tailwind-scrollbar'
+import tailwind_forms from '@tailwindcss/forms'
+
 export default <Partial<Config>>{
   content: [],
   darkMode: 'class',
   theme: {
     zIndex: {
-      0: '0',
-      10: '10',
-      20: '20',
-      30: '30',
-      40: '40',
-      50: '50',
+      '0': '0',
+      '10': '10',
+      '20': '20',
+      '30': '30',
+      '40': '40',
+      '50': '50',
       '-10': '-10',
       '-20': '-20',
       '-30': '-30',
       '-40': '-40',
       '-50': '-50',
-      auto: 'auto'
+      'auto': 'auto',
     },
     screens: {
       '2xl': { max: '1535px' },
-      xl: { max: '1279px' },
-      lg: { max: '1023px' },
-      md: { max: '767px' },
-      sm: { max: '639px' }
+      'xl': { max: '1279px' },
+      'lg': { max: '1023px' },
+      'md': { max: '767px' },
+      'sm': { max: '639px' },
     },
     container: {
       center: true,
-      padding: '15px'
+      padding: '15px',
     },
 
     extend: {
@@ -35,14 +38,14 @@ export default <Partial<Config>>{
         iranyekan: 'iranyekan',
         iranyekanMedium: 'iranyekan medium',
         iranyekanBold: 'iranyekan bold',
-        iranyekanFanum: 'iranyekan Fanum'
-      }
+        iranyekanFanum: 'iranyekan Fanum',
+      },
 
-    }
+    },
 
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwind-scrollbar')({ nocompatible: true })
-  ]
+    tailwind_forms(),
+    tailwind_scrollbar({ nocompatible: true }),
+  ],
 }

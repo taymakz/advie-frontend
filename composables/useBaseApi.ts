@@ -1,8 +1,3 @@
-
-
-export const  GetImageUrl = (imageName: string): string => {
-
-
-    return `/media/${imageName}`;
-
+export function GetImageUrl(imageName: string): string {
+  return `/media/${imageName}`
 }

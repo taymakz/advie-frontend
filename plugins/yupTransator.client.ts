@@ -1,6 +1,6 @@
 import { addMethod, setLocale, string } from 'yup'
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   setLocale({
     mixed: {
       default: 'ورودی نامعتبر است',

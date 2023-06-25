@@ -1,6 +1,6 @@
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   const authStore = useAuthenticateStore()
 
   authStore.SetCurrentUserValue()

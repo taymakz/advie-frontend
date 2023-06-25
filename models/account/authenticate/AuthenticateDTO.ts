@@ -1,17 +1,15 @@
-
-export interface AuthenticateDTO{
-        access: string;
-    refresh: string;
+export interface AuthenticateDTO {
+  access: string
+  refresh: string
 }
 
-export interface AuthenticateCheckDTO{
-        section: AuthenticateSection;
+export interface AuthenticateCheckDTO {
+  section: AuthenticateSection
 
 }
 
-export enum AuthenticateSection{
-    USERNAME="USERNAME",
-    PASSWORD="PASSWORD",
-    OTP="OTP",
+export enum AuthenticateSection {
+  USERNAME = 'USERNAME',
+  PASSWORD = 'PASSWORD',
+  OTP = 'OTP',
 }
-

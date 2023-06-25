@@ -3,12 +3,16 @@ export default defineNuxtConfig({
   modules: [
     '@nuxthq/ui',
     '@nuxt/image',
-    'nuxt-icon',
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    'nuxt-swiper',
     '@vee-validate/nuxt',
+    '@nuxtjs/device',
+    'nuxt-icon',
+    'nuxt-swiper',
   ],
+  device: {
+    refreshOnResize: true,
+  },
   extends: ['nuxt-lego'],
   vite: {
     vue: {

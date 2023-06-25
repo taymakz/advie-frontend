@@ -1,22 +1,36 @@
+<script setup lang="ts">
+import type { ProductCardDTO } from '~/models/shop/product/ProductCardDTO'
+
+defineProps<{
+  product: ProductCardDTO
+}>()
+
+const { isMobileOrTablet } = useDevice()
+
+const card = ref<HTMLDivElement>()
+const { elementX, elementY } = useMouseInElement(card)
+</script>
+
 <template>
   <div>
-
     <div
-        ref="card"
+      ref="card"
 
-        :style="false ? { '--x': `${elementX}px`, '--y': `${elementY}px` } : {}"
-        class="
+      :style="isMobileOrTablet ? { '--x': `${elementX}px`, '--y': `${elementY}px` } : {}"
+      class="
 
         border-gradient group relative transition  border-transparent border before:absolute before:-inset-px before:h-[calc(100%+2px)] before:w-[calc(100%+2px)] before:rounded-md
-">
-
-      <div class="absolute inset-0 rounded-[5px] bg-white dark:bg-gray-800 transition-colors duration-300"></div>
+"
+    >
+      <div class="absolute inset-0 rounded-[5px] bg-white dark:bg-gray-800 transition-colors duration-300" />
 
       <nuxt-link :to="product.url" class="relative flex  justify-center px-4 pt-4 ">
-
         <div class="flex flex-col">
           <div class="flex items-center justify-center mb-4 mx-auto">
-            <nuxt-img :src="GetImageUrl(product.image)" :alt="product.title_ir" class="w-full h-auto md:max-w-64 md:max-h-64 rounded-lg"/>
+            <nuxt-img
+              :src="GetImageUrl(product.image)" :alt="product.title_ir"
+              class="w-full h-auto md:max-w-64 md:max-h-64 rounded-lg"
+            />
           </div>
           <div class="mb-2">
             <p class="text-sm text-slate-800 dark:text-slate-300 h-10">
@@ -26,8 +40,9 @@
           <div class="flex  justify-between font-iranyekanFanum mb-1">
             <div>
               <div
-                  class="bg-red-600 rounded-xl flex items-center justify-center py-0.5 px-0.5 w-10 text-sm lg:text-xs font-medium text-white"
-                  v-if="product.has_any_special_price">
+                v-if="product.has_any_special_price"
+                class="bg-red-600 rounded-xl flex items-center justify-center py-0.5 px-0.5 w-10 text-sm lg:text-xs font-medium text-white"
+              >
                 {{ product.special_price_percent }}%
               </div>
             </div>
@@ -42,33 +57,17 @@
           </div>
           <div class="flex justify-end h-6">
             <div>
-              <del class="font-iranyekanFanum  text-sm text-red-500" v-if="product.has_any_special_price">
+              <del v-if="product.has_any_special_price" class="font-iranyekanFanum  text-sm text-red-500">
                 {{ splitNumber(product.price) }}
               </del>
             </div>
           </div>
         </div>
       </nuxt-link>
-
     </div>
-
   </div>
-
 </template>
 
-<script setup lang="ts">
-import {ProductCardDTO} from "~/models/shop/product/ProductCardDTO";
-
-const card = ref<HTMLDivElement>();
-const {elementX, elementY} = useMouseInElement(card);
-
-
-const props = defineProps<{
-  product: ProductCardDTO,
-}>()
-</script>
-
-<style >
-
+<style>
 
 </style>
