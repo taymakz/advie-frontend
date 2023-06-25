@@ -14,7 +14,7 @@ watch(username, (newUsername) => {
 })
 const usernameSchema = Yup.object().shape({
   username: Yup
-    .string().username(),
+    .string().required().test('username', 'شماره موبایل و یا ایمیل نامعتبر است', validateUsername),
 })
 
 async function forgotPassword(data: any, formEvent: any) {

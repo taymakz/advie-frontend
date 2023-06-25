@@ -13,9 +13,7 @@ watch(username, (newUsername) => {
 })
 const usernameSchema = Yup.object().shape({
   username: Yup
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-    .string().required().username(),
+    .string().required().test('username', 'شماره موبایل و یا ایمیل نامعتبر است', validateUsername),
 })
 
 async function authenticateUser(data: any, formEvent: any) {
