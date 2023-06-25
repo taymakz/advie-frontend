@@ -17,10 +17,12 @@ const searchInput = ref()
 
 const searchDropdown = ref(false)
 const searchDropdownSection = ref()
+
 function hideSearchDropdown() {
   if (searchDropdown.value)
     searchDropdown.value = false
 }
+
 onClickOutside(searchDropdownSection, hideSearchDropdown)
 watch(() => searchDropdown.value, () => {
   if (searchDropdown.value) {
@@ -53,6 +55,7 @@ const breakpoints = {
   },
 
 }
+
 async function submitSearch() {
   await router.push({
     path: '/search/',
@@ -63,6 +66,7 @@ async function submitSearch() {
 
   hideSearchDropdown()
 }
+
 watch(() => route.query, () => {
   if (searchInput.value)
     searchInput.value.blur()
@@ -143,7 +147,7 @@ watch(() => utilStore.headerOverlay, (newVal) => {
                             <div>
                               <div class="w-14 h-14">
                                 <nuxt-img
-                                  src="/products/product1.jpg" alt="product"
+                                  src="/images/banners/lg-banner.jpg" alt="product"
                                   class="w-full h-auto rounded-lg"
                                 />
                               </div>

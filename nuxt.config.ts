@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxthq/ui',
     '@nuxt/image',
-    '@nuxtjs/web-vitals',
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@vee-validate/nuxt',
