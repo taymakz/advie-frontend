@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "iranyekan"; /* 400 */
+        font-display: swap;
+        src: url("../fonts/iranyekan/eot/IRANYekanWebRegular.eot");
+        src: url("../fonts/iranyekan/eot/IRANYekanWebRegulard41d.eot?#iefix") format("embedded-opentype"), url("../fonts/iranyekan/woff/IRANYekanWebRegular.woff") format("woff"), url("../fonts/iranyekan/woff2/IRANYekanWebRegular.woff2") format("woff2"), url("../fonts/iranyekan/ttf/IRANYekanWebRegular.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "iranyekan medium"; /* 500 */
+        font-display: swap;
+
+        src: url("../fonts/iranyekan/eot/IRANYekanWebMedium.eot");
+        src: url("../fonts/iranyekan/eot/IRANYekanWebMediumd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/iranyekan/woff/IRANYekanWebMedium.woff") format("woff"), url("../fonts/iranyekan/woff2/IRANYekanWebMedium.woff2") format("woff2"), url("../fonts/iranyekan/ttf/IRANYekanWebMedium.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "iranyekan bold"; /* 600 */
+        font-display: swap;
+        src: url("../fonts/iranyekan/eot/IRANYekanWebBold.eot");
+        src: url("../fonts/iranyekan/eot/IRANYekanWebBoldd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/iranyekan/woff/IRANYekanWebBold.woff") format("woff"), url("../fonts/iranyekan/woff2/IRANYekanWebBold.woff2") format("woff2"), url("../fonts/iranyekan/ttf/IRANYekanWebBold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "iranyekan Fanum";
+        font-display: swap;
+
+        src: url("../fonts/iranyekan/woff/iranyekanwebregularfanum.woff") format("woff");
+    }
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply font-iranyekan main-scroll;
+    }
+
+    .container {
+        @apply max-w-[1380px]  ;
+    }
+
+
+    .container-2xl {
+        @apply container max-w-[1680px];
+    }
+
+    .container-checkout {
+        @apply container max-w-[1180px] ;
+    }
+
+    .main-scroll {
+        @apply scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-500 dark:scrollbar-track-slate-900 scrollbar scrollbar-thumb-rounded-3xl  scrollbar-w-1 ;
+    }
+
+
+}
+
+@layer utilities {
+    .banner__slider .swiper-button-prev,
+    .banner__slider .swiper-button-next {
+        @apply bg-white dark:bg-gray-900  transition-colors duration-150 w-8 h-8 rounded-full   ;
+    }
+
+    .banner__slider .swiper-button-prev::after,
+    .banner__slider .swiper-button-next:after {
+        @apply text-[10px] font-bold text-slate-400 hover:text-slate-800 dark:text-sky-600 hover:dark:text-sky-400  transition-colors duration-150;
+    }
+
+    .product__slider .swiper-button-prev,
+    .product__slider .swiper-button-next {
+        @apply bg-white dark:bg-gray-900  transition-colors duration-150 w-8 h-8 rounded-full   ;
+    }
+
+    .product__slider .swiper-button-prev::after,
+    .product__slider .swiper-button-next:after {
+        @apply text-[10px] font-bold text-slate-400 hover:text-slate-800 dark:text-sky-600 hover:dark:text-sky-400  transition-colors duration-150;
+    }
+
+    .toast-style {
+        @apply !font-iranyekan !text-sm !ml-0
+    }
+
+    .toast-container {
+        @apply !w-auto;
+    }
+
+    .icon {
+        @apply text-sky-500 dark:text-sky-400;
+    }
+
+    .dark .border-gradient::before {
+        background: radial-gradient(
+                300px circle at var(--x) var(--y),
+                #0284c7 0,
+                #67e8f9 50%,
+                transparent 100%
+        );
+    }
+
+    .border-gradient::before {
+        background: radial-gradient(
+                300px circle at var(--x) var(--y),
+                #059669 0,
+                #34d399 50%,
+                transparent 100%
+        );
+    }
+
+
+}
+
+
