@@ -160,7 +160,7 @@ const breakpoints = {
                           <div>
                             <div class="w-14 h-14">
                               <nuxt-img
-                                src="/categories/cat.jpg" alt="product"
+                                src="/images/banners/lg-banner.jpg" alt="product"
                                 class="w-full h-auto rounded-lg"
                               />
                             </div>
