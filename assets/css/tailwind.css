@@ -6,35 +6,35 @@
     @font-face {
         font-family: "iranyekan thin";
         font-display: swap;
-        src: url("../fonts/iranyekan/eot/iranyekan-300.eot");
-        src: url("../fonts/iranyekan/eot/iranyekan-300d41d.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/iranyekan/ttf/iranyekan-300.ttf") format("truetype");
+        src: url("/fonts/iranyekan/eot/iranyekan-300.eot");
+        src: url("/fonts/iranyekan/eot/iranyekan-300d41d.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/iranyekan/ttf/iranyekan-300.ttf") format("truetype");
 
     }
     @font-face {
         font-family: "iranyekan base";
         font-display: swap;
-        src: url("../fonts/iranyekan/eot/iranyekan-400.eot");
-        src: url("../fonts/iranyekan/eot/iranyekan-400d41d.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/iranyekan/ttf/iranyekan-400.ttf") format("truetype");
+        src: url("/fonts/iranyekan/eot/iranyekan-400.eot");
+        src: url("/fonts/iranyekan/eot/iranyekan-400d41d.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/iranyekan/ttf/iranyekan-400.ttf") format("truetype");
 
     }
     @font-face {
         font-family: "iranyekan medium";
         font-display: swap;
 
-        src: url("../fonts/iranyekan/eot/iranyekan-500.eot");
-        src: url("../fonts/iranyekan/eot/iranyekan-500d41d.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/iranyekan/ttf/iranyekan-500.ttf") format("truetype");
+        src: url("/fonts/iranyekan/eot/iranyekan-500.eot");
+        src: url("/fonts/iranyekan/eot/iranyekan-500d41d.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/iranyekan/ttf/iranyekan-500.ttf") format("truetype");
 
     }
     @font-face {
         font-family: "iranyekan bold";
         font-display: swap;
 
-        src: url("../fonts/iranyekan/eot/iranyekan-700.eot");
-        src: url("../fonts/iranyekan/eot/iranyekan-700d41d.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/iranyekan/ttf/iranyekan-700.ttf") format("truetype");
+        src: url("/fonts/iranyekan/eot/iranyekan-700.eot");
+        src: url("/fonts/iranyekan/eot/iranyekan-700d41d.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/iranyekan/ttf/iranyekan-700.ttf") format("truetype");
 
     }
 
