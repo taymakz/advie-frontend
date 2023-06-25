@@ -20,7 +20,7 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
 </script>
 
 <template>
-  <div class="block md:hidden col-span-10 2xl:col-span-9 lg:col-span-8">
+  <div class="block md:hidden col-span-10 2xl:col-span-9 lg:col-span-8 h-14">
     <div
       class="flex items-center gap-x-2 bg-white dark:bg-gray-800 py-2 px-2 text-slate-500 dark:text-slate-400 rounded-lg"
     >
