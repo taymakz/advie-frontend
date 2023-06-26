@@ -72,7 +72,7 @@ watch(() => router.currentRoute.value, () => {
     <USlideover
       v-model="showNavbar" dir="ltr" :ui="{
         width: 'w-screen max-w-xs',
-        base: 'relative flex-1 flex flex-col w-full overflow-y-auto h-screen focus:outline-none',
+        base: 'relative flex-1 flex flex-col w-full overflow-y-auto h-auto focus:outline-none',
       }"
     >
       <div class="flex flex-col p-4" dir="rtl">
