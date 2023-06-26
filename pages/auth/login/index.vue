@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 import { AuthenticateSection } from '~/models/account/authenticate/AuthenticateDTO'
 
 definePageMeta({
-  layout: 'auth',
+  layout: 'empty',
   middleware: 'not-authenticated',
 
 })

@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 import { ForgotPasswordSection } from '~/models/account/password/PasswordDTO'
 
 definePageMeta({
-  layout: 'auth',
+  layout: 'empty',
   middleware: 'not-authenticated',
 })
 
