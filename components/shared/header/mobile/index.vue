@@ -8,10 +8,12 @@ const authStore = useAuthenticateStore()
 const router = useRouter()
 const showNavbar = ref(false)
 const navbarSection = ref()
+
 function hideNavbar() {
   if (showNavbar.value)
     showNavbar.value = false
 }
+
 onClickOutside(navbarSection, hideNavbar)
 
 watch(showNavbar, (newVal) => {
@@ -70,6 +72,7 @@ watch(() => router.currentRoute.value, () => {
     <USlideover
       v-model="showNavbar" dir="ltr" :ui="{
         width: 'w-screen max-w-xs',
+        base: 'relative flex-1 flex flex-col w-full overflow-y-auto h-screen focus:outline-none',
       }"
     >
       <div class="flex flex-col p-4" dir="rtl">
@@ -204,7 +207,10 @@ watch(() => router.currentRoute.value, () => {
                 </nuxt-link>
               </li>
               <li>
-                <details v-for="child in item.children" :key="child.id" class="group [&_summary::-webkit-details-marker]:hidden py-2">
+                <details
+                  v-for="child in item.children" :key="child.id"
+                  class="group [&_summary::-webkit-details-marker]:hidden py-2"
+                >
                   <summary class="flex cursor-pointer items-center justify-between rounded-lg  py-2">
                     <span class="flex items-center gap-x-4">
                       <span v-if="child.products" class="w-0.5 h-5 bg-sky-600" />

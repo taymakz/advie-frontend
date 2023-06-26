@@ -6,7 +6,8 @@ export default defineAppConfig({
     notifications: {
       // Show toasts at the top right of the screen
       position: 'bottom-0 left-0',
-      width: 'w-[440px]',
+      width: 'w-[440px] md:w-full',
+      title: 'text-sm md:text-xs font-medium text-gray-900 dark:text-white',
 
     },
     notification: {
