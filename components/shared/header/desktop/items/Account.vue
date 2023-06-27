@@ -77,9 +77,9 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start py-4 gap-x-2  dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800   text-sm"
+                class="flex items-center justify-start py-4 px-5 gap-x-2  dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800   text-sm"
               >
-                <Icon name="ph:handbag-light" size="22" class="mr-5" />
+                <Icon name="ph:handbag-light" size="22" />
                 <span>سفارش های من</span>
               </nuxt-link>
             </li>
@@ -87,19 +87,22 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start py-4 gap-x-2  dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800  text-sm"
+                class="flex items-center justify-start py-4 px-5 gap-x-2  dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800  text-sm"
               >
-                <Icon name="ic:baseline-favorite-border" size="22" class="mr-5" />
+                <Icon name="ic:baseline-favorite-border" size="22" />
                 <span>علاقه مندی های من</span>
               </nuxt-link>
             </li>
             <li>
               <div
-                class="flex items-center justify-start py-4 gap-x-2 cursor-pointer dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800   text-sm"
+                class="group flex items-center justify-start py-4 px-5 gap-x-2 cursor-pointer dark:text-slate-300 hover:bg-red-100 hover:dark:bg-red-900   text-sm"
                 @click="authStore.Logout"
               >
-                <Icon name="fluent:arrow-exit-20-regular" size="22" class="mr-5" />
-                <span>خروج از حساب کاربری</span>
+                <Icon
+                  name="fluent:arrow-exit-20-regular" size="22"
+                  class="!text-red-600 dark:!text-red-600 group-hover:dark:!text-red-200"
+                />
+                <span class="text-red-600 dark:text-red-500 group-hover:dark:text-red-200">خروج از حساب کاربری</span>
               </div>
             </li>
           </ul>
