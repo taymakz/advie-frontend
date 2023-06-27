@@ -67,7 +67,7 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
     </div>
     <div
       ref="filterSection" :class="{ 'translate-y-full': !showFilter }"
-      class="fixed  h-screen  bg-white dark:bg-gray-900 z-40 overflow-y-auto main-scroll transform  bottom-0 inset-x-0 transition-transform duration-500 rounded-t-lg py-4 px-10 "
+      class="fixed  h-full  bg-white dark:bg-gray-900 z-40 overflow-y-auto main-scroll transform  bottom-0 inset-x-0 transition-transform duration-500 rounded-t-lg py-4 px-10 "
     >
       <div class="flex items-center justify-between mb-10">
         <div class="text-slate-500 dark:text-slate-400 text-lg  text-center">

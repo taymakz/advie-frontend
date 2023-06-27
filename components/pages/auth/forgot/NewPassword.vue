@@ -67,14 +67,18 @@ async function resetPassword(data: any, formEvent: any) {
     <!-- Form -->
     <div class="mb-6">
       <Form v-slot="{ meta, validate }" :validation-schema="passwordSchema" @submit="resetPassword">
-        <base-form-input
-          v-model="resetData.password" type="password" focus name="password" label="کلمه عبور جدید"
-          :disabled="loading" @focusout-input="validate"
-        />
-        <base-form-input
-          v-model="resetData.confirm_password" type="password" name="confirm_password" label="تایید کلمه عبور جدید"
-          :disabled="loading" @focusout-input="validate"
-        />
+        <Field v-slot="{ field }" name="password">
+          <base-form-input
+            v-model="resetData.password" type="password" focus v-bind="field" label="کلمه عبور جدید"
+            :disabled="loading" @focusout-input="validate"
+          />
+        </Field>
+        <Field v-slot="{ field }" name="confirm_password">
+          <base-form-input
+            v-model="resetData.confirm_password" type="password" v-bind="field" label="تایید کلمه عبور جدید"
+            :disabled="loading" @focusout-input="validate"
+          />
+        </Field>
 
         <div class="mb-4">
           <base-button

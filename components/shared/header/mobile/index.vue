@@ -72,11 +72,11 @@ watch(() => router.currentRoute.value, () => {
     <USlideover
       v-model="showNavbar" dir="ltr" :ui="{
         width: 'w-screen max-w-xs',
-        base: 'relative flex-1 flex flex-col w-full overflow-y-auto h-auto focus:outline-none',
+        base: 'relative flex-1 flex flex-col w-full main-scroll overflow-y-auto  h-auto focus:outline-none',
       }"
     >
       <div class="flex flex-col p-4" dir="rtl">
-        <div class="flex  items-center justify-between mb-6">
+        <div class="flex  items-center justify-between mb-6 ">
           <nuxt-link to="/">
             <BaseLogo class="h-7" />
           </nuxt-link>
@@ -94,7 +94,7 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-2 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <span>
                   <Icon name="solar:home-smile-linear" size="24" />
@@ -107,7 +107,7 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-2 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <span><Icon name="solar:shop-2-outline" size="24" /> </span>
                 <span class="text-slate-500 dark:text-slate-400 text-sm">
@@ -120,7 +120,7 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-2 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <span><Icon
                   name="streamline:interface-help-customer-support-1-customer-headset-help-microphone-phone-support"
@@ -135,7 +135,7 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-2 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <span>
                   <ClientOnly>
@@ -155,7 +155,7 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/search/?special=1"
-                class="flex items-center justify-start gap-x-2  py-2 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <span><Icon name="mdi:sale-outline" size="24" /> </span>
                 <span class="text-slate-500 dark:text-slate-400 text-sm">
@@ -166,7 +166,7 @@ watch(() => router.currentRoute.value, () => {
 
             <li>
               <div
-                class="flex items-center gap-x-2 justify-start py-2 px-2 text-sm text-slate-500 dark:text-slate-400 select-none font-medium"
+                class="flex items-center gap-x-2 justify-start py-3 px-2 text-sm text-slate-500 dark:text-slate-400 select-none font-medium"
               >
                 <span><Icon name="icon-park-outline:ad-product" size="24" /> </span>
                 <span>

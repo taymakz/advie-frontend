@@ -104,10 +104,12 @@ async function loginUser(data: any, formEvent: any) {
     <!-- Form -->
     <div>
       <Form v-slot="{ meta, validate }" :validation-schema="passwordSchema" @submit="loginUser">
-        <base-form-input
-          v-model="password" focus type="password" name="password" :disabled="loading"
-          @focusout-input="validate"
-        />
+        <Field v-slot="{ field }" name="password">
+          <base-form-input
+            v-model="password" focus type="password" v-bind="field" :disabled="loading"
+            @focusout-input="validate"
+          />
+        </Field>
         <div class="flex flex-col gap-y-2 mb-4">
           <div>
             <button

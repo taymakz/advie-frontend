@@ -57,10 +57,12 @@ onMounted(() => {
     <!-- Form -->
     <div class="mb-6">
       <Form v-slot="{ meta, validate }" :validation-schema="usernameSchema" @submit="forgotPassword">
-        <base-form-input
-          v-model="username" focus name="username" label="شماره موبایل یا ایمیل"
-          :disabled="loading" @focusout-input="validate"
-        />
+        <Field v-slot="{ field }" name="username">
+          <base-form-input
+            v-model="username" focus v-bind="field" label="شماره موبایل یا ایمیل"
+            :disabled="loading" @focusout-input="validate"
+          />
+        </Field>
 
         <div class="mb-4">
           <base-button

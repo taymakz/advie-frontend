@@ -153,7 +153,12 @@ function stopTimer() {
     <!-- Form -->
     <div>
       <Form v-slot="{ meta, validate }" :validation-schema="otpSchema" @submit="loginUser">
-        <base-form-input v-model="otp" focus type="text" name="otp" :disabled="loading" @focusout-input="validate" />
+        <Field v-slot="{ field }" name="otp">
+          <base-form-input
+            v-model="otp" focus type="text" v-bind="field" :disabled="loading"
+            @focusout-input="validate"
+          />
+        </Field>
 
         <div class="flex flex-col gap-y-2 mb-4">
           <div>
