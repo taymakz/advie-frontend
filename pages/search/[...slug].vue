@@ -36,7 +36,7 @@ const skeletonCount = computed(() => {
         <PagesSearchSortMobile />
       </div>
 
-      <div class="grid grid-cols-12   gap-y-2 gap-x-2 ">
+      <div class="grid grid-cols-12 grid-rows-[60px_minmax(500px,_1fr)]  gap-y-2 gap-x-2 ">
         <!-- Desktop section -->
 
         <!-- sidebar section -->
