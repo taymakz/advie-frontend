@@ -46,7 +46,9 @@ const accountDropdown = ref(false)
             </div>
 
             <div class="w-full mb-4">
-              <div
+              <nuxt-link
+                to="/panel/"
+
                 class="relative flex cursor-pointer items-center justify-between   gap-2 rounded-md border border-gray-200 bg-white  py-3 px-4 text-slate-500  dark:border-gray-800 dark:bg-gray-900 dark:text-slate-400 "
               >
                 <p v-if="authStore.currentUser?.first_name " class="text-sm font-medium">
@@ -59,7 +61,7 @@ const accountDropdown = ref(false)
                   <Icon name="ic:outline-chevron-left" size="20" />
 
                 </span>
-              </div>
+              </nuxt-link>
             </div>
             <ul class="flex flex-col gap-y-2 ">
               <li>

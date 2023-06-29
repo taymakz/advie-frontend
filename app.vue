@@ -34,11 +34,11 @@ favoriteStore.Init()
 
 <style>
 .page-enter-active {
-  animation: page-fade-in 0.3s ease-out;
+  animation: page-fade-in 0.1s ease-out;
 }
 
 .page-leave-active {
-  animation: page-fade-out 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  animation: page-fade-out 0.1s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 @keyframes page-fade-in {
@@ -71,7 +71,6 @@ favoriteStore.Init()
 
 .layout-enter-from,
 .layout-leave-to {
-  /*transform: translateY(-20px);*/
   opacity: 0;
 }
 </style>

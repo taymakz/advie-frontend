@@ -40,7 +40,10 @@ function updateProgress() {
     <nuxt-link :to="product.url" class="relative flex items-center justify-center px-4 py-3 ">
       <div class="flex flex-col">
         <div class="flex items-center justify-center mb-4">
-          <nuxt-img :src="GetImageUrl(product.image)" :alt="product.title_ir" class="w-40 h-40 rounded-lg" />
+          <nuxt-img
+            :src="GetImageUrl(product.image)" :alt="product.title_ir" class="w-40 h-40 rounded-lg" placeholder
+            loading="lazy"
+          />
         </div>
         <div class="mb-2">
           <p class="text-sm text-slate-800 dark:text-slate-300 h-10">

@@ -46,7 +46,7 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
         >
           <div>
             <nuxt-link
-              to="/"
+              to="/panel/"
               class="flex items-center justify-between p-4 dark:text-slate-200 hover:bg-zinc-100 dark:hover:bg-slate-800"
             >
               <div class="flex items-center justify-between gap-x-2">
@@ -79,7 +79,7 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
                 to="/"
                 class="flex items-center justify-start py-4 px-5 gap-x-2  dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800   text-sm"
               >
-                <Icon name="ph:handbag-light" size="22" />
+                <Icon name="solar:bag-3-linear" size="22" />
                 <span>سفارش های من</span>
               </nuxt-link>
             </li>
@@ -89,7 +89,7 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
                 to="/"
                 class="flex items-center justify-start py-4 px-5 gap-x-2  dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800  text-sm"
               >
-                <Icon name="ic:baseline-favorite-border" size="22" />
+                <Icon name="ph:heart-straight" size="22" />
                 <span>علاقه مندی های من</span>
               </nuxt-link>
             </li>
