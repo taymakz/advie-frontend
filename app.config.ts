@@ -62,8 +62,5 @@ export default defineAppConfig({
     },
 
   },
-  nuxtIcon: {
-    class: 'icon', // default <Icon> class applied
-  },
 
 })

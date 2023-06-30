@@ -8,3 +8,10 @@ export enum ForgotPasswordSection {
   OTP = 'OTP',
   NEW_PASSWORD = 'NEW_PASSWORD',
 }
+
+export interface ChangePasswordDTO {
+  current_password: string
+  password: string
+  confirm_password: string
+  refresh: string
+}

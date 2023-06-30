@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as Yup from 'yup'
-import { UserAuthenticateCheck } from '~/services/account/authenticate.service'
+import { UserAuthenticateCheck } from '~/services/account/user.authenticate.service'
 import { AuthenticateSection } from '~/models/account/authenticate/AuthenticateDTO'
 
 const emits = defineEmits(['changeSection', 'usernameChange'])

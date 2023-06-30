@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as Yup from 'yup'
 import { ForgotPasswordSection } from '~/models/account/password/PasswordDTO'
-import { UserResetPassword } from '~/services/account/password.service'
+import { UserResetPassword } from '~/services/account/user.password.service'
 
 const props = defineProps({
   username: {

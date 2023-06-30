@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { RequestOTP } from '~/services/account/user.service'
 import { RequestOTPUsage } from '~/models/account/user/UserDTO'
 import { ForgotPasswordSection } from '~/models/account/password/PasswordDTO'
-import { UserForgotPasswordOTP } from '~/services/account/password.service'
+import { UserForgotPasswordOTP } from '~/services/account/user.password.service'
 
 const props = defineProps({
   username: {

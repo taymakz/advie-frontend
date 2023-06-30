@@ -28,7 +28,7 @@ function toggleTheme() {
           <Icon
             :name="$colorMode.value === 'dark' ? 'ph:moon-stars' : 'material-symbols:sunny-outline-rounded'"
             size="24"
-            class="group-hover:text-white "
+            class=" text-sky-500 dark:text-sky-400"
           />
         </span>
       </div>

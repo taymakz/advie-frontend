@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as Yup from 'yup'
 
-import { UserForgotPasswordCheck } from '~/services/account/password.service'
+import { UserForgotPasswordCheck } from '~/services/account/user.password.service'
 import { ForgotPasswordSection } from '~/models/account/password/PasswordDTO'
 
 const emits = defineEmits(['changeSection', 'usernameChange'])

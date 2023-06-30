@@ -10,6 +10,10 @@ const props = defineProps({
   refValue: {
     default: '',
   },
+  ltr: {
+    type: Boolean,
+    default: false,
+  },
   label: {
     type: String,
     default: '',
@@ -72,6 +76,7 @@ const { errorMessage } = useField(props.name, undefined)
         :id="name"
         ref="input"
         v-model="modelValue"
+        :dir="ltr ? 'ltr' : ''"
         :autocomplete="autoComplete ? 'on' : 'off'"
         :name="name"
         :type="type"
@@ -79,6 +84,7 @@ const { errorMessage } = useField(props.name, undefined)
         :readonly="readonly"
         placeholder=" "
         class="peer h-10 w-full border-none bg-transparent p-0 cursor-text placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 dark:text-slate-400 sm:text-sm"
+        :class="{ 'text-left': ltr }"
         @focusout="handleFocusoutInput"
       >
 

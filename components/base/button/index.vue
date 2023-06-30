@@ -30,7 +30,7 @@ withDefaults(defineProps<{
     ]"
     class="group flex items-center justify-center gap-x-2  text-sm rounded-lg transition-colors duration-150
 disabled:bg-gray-200  disabled:hover:bg-gray-300 disabled:hover:shadow-none
-dark:disabled:bg-gray-700  dark:disabled:hover:bg-gray-900 dark:disabled:hover:shadow-none
+dark:disabled:bg-gray-700  dark:disabled:hover:bg-gray-800 dark:disabled:hover:shadow-none
 disabled:text-slate-500 disabled:dark:text-slate-400
 "
 

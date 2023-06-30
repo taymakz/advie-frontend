@@ -27,8 +27,8 @@ const loading = ref(false)
 const toast = useToast()
 
 const formSchema = Yup.object().shape({
-  receiver_name: Yup.string().required().max(55, 'نام گیرنده باید کمتر از 100 کاراکتر باشد').min(10, 'نام گیرنده باید بیشتر از 10 کاراکتر باشد'),
-  receiver_family: Yup.string().required().max(55, 'نام خانوادگی گیرنده باید کمتر از 100 کاراکتر باشد').min(10, 'نام خانوادگی گیرنده باید بیشتر از 10 کاراکتر باشد'),
+  receiver_name: Yup.string().required().max(55, 'نام گیرنده باید کمتر از 100 کاراکتر باشد'),
+  receiver_family: Yup.string().required().max(55, 'نام خانوادگی گیرنده باید کمتر از 100 کاراکتر باشد'),
   receiver_national_code: Yup.string().required().test('receiver_postal_code', 'کد ملی نامعتبر است', validateNationalCode),
   receiver_phone: Yup
     .string().required().test('receiver_phone', 'شماره موبایل نامعتبر است', validatePhoneNumber),

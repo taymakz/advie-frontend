@@ -63,19 +63,22 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-800  rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+  <div class="bg-white dark:bg-gray-800  rounded-lg p-4">
     <!-- Section Title -->
     <div class="flex items-center justify-between mb-5">
-      <h1 class="text-lg text-slate-700 dark:text-slate-200 border-b-2 border-sky-600 pb-1 select-none ">
-        آدرس ها
-      </h1>
+      <div class="flex mb-5">
+        <h1 class="relative text-lg text-slate-700 dark:text-slate-200 pb-2 select-none ">
+          آدرس ها
+          <span class="absolute right-0 bottom-0 w-full bg-sky-500 rounded-full h-[3px]" />
+        </h1>
+      </div>
 
       <template v-if="canAddMoreAddress">
         <base-button
           :disabled="pending "
           :loading="loading"
           class="py-3 px-4"
-          icon="material-symbols:add-location-alt-outline-rounded" icon-classes="!text-slate-200 dark:!text-slate-200"
+          icon="material-symbols:add-location-alt-outline-rounded"
           icon-pos="right" @click="isOpenCreateAddressModal = true"
         >
           ثبت آدرس جدید
@@ -134,25 +137,25 @@ onMounted(async () => {
                 </p>
                 <div class="grid grid-cols-4 lg:grid-cols-2 items-center  center gap-4  w-fit lg:w-full">
                   <div class="flex items-center  gap-x-2">
-                    <Icon name="solar:signpost-broken" size="20" class="!text-slate-600 dark:!text-slate-300" />
+                    <Icon name="solar:signpost-broken" size="20" class="text-sky-500 dark:text-sky-400" />
                     <p class="text-slate-600 dark:text-slate-300">
                       {{ item.receiver_province }}, {{ item.receiver_city }}
                     </p>
                   </div>
                   <div class="flex items-center gap-x-2">
-                    <Icon name="material-symbols:mail-outline" size="20" class="!text-slate-600 dark:!text-slate-300" />
+                    <Icon name="material-symbols:mail-outline" size="20" class="text-sky-500 dark:text-sky-400" />
                     <p class="text-slate-600 dark:text-slate-300">
                       {{ item.receiver_postal_code }}
                     </p>
                   </div>
                   <div class="flex items-center gap-x-2">
-                    <Icon name="solar:phone-linear" size="20" class="!text-slate-600 dark:!text-slate-300" />
+                    <Icon name="solar:phone-linear" size="20" class="text-sky-500 dark:text-sky-400" />
                     <p class="text-slate-600 dark:text-slate-300">
                       {{ item.receiver_phone }}
                     </p>
                   </div>
                   <div class="flex items-center gap-x-2">
-                    <Icon name="solar:user-outline" size="20" class="!text-slate-600 dark:!text-slate-300" />
+                    <Icon name="solar:user-outline" size="20" class="text-sky-500 dark:text-sky-400" />
                     <p class="text-slate-600 dark:text-slate-300">
                       {{ item.receiver_name }} {{ item.receiver_family }}
                     </p>
@@ -175,7 +178,7 @@ onMounted(async () => {
               </div>
               <div class="absolute left-2 top-4 md:hidden">
                 <UPopover v-if="removePending !== item.id ">
-                  <Icon name="humbleicons:dots-vertical" size="20" />
+                  <Icon name="humbleicons:dots-vertical" size="20" class="text-sky-500 dark:text-sky-400" />
 
                   <template #panel>
                     <div class=" w-52">

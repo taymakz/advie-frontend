@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as Yup from 'yup'
 import { AuthenticateSection } from '~/models/account/authenticate/AuthenticateDTO'
-import { UserPasswordAuthentication } from '~/services/account/authenticate.service'
+import { UserPasswordAuthentication } from '~/services/account/user.authenticate.service'
 
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { RequestOTP } from '~/services/account/user.service'

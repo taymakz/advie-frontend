@@ -46,9 +46,9 @@ watch(() => route.query, () => {
         <SharedHeaderDesktopItemsSearch />
 
         <div class="flex items-center justify-between gap-x-4">
-          <SharedHeaderDesktopItemsAccount :loading="authStore.loading" />
-          <SharedHeaderDesktopItemsCart :loading="authStore.loading" />
-          <SharedHeaderDesktopItemsTheme :loading="authStore.loading" />
+          <SharedHeaderDesktopItemsAccount />
+          <SharedHeaderDesktopItemsCart />
+          <SharedHeaderDesktopItemsTheme />
         </div>
       </div>
     </div>

@@ -18,14 +18,17 @@ export const useBasketStore = defineStore('basket', () => {
   const getItemsCount = computed(() => items.value.length)
 
   const loading = ref(false)
+  const initLoading = ref(false)
   const { isLogin } = useAuthenticateStore()
   const Init = async () => {
     if (process.server)
       return
     if (isLogin) {
+      initLoading.value = true
       const result = await GetCurrentOrder()
       items.value = result.data?.items ?? []
       currentOrder.value = result.data
+      initLoading.value = false
     }
     else {
       const data = localStorage.getItem('basketItems')
@@ -41,13 +44,13 @@ export const useBasketStore = defineStore('basket', () => {
 
     if (!data)
       return
-    loading.value = true
+    initLoading.value = true
 
     const localBasketItems = JSON.parse(data) as CurrentOrderItemDTO[]
     for (const e of localBasketItems)
       await AddItemToCurrentOrder(e.product_id, e.variant.id)
 
-    loading.value = false
+    initLoading.value = false
     localStorage.removeItem('basketItems')
   }
   const SyncLocalBasket = () => {
@@ -211,5 +214,6 @@ export const useBasketStore = defineStore('basket', () => {
     getDiscountPercentage,
     SyncRemoteBasket,
     loading,
+    initLoading,
   }
 })

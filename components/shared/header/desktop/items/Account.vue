@@ -2,13 +2,6 @@
 import { onClickOutside } from '@vueuse/core'
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 
-defineProps({
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-})
-
 const router = useRouter()
 
 const authStore = useAuthenticateStore()
@@ -25,7 +18,7 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
 
 <template>
   <ClientOnly>
-    <div v-if="loading">
+    <div v-if="authStore.loading">
       <USkeleton class="h-8 w-[120px]" />
     </div>
     <div v-else>
@@ -37,7 +30,7 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
         >
           <Icon
             name="solar:user-outline" size="20"
-            class="group-hover:text-white "
+            class="group-hover:text-white text-sky-500 dark:text-sky-400"
           />
         </div>
         <div
@@ -49,20 +42,29 @@ onClickOutside(accountDropdownSection, hideAccountDropdown)
               to="/panel/"
               class="flex items-center justify-between p-4 dark:text-slate-200 hover:bg-zinc-100 dark:hover:bg-slate-800"
             >
-              <div class="flex items-center justify-between gap-x-2">
-                <div class="w-8 h-8">
+              <div class="flex items-center justify-between gap-x-2 ">
+                <div>
                   <nuxt-img
                     :src="authStore.currentUser?.profile ? GetImageUrl(authStore.currentUser.profile) : ''"
                     alt="User Profile"
                     class="w-full h-auto rounded-full ring-2 "
+                    width="32"
+                    height="32"
+                    placeholder
+                    loading="lazy"
                   />
                 </div>
                 <div>
-                  <p v-if="authStore.currentUser?.first_name " class="text-sm font-medium">
-                    {{ truncatedText(`${authStore.currentUser.first_name}${authStore.currentUser.last_name}`, 18) }}
+                  <p v-if="authStore.currentUser?.full_name " class="text-sm font-medium">
+                    {{ truncatedText(authStore.currentUser?.full_name, 18) }}
                   </p>
                   <p v-else class="text-base font-medium">
-                    {{ truncatedText(authStore.currentUser?.username!, 18) }}
+                    <template v-if="authStore.currentUser?.phone ">
+                      {{ truncatedText(authStore.currentUser?.phone!, 18) }}
+                    </template>
+                    <template v-else>
+                      {{ truncatedText(authStore.currentUser?.email!, 18) }}
+                    </template>
                   </p>
                 </div>
               </div>

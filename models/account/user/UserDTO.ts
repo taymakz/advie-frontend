@@ -1,7 +1,7 @@
 export interface UserDetailDTO {
   id: number
   profile: string
-  username: string
+  full_name: string
   first_name: string
   last_name: string
   email: string

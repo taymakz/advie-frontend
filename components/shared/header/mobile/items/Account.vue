@@ -29,7 +29,7 @@ const accountDropdown = ref(false)
         >
           <Icon
             name="solar:user-outline" size="20"
-            class="group-hover:text-white "
+            class="group-hover:text-white  text-sky-500 dark:text-sky-400"
           />
         </div>
         <USlideover

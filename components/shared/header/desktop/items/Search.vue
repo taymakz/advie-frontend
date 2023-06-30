@@ -100,7 +100,7 @@ watch(() => utilStore.headerOverlay, (newVal) => {
             placeholder="جستجو "
           >
           <div>
-            <Icon name="iconoir:search" size="22" />
+            <Icon name="iconoir:search" size="22" class="text-sky-500 dark:text-sky-400" />
           </div>
         </form>
         <!-- Search Dropdown -->

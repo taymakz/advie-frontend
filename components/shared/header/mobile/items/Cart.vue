@@ -30,7 +30,7 @@ const basketStore = useBasketStore()
           </div>
           <Icon
             name="ph:shopping-cart-simple" size="20"
-            class="group-hover:text-white "
+            class="group-hover:text-white text-sky-500 dark:text-sky-400"
           />
         </nuxt-link>
       </div>

@@ -2,17 +2,11 @@
 import { useBasketStore } from '~/store/shop/BasketStore'
 import { truncatedText } from '~/utils/TextUtils'
 
-defineProps({
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-})
-
 const basketStore = useBasketStore()
 
 const cartDropdownSection = ref()
 const cartDropdown = ref(false)
+const removePending = ref()
 
 function hideCartDropdown() {
   if (cartDropdown)
@@ -32,7 +26,7 @@ watch(() => route.path, () => {
 <template>
   <ClientOnly>
     <div>
-      <div v-if="loading">
+      <div v-if="basketStore.initLoading">
         <USkeleton class="rounded-full h-8 w-8" />
       </div>
       <div v-else>
@@ -49,7 +43,7 @@ watch(() => route.path, () => {
             </div>
             <Icon
               name="ph:shopping-cart-simple" size="20"
-              class="group-hover:text-white "
+              class="group-hover:text-white text-sky-500 dark:text-sky-400"
             />
           </div>
           <div
@@ -61,13 +55,17 @@ watch(() => route.path, () => {
                 <div class="flex flex-col  divide-y-[1px] divide-gray-300 dark:divide-gray-600">
                   <!--     items       -->
 
-                  <div v-for="item in basketStore.items" :key="item.variant.id" class="relative ">
-                    <div
+                  <div
+                    v-for="item in basketStore.items" :key="item.variant.id" class="relative"
+                    :class="{ 'select-none blur': removePending === item.id }"
+                  >
+                    <button
                       class="absolute top-2 right-2 cursor-pointer rounded-full bg-red-600 w-6 h-6 flex items-center justify-center"
-                      @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
+                      :disabled="basketStore.loading"
+                      @click="basketStore.RemoveItem(item.product_id, item.variant.id);removePending = item.id"
                     >
                       <Icon name="mdi:close" size="20" class="!text-white dark:!text-white" />
-                    </div>
+                    </button>
                     <div class=" px-4 py-2   min-h-[160px] ">
                       <div class="flex items-center  gap-x-4">
                         <div class="flex flex-col justify-between pr-2">
@@ -152,7 +150,7 @@ watch(() => route.path, () => {
                                   <button
                                     type="button"
                                     :disabled="basketStore.loading"
-                                    @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
+                                    @click="basketStore.RemoveItem(item.product_id, item.variant.id);removePending = item.id"
                                   >
                                     <Icon
                                       name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage"
