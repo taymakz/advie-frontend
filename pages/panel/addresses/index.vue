@@ -237,20 +237,18 @@ onMounted(async () => {
       </div>
     </div>
 
-    <UModal
-      v-model="isOpenCreateAddressModal" :ui="{
-        width: 'max-w-2xl',
-
-      }"
-    >
+    <UModal v-model="isOpenCreateAddressModal" :ui="{ width: 'max-w-2xl' }">
       <PagesPanelAddressCreate
         @close-modal="isOpenCreateAddressModal = false"
         @created="refreshData"
       />
     </UModal>
+    <UModal v-model="isOpenEditAddressModal" :ui="{ width: 'max-w-2xl' }">
+      <PagesPanelAddressEdit
+        :address="selectedAddress"
+        @close-modal="isOpenEditAddressModal = false"
+        @edited="refreshData"
+      />
+    </UModal>
   </div>
 </template>
-
-<style scoped>
-
-</style>

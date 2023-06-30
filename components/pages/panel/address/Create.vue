@@ -26,9 +26,8 @@ const formSchema = Yup.object().shape({
   receiver_family: Yup.string().required(),
   receiver_national_code: Yup.string()
     .min(10, 'کد ملی وارد شده نامعتبر است').max(10, 'کد ملی وارد شده نامعتبر است').required(),
-
   receiver_phone: Yup
-    .string().required().test('receiver_phone', 'شماره موبایل و یا ایمیل نامعتبر است', validatePhoneNumber),
+    .string().required().test('receiver_phone', 'شماره موبایل نامعتبر است', validatePhoneNumber),
   receiver_address: Yup.string().max(100, 'آدرس باید کمتر از 100 کاراکتر باشد').min(10, 'آدرس باید بیشتر از 10 کاراکتر باشد').required(),
   receiver_postal_code: Yup.string().max(20, 'کد پستی وارد شده نامعتبر است').required(),
 })
@@ -65,6 +64,10 @@ const filteredCities = computed(() => {
     return cities[formData.receiver_province].map((city: { key: string; name: string }) => city.key)
 
   return []
+})
+
+watch(() => formData.receiver_province, () => {
+  formData.receiver_city = ''
 })
 </script>
 
@@ -163,7 +166,7 @@ const filteredCities = computed(() => {
         <base-button
           type="submit"
 
-          class="py-2 px-4 " theme="sky" :disabled="meta.valid === false" :loading="loading"
+          class="py-2 px-4 md:w-full" theme="sky" :disabled="meta.valid === false" :loading="loading"
         >
           افزودن آدرس جدید
         </base-button>
@@ -171,7 +174,3 @@ const filteredCities = computed(() => {
     </Form>
   </UCard>
 </template>
-
-<style scoped>
-
-</style>
