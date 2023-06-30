@@ -23,10 +23,10 @@ export default defineAppConfig({
     },
     modal: {
       wrapper: 'relative z-50',
-      inner: 'fixed inset-0 overflow-y-auto',
+      inner: 'fixed inset-0 overflow-y-auto main-scroll',
       container: 'flex min-h-full items-center justify-center text-center',
       padding: 'md:p-4',
-      base: 'relative text-left rtl:text-right overflow-hidden my-8 sm:my-0 w-full max-w-lg flex flex-col',
+      base: 'relative text-left rtl:text-right overflow-hidden my-8 sm:my-0 w-full flex flex-col',
       overlay: {
         base: 'fixed inset-0 transition-opacity',
         background: 'bg-gray-200/75 dark:bg-gray-800/75',
@@ -43,11 +43,21 @@ export default defineAppConfig({
       width: 'max-w-lg',
 
     },
+    select: {
+      padding: {
+        '2xs': 'px-2 py-1',
+        'xs': 'px-2.5 py-1.5',
+        'sm': 'px-2.5 py-1.5',
+        'md': 'px-3 py-2',
+        'lg': 'px-3.5 py-2.5',
+        'xl': 'px-3.5 py-2.5',
+      },
+    },
     selectMenu: {
       base: 'relative focus:outline-none overflow-y-auto scroll-py-1 main-scroll',
       option: {
-
-        padding: 'p-2',
+        base: 'cursor-pointer select-none relative flex items-center justify-between gap-1',
+        padding: 'py-3 px-2',
       },
     },
 

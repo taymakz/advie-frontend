@@ -239,7 +239,7 @@ onMounted(async () => {
 
     <UModal
       v-model="isOpenCreateAddressModal" :ui="{
-        width: 'max-w-3xl',
+        width: 'max-w-2xl',
 
       }"
     >

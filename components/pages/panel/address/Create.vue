@@ -130,8 +130,9 @@ const filteredCities = computed(() => {
               id="receiver_province" v-model="formData.receiver_province"
               searchable
               placeholder="استان خود را انتخاب کنید"
-              searchable-placeholder="استان خود را انتخاب کنید"
+              searchable-placeholder="استان خود را جستجو کنید"
               :options="formattedProvinces"
+              size="xl"
             />
           </UFormGroup>
         </div>
@@ -141,9 +142,10 @@ const filteredCities = computed(() => {
               id="receiver_province" v-model="formData.receiver_city"
               searchable
               placeholder="شهر خود را انتخاب کنید"
-              searchable-placeholder="شهر خود را انتخاب کنید"
+              searchable-placeholder="شهر خود را جستجو کنید"
               :disabled="formData.receiver_province === ''"
               :options="filteredCities"
+              size="xl"
             />
           </UFormGroup>
         </div>
