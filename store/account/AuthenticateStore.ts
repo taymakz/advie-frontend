@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 
+import type { Ref } from 'vue'
 import type { AuthenticateDTO } from '~/models/account/authenticate/AuthenticateDTO'
 
 import { GetCurrentUser, LogoutUser } from '~/services/account/user.service'

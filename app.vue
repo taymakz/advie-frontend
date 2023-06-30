@@ -62,11 +62,11 @@ favoriteStore.Init()
 }
 
 .layout-enter-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 .layout-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .layout-enter-from,
