@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-swiper',
   ],
+
   routeRules: {
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },

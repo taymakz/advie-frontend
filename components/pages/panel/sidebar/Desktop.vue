@@ -15,7 +15,7 @@ const authStore = useAuthenticateStore()
           <nuxt-img
             :src="authStore.currentUser?.profile ? GetImageUrl(authStore.currentUser.profile) : ''"
             alt="User Profile"
-            class="w-full h-auto rounded-full ring-2"
+            class="rounded-full ring-2"
             placeholder
             loading="lazy"
             width="40"

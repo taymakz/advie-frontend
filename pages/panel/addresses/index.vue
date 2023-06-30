@@ -15,7 +15,7 @@ const isOpenCreateAddressModal = ref(false)
 const isOpenEditAddressModal = ref(false)
 
 const addresses: Ref<AddressDetailDTO[]> = ref([])
-const selectedAddress: Ref<AddressDetailDTO | null> = ref(null)
+const selectedAddress: Ref<AddressDetailDTO> = ref((addresses.value as AddressDetailDTO[])[0])
 
 async function getAddresses() {
   pending.value = true

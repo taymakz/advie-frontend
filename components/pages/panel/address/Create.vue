@@ -134,6 +134,8 @@ watch(() => formData.receiver_province, () => {
               searchable
               placeholder="استان خود را انتخاب کنید"
               searchable-placeholder="استان خود را جستجو کنید"
+              :disabled="loading"
+
               :options="formattedProvinces"
               size="xl"
             />
@@ -146,7 +148,7 @@ watch(() => formData.receiver_province, () => {
               searchable
               placeholder="شهر خود را انتخاب کنید"
               searchable-placeholder="شهر خود را جستجو کنید"
-              :disabled="formData.receiver_province === ''"
+              :disabled="formData.receiver_province === '' || loading"
               :options="filteredCities"
               size="xl"
             />
