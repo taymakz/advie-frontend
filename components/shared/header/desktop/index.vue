@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { useWebsiteUtilStore } from '~/store/website/webUtilStore'
 
-const authStore = useAuthenticateStore()
 const utilStore = useWebsiteUtilStore()
 
 const showMegaMenu = ref(false)

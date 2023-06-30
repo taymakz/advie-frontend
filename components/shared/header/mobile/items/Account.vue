@@ -51,11 +51,16 @@ const accountDropdown = ref(false)
 
                 class="relative flex cursor-pointer items-center justify-between   gap-2 rounded-md border border-gray-200 bg-white  py-3 px-4 text-slate-500  dark:border-gray-800 dark:bg-gray-900 dark:text-slate-400 "
               >
-                <p v-if="authStore.currentUser?.first_name " class="text-sm font-medium">
-                  {{ truncatedText(`${authStore.currentUser.first_name}${authStore.currentUser.last_name}`, 18) }}
+                <p v-if="authStore.currentUser?.full_name " class="text-sm font-medium">
+                  {{ truncatedText(authStore.currentUser?.full_name, 18) }}
                 </p>
                 <p v-else class="text-base font-medium">
-                  {{ truncatedText(authStore.currentUser?.username!, 18) }}
+                  <template v-if="authStore.currentUser?.phone ">
+                    {{ truncatedText(authStore.currentUser?.phone!, 18) }}
+                  </template>
+                  <template v-else>
+                    {{ truncatedText(authStore.currentUser?.email!, 18) }}
+                  </template>
                 </p>
                 <span>
                   <Icon name="ic:outline-chevron-left" size="20" />
