@@ -4,6 +4,7 @@ import type { AddressDetailDTO, AddressEditDTO } from '~/models/account/user/Add
 import { provinces } from '~/utils/persian/provinces'
 import { cities } from '~/utils/persian/cities'
 import { UserEditAddress } from '~/services/account/user.address.service'
+import { validateNationalCode, validatePostalCode } from '~/utils/Validators'
 
 const props = defineProps<{
   address: AddressDetailDTO
@@ -26,14 +27,13 @@ const loading = ref(false)
 const toast = useToast()
 
 const formSchema = Yup.object().shape({
-  receiver_name: Yup.string().required(),
-  receiver_family: Yup.string().required(),
-  receiver_national_code: Yup.string()
-    .min(10, 'کد ملی وارد شده نامعتبر است').max(10, 'کد ملی وارد شده نامعتبر است').required(),
+  receiver_name: Yup.string().required().max(55, 'نام گیرنده باید کمتر از 100 کاراکتر باشد').min(10, 'نام گیرنده باید بیشتر از 10 کاراکتر باشد'),
+  receiver_family: Yup.string().required().max(55, 'نام خانوادگی گیرنده باید کمتر از 100 کاراکتر باشد').min(10, 'نام خانوادگی گیرنده باید بیشتر از 10 کاراکتر باشد'),
+  receiver_national_code: Yup.string().required().test('receiver_postal_code', 'کد ملی نامعتبر است', validateNationalCode),
   receiver_phone: Yup
     .string().required().test('receiver_phone', 'شماره موبایل نامعتبر است', validatePhoneNumber),
   receiver_address: Yup.string().max(100, 'آدرس باید کمتر از 100 کاراکتر باشد').min(10, 'آدرس باید بیشتر از 10 کاراکتر باشد').required(),
-  receiver_postal_code: Yup.string().max(20, 'کد پستی وارد شده نامعتبر است').required(),
+  receiver_postal_code: Yup.string().required().test('receiver_postal_code', 'کد پستی نامعتبر است', validatePostalCode),
 })
 watch(formData, () => {
   isFormChanged.value = true

@@ -122,7 +122,7 @@ onMounted(async () => {
         </template>
         <!-- Address -->
         <template v-else>
-          <div v-if="addresses.length > 0">
+          <template v-if="addresses.length > 0">
             <div
               v-for="item in addresses" :key="item.id"
               class="relative bg-gray-100 dark:bg-gray-900 py-4 px-4 rounded-lg "
@@ -222,8 +222,8 @@ onMounted(async () => {
                 </UPopover>
               </div>
             </div>
-          </div>
-          <div v-else>
+          </template>
+          <template v-else>
             <div class="flex flex-col gap-y-4 items-center justify-center">
               <div>
                 <Icon name="ic:twotone-location-off" size="80" class="!text-slate-500 dark:text-slate-400" />
@@ -232,7 +232,7 @@ onMounted(async () => {
                 آدرسی یافت نشد!
               </div>
             </div>
-          </div>
+          </template>
         </template>
       </div>
     </div>
