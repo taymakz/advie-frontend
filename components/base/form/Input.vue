@@ -70,7 +70,7 @@ const { errorMessage } = useField(props.name, undefined)
     <label
       :for="name"
       class="relative block overflow-hidden rounded-md border-b-4 border-transparent cursor-text px-3 pt-3 shadow-sm bg-gray-100 dark:bg-gray-800"
-      :class="{ 'border-red-600 dark:border-red-600': errorMessage }"
+      :class="{ '!border-red-600 dark:!border-red-600': errorMessage }"
     >
       <input
         :id="name"
@@ -89,7 +89,7 @@ const { errorMessage } = useField(props.name, undefined)
       >
 
       <span
-        class="absolute start-3 top-3 -translate-y-1/2 cursor-default text-xs  text-gray-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs dark:text-gray-400 peer-focus:text-slate-400 peer-focus:dark:text-slate-500 select-none"
+        class="absolute start-3 top-3 -translate-y-1/2 cursor-pointer text-xs  text-gray-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs  dark:text-gray-400 peer-focus:text-slate-400 peer-focus:dark:text-slate-500 select-none"
       >
         {{ label }}
       </span>

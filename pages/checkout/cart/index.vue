@@ -8,132 +8,153 @@ const basketStore = useBasketStore()
   <div>
     <!-- Breadcrumb -->
     <div class="container-checkout py-2">
-      <div v-if="basketStore.getItemsCount > 0" class="grid grid-cols-12 gap-x-4">
-        <!-- Basket -->
-        <div class="col-span-8 lg:col-span-12">
-          <div class="bg-white dark:bg-gray-800 rounded-lg">
-            <div
-              class="flex items-center justify-between py-3 px-4 text-slate-500  dark:text-slate-400 border-b border-gray-300 dark:border-gray-600 mb-4"
-            >
-              <div class="flex items-center justify-center gap-x-2">
-                <p class="text-base md:text-sm">
-                  سبد خرید
-                </p>
-                <Icon name="ic:round-chevron-left" size="20" />
-              </div>
-              <div class="text-sm">
-                {{ basketStore.getItemsCount }} کالا
-              </div>
-            </div>
+      <div v-if="basketStore.getItemsCount > 0">
+        <div class="mb-4 bg-white dark:bg-gray-900  rounded-lg  ">
+          <ol
+            class="grid grid-cols-3 overflow-hidden divide-x-reverse  divide-x divide-gray-200 dark:divide-gray-700 rounded-lg border border-gray-200 dark:border-gray-700 text-sm text-gray-500"
+          >
+            <li class="flex flex-col items-center justify-center  gap-2 p-4 text-sky-600 dark:text-sky-500  bg-gray-800">
+              <Icon
+                name="ph:shopping-cart-simple" size="24"
+              />
 
-            <!-- Cart Items -->
-            <div class="flex flex-col p-1 px-4 gap-y-1">
-              <div v-for="item in basketStore.items" :key="item.id" class="bg-white dark:bg-gray-900  rounded-lg p-4">
-                <div class="flex items-center gap-x-4">
-                  <!-- Image -->
-                  <div>
-                    <div class="w-28 h-28 sm:w-24 sm:h-24">
-                      <nuxt-link :to="item.product_url">
-                        <nuxt-img
-                          :src="GetImageUrl(item.product_image)" :alt="item.product_title_ir"
-                          class="w-full h-auto rounded-2xl"
-                        />
-                      </nuxt-link>
-                    </div>
-                  </div>
-                  <!-- Title - Variant - Price - Count -->
+              <p class="leading-none ">
+                سبد خرید
+              </p>
+            </li>
+            <li class="flex flex-col items-center justify-center  gap-2 p-4 sm:text-xs">
+              <Icon
+                name="carbon:delivery" size="20"
+              />
 
-                  <div class="flex flex-col items-start gap-y-2 ">
-                    <!-- Title -->
+              <p class="leading-none ">
+                شیوه ارسال
+              </p>
+            </li>
+            <li class="flex flex-col items-center justify-center  gap-2 p-4 sm:text-xs ">
+              <Icon
+                name="fluent:wallet-credit-card-16-regular" size="20"
+              />
+
+              <p class="leading-none ">
+                پرداخت
+              </p>
+            </li>
+          </ol>
+        </div>
+        <div class="grid grid-cols-12 gap-4">
+          <!-- Basket -->
+          <div class="col-span-8 lg:col-span-12">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+              <!-- Cart Items -->
+              <div class="flex flex-col  gap-y-2">
+                <div v-for="item in basketStore.items" :key="item.id" class="bg-white dark:bg-gray-900  rounded-lg p-4">
+                  <div class="flex items-center gap-x-4">
+                    <!-- Image -->
                     <div>
-                      <nuxt-link
-                        :to="item.product_url"
-                        class="text-slate-500 dark:text-slate-400 text-sm md:text-xs"
-                      >
-                        <div class="hidden md:block">
-                          {{ truncatedText(item.product_title_ir, 60) }}
-                        </div>
-                        <div class="block md:hidden">
-                          {{ item.product_title_ir }}
-                        </div>
-                      </nuxt-link>
-                    </div>
-                    <!-- Variant -->
-                    <div class="flex items-center">
-                      <div v-if="!item.variant.type.is_none" class="text-slate-500 dark:text-slate-400  text-xs">
-                        {{ item.variant.type.title_ir }} : {{ splitNumber(item.variant.value.value) }}
-                        {{ item.variant.value.prefix.name }}
+                      <div class="w-28 h-28 sm:w-24 sm:h-24">
+                        <nuxt-link :to="item.product_url">
+                          <nuxt-img
+                            :src="GetImageUrl(item.product_image)" :alt="item.product_title_ir"
+                            class="w-full h-auto rounded-2xl"
+                          />
+                        </nuxt-link>
                       </div>
                     </div>
-                    <!-- Price - Count -->
-                    <div class="flex sm:flex-col items-center sm:items-start justify-between gap-2">
-                      <!-- Price -->
-                      <div class="flex flex-col w-32">
-                        <div>
-                          <del
-                            v-if="item.variant.is_special"
-                            class="text-sm md:text-xs font-medium text-red-600 "
-                          >
-                            {{ splitNumber(item.variant.price * item.count) }}
-                          </del>
-                        </div>
-                        <div
-                          class="flex items-center gap-x-2 font-bold text-sm md:text-xs text-sky-400 dark:text-sky-500 "
+                    <!-- Title - Variant - Price - Count -->
+
+                    <div class="flex flex-col items-start gap-y-2 ">
+                      <!-- Title -->
+                      <div>
+                        <nuxt-link
+                          :to="item.product_url"
+                          class="text-slate-500 dark:text-slate-400 text-sm md:text-xs"
                         >
-                          {{ splitNumber(item.total_price) }}
-                          <div class="text-xs font-medium">
-                            تومان
+                          <div class="hidden md:block">
+                            {{ truncatedText(item.product_title_ir, 60) }}
                           </div>
+                          <div class="block md:hidden">
+                            {{ item.product_title_ir }}
+                          </div>
+                        </nuxt-link>
+                      </div>
+                      <!-- Variant -->
+                      <div class="flex items-center">
+                        <div v-if="!item.variant.type.is_none" class="text-slate-500 dark:text-slate-400  text-xs">
+                          {{ item.variant.type.title_ir }} : {{ splitNumber(item.variant.value.value) }}
+                          {{ item.variant.value.prefix.name }}
                         </div>
                       </div>
-                      <!-- Count - Remove -->
-
-                      <div class="flex items-center justify-center gap-x-2">
-                        <!-- Count -->
-                        <div
-                          class="w-30 h-9 flex justify-center  border border-slate-200 dark:border-none dark:bg-gray-800 rounded-lg px-4 py-1 gap-x-3"
-                        >
-                          <button
-                            type="button"
-                            :disabled="basketStore.loading"
-                            @click="basketStore.IncreaseCount(item.product_id, item.variant.id)"
-                          >
-                            <Icon
-                              name="ic:baseline-plus" size="20"
-                              class="text-green-600 dark:text-green-500"
-                            />
-                          </button>
-                          <div class=" p-1 select-none text-slate-500 dark:text-slate-400 text-sm">
-                            {{ item.count }}
+                      <!-- Price - Count -->
+                      <div class="flex sm:flex-col items-center sm:items-start justify-between gap-2">
+                        <!-- Price -->
+                        <div class="flex flex-col w-32">
+                          <div>
+                            <del
+                              v-if="item.variant.is_special"
+                              class="text-sm md:text-xs font-medium text-red-600 "
+                            >
+                              {{ splitNumber(item.variant.price * item.count) }}
+                            </del>
                           </div>
-                          <button
-                            type="button"
-                            :disabled="basketStore.loading || item.count === 1"
-                            class="group"
-                            @click="basketStore.DecreaseCount(item.product_id, item.variant.id)"
+                          <div
+                            class="flex items-center gap-x-2 font-bold text-sm md:text-xs text-sky-400 dark:text-sky-500 "
                           >
-                            <Icon
-                              name="ic:twotone-minus" size="20"
-                              class="!text-red-600 group-disabled:!text-gray-400"
-                            />
-                          </button>
+                            {{ splitNumber(item.total_price) }}
+                            <div class="text-xs font-medium">
+                              تومان
+                            </div>
+                          </div>
                         </div>
+                        <!-- Count - Remove -->
 
-                        <!-- Remove -->
-                        <div class="flex items-center justify-center ">
-                          <button
-                            type="button"
-
-                            :disabled="basketStore.loading"
-                            class="group w-10 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-none bg-white dark:bg-gray-800 hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-150 cursor-pointer"
-                            @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
+                        <div class="flex items-center justify-center gap-x-2">
+                          <!-- Count -->
+                          <div
+                            class="w-30 h-9 flex justify-center  border border-slate-200 dark:border-none dark:bg-gray-800 rounded-lg px-4 py-1 gap-x-3"
                           >
-                            <Icon
-                              name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage"
-                              size="18"
-                              class="text-red-600 dark:text-red-600 group-hover:text-white "
-                            />
-                          </button>
+                            <button
+                              type="button"
+                              :disabled="basketStore.loading"
+                              @click="basketStore.IncreaseCount(item.product_id, item.variant.id)"
+                            >
+                              <Icon
+                                name="ic:baseline-plus" size="20"
+                                class="text-green-600 dark:text-green-500"
+                              />
+                            </button>
+                            <div class=" p-1 select-none text-slate-500 dark:text-slate-400 text-sm">
+                              {{ item.count }}
+                            </div>
+                            <button
+                              type="button"
+                              :disabled="basketStore.loading || item.count === 1"
+                              class="group"
+                              @click="basketStore.DecreaseCount(item.product_id, item.variant.id)"
+                            >
+                              <Icon
+                                name="ic:twotone-minus" size="20"
+                                class="!text-red-600 group-disabled:!text-gray-400"
+                              />
+                            </button>
+                          </div>
+
+                          <!-- Remove -->
+                          <div class="flex items-center justify-center ">
+                            <button
+                              type="button"
+
+                              :disabled="basketStore.loading"
+                              class="group w-10 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-none bg-white dark:bg-gray-800 hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-150 cursor-pointer"
+                              @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
+                            >
+                              <Icon
+                                name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage"
+                                size="18"
+                                class="text-red-600 dark:text-red-600 group-hover:text-white "
+                              />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -142,48 +163,86 @@ const basketStore = useBasketStore()
               </div>
             </div>
           </div>
-        </div>
-        <!-- Desktop Sidebar -->
-        <div class="col-span-4 lg:hidden ">
-          <div class="bg-white dark:bg-gray-800 rounded-lg  sticky top-28 py-4 px-6">
-            <div class="flex flex-col gap-y-6 ">
-              <!-- Items Price -->
-              <div class="flex items-center justify-between  ">
-                <div class="text-slate-500 dark:text-slate-400 text-sm ">
-                  قیمت کالاها ( {{ basketStore.getItemsCount }} )
+          <!-- Desktop Sidebar -->
+          <div class="col-span-4 lg:col-span-12 ">
+            <div class="bg-white dark:bg-gray-800 rounded-lg  sticky top-28 py-4 px-6">
+              <div class="flex flex-col gap-y-6 ">
+                <!-- Items Price -->
+                <div class="flex items-center justify-between  ">
+                  <div class="text-slate-500 dark:text-slate-400 text-sm ">
+                    قیمت کالاها ( {{ basketStore.getItemsCount }} )
+                  </div>
+                  <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
+                    <div class="font-bold">
+                      {{ splitNumber(basketStore.getTotalPriceBeforeDiscount()) }}
+                    </div>
+                    <div class="text-xs">
+                      تومان
+                    </div>
+                  </div>
                 </div>
-                <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
-                  <div class="font-bold">
-                    {{ splitNumber(basketStore.getTotalPriceBeforeDiscount()) }}
+                <!-- Total Discount Price -->
+                <div
+                  v-if="basketStore.getTotalPriceAfterDiscount() > 0"
+                  class="flex items-center justify-between "
+                >
+                  <div class="text-slate-500 dark:text-slate-400 text-sm ">
+                    تخفیف کالاها
                   </div>
-                  <div class="text-xs">
-                    تومان
+                  <div class="flex items-center justify-center gap-x-1 text-red-500 dark:text-red-500 text-sm ">
+                    <div class="font-bold">
+                      ({{ basketStore.getDiscountPercentage() }}%)
+                      {{ splitNumber(basketStore.getTotalPriceBeforeDiscount() - basketStore.getTotalPrice()) }}
+                    </div>
+                    <div class="text-xs">
+                      تومان
+                    </div>
                   </div>
+                </div>
+                <!-- Total Cart Price -->
+                <div
+                  class="flex lg:hidden items-center justify-between  border-t border-gray-300 dark:border-gray-600 pt-4"
+                >
+                  <div class="text-slate-500 dark:text-slate-400 text-sm ">
+                    مبلغ قابل پرداخت
+                  </div>
+                  <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
+                    <div class="font-bold">
+                      {{ splitNumber(basketStore.getTotalPrice()) }}
+                    </div>
+                    <div class="text-xs">
+                      تومان
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lg:hidden">
+                  <nuxt-link to="/checkout/shipping/">
+                    <base-button w-full theme="sky" class="py-3">
+                      ادامه فرایند خرید
+                    </base-button>
+                  </nuxt-link>
                 </div>
               </div>
-              <!-- Total Discount Price -->
-              <div
-                v-if="basketStore.getTotalPriceAfterDiscount() > 0"
-                class="flex items-center justify-between "
-              >
-                <div class="text-slate-500 dark:text-slate-400 text-sm ">
-                  تخفیف کالاها
-                </div>
-                <div class="flex items-center justify-center gap-x-1 text-red-500 dark:text-red-500 text-sm ">
-                  <div class="font-bold">
-                    ({{ basketStore.getDiscountPercentage() }}%)
-                    {{ splitNumber(basketStore.getTotalPriceBeforeDiscount() - basketStore.getTotalPrice()) }}
-                  </div>
-                  <div class="text-xs">
-                    تومان
-                  </div>
-                </div>
+            </div>
+          </div>
+          <!-- Mobile Sidebar -->
+          <div
+            class="z-10 hidden lg:flex fixed  bottom-0 left-0 right-0 w-full bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700 py-3 px-4 h-20"
+          >
+            <div class="flex items-center justify-between w-full gap-x-5">
+              <div class="flex-1 max-w-lg">
+                <nuxt-link to="/checkout/shipping/">
+                  <button
+                    class="gap-x-2 w-full px-2 py-4  text-xs font-iranyekanBold text-slate-200 dark:text-slate-200 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600 transition-colors duration-150"
+                  >
+                    ادامه فرایند خرید
+                  </button>
+                </nuxt-link>
               </div>
-              <!-- Total Cart Price -->
-              <div
-                class="flex items-center justify-between  border-t border-gray-300 dark:border-gray-600 pt-4"
-              >
-                <div class="text-slate-500 dark:text-slate-400 text-sm ">
+
+              <div class="flex-col gap-y-2">
+                <div class="text-slate-500 dark:text-slate-400 text-xs ">
                   مبلغ قابل پرداخت
                 </div>
                 <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
@@ -193,44 +252,6 @@ const basketStore = useBasketStore()
                   <div class="text-xs">
                     تومان
                   </div>
-                </div>
-              </div>
-
-              <div>
-                <nuxt-link to="/checkout/cart/">
-                  <base-button w-full theme="sky" class="py-3">
-                    ادامه فرایند خرید
-                  </base-button>
-                </nuxt-link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Mobile Sidebar -->
-        <div
-          class="z-10 hidden lg:flex fixed  bottom-0 left-0 right-0 w-full bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-600 py-3 px-4 h-20"
-        >
-          <div class="flex items-center justify-between w-full gap-x-5">
-            <div class="flex-1 max-w-lg">
-              <nuxt-link to="/checkout/cart/">
-                <button
-                  class="gap-x-2 w-full px-2 py-4  text-xs font-iranyekanBold text-slate-200 dark:text-slate-200 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600 transition-colors duration-150"
-                >
-                  ادامه فرایند خرید
-                </button>
-              </nuxt-link>
-            </div>
-
-            <div class="flex-col gap-y-2">
-              <div class="text-slate-500 dark:text-slate-400 text-xs ">
-                مبلغ قابل پرداخت
-              </div>
-              <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
-                <div class="font-bold">
-                  {{ splitNumber(basketStore.getTotalPrice()) }}
-                </div>
-                <div class="text-xs">
-                  تومان
                 </div>
               </div>
             </div>

@@ -87,13 +87,13 @@ function addToBasket() {
         </p>
       </div>
       <div
-        class="flex flex-wrap  items-center gap-2 border w-full  p-3 rounded-lg border-gray-200 dark:border-gray-800"
+        class="grid grid-cols-12 gap-x-4 border   p-3 rounded-lg border-gray-200 dark:border-gray-700"
       >
-        <template v-for="item in product.variants" :key="item.id">
-          <div v-if="fetchPending">
+        <div v-for="item in product.variants" :key="item.id" class="col-span-3 xl:col-span-4 sm:col-span-6">
+          <template v-if="fetchPending">
             <USkeleton class="h-10 w-28" />
-          </div>
-          <div v-else>
+          </template>
+          <template v-else>
             <input
               :id="item.id.toString()"
               v-model="selectedVariant"
@@ -101,21 +101,24 @@ function addToBasket() {
               name="variant"
               :value="item"
               :disabled="loading"
-              class="peer hidden [&:checked_+_label]:block"
+              class="peer  hidden [&:checked_+_label]:block "
             >
 
             <label
               :for="item.id.toString()"
-              class="relative flex cursor-pointer items-center  gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-gray-900 hover:border-gray-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-none dark:border-gray-800 dark:bg-gray-900 dark:text-white dark:hover:border-gray-700  "
+              class="relative flex cursor-pointer items-center  gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-gray-900 hover:border-gray-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700  "
             >
-              <span v-if="item.is_special" class="inline-flex absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full">
+              <span
+                v-if="item.is_special"
+                class="inline-flex absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full"
+              >
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
 
               </span>
               <small class="text-sm font-medium">{{ item.value.value }} {{ item.value.prefix.name }}</small>
             </label>
-          </div>
-        </template>
+          </template>
+        </div>
       </div>
     </div>
 
@@ -164,11 +167,14 @@ function addToBasket() {
 
     <div class="grid grid-cols-12 gap-1 ">
       <div
-        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-800 hover:dark:border-gray-700 h-14 "
+        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-700 hover:dark:border-gray-700 h-14 "
       >
         <div class="flex items-center gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon name="akar-icons:arrow-counter-clockwise" class="w-8 h-8  sm:w-6 sm:h-6 " />
+            <Icon
+              name="akar-icons:arrow-counter-clockwise"
+              class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500"
+            />
           </div>
           <div>
             <p class="text-sm sm:text-xs text-slate-500 dark:text-slate-400">
@@ -178,11 +184,14 @@ function addToBasket() {
         </div>
       </div>
       <div
-        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-800 hover:dark:border-gray-700 h-14 "
+        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-700 hover:dark:border-gray-700 h-14 "
       >
         <div class="flex items-center gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon name="material-symbols:google-guarantee" class="w-8 h-8  sm:w-6 sm:h-6" />
+            <Icon
+              name="material-symbols:google-guarantee"
+              class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500"
+            />
           </div>
           <div>
             <p class="text-sm sm:text-xs  text-slate-500 dark:text-slate-400">
@@ -192,11 +201,11 @@ function addToBasket() {
         </div>
       </div>
       <div
-        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-800 hover:dark:border-gray-700 h-14 "
+        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-700 hover:dark:border-gray-700 h-14 "
       >
         <div class="flex items-center gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon name="iconoir:headset-help" class="w-8 h-8  sm:w-6 sm:h-6" />
+            <Icon name="iconoir:headset-help" class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500" />
           </div>
           <div>
             <p class="text-sm sm:text-xs  text-slate-500 dark:text-slate-400">
@@ -206,11 +215,11 @@ function addToBasket() {
         </div>
       </div>
       <div
-        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-800 hover:dark:border-gray-700 h-14 "
+        class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-700 hover:dark:border-gray-700 h-14 "
       >
         <div class="flex items-center  gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon name="carbon:delivery-parcel" class="w-8 h-8  sm:w-6 sm:h-6" />
+            <Icon name="carbon:delivery-parcel" class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500" />
           </div>
           <div>
             <p class="text-sm sm:text-xs  text-slate-500 dark:text-slate-400">

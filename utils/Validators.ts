@@ -2,6 +2,31 @@ export const emailRegex = /^\S+@\S+\.\S+$/
 export const phoneRegex = /^(\+98|0)?9\d{9}$/
 export const postalCodeRegex = /^\d{10}$/
 export const nationalCodeRegex = /^\d{10}$/
+export const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,18}$/
+export const passwordLowercaseRegex = /[a-z]/
+export const passwordUppercaseRegex = /[A-Z]/
+export const passwordNumberRegex = /\d/
+export const passwordLengthRegex = /^.{6,18}$/
+
+export function passwordHasLowercase(password: string): boolean {
+  return passwordLowercaseRegex.test(password)
+}
+
+export function passwordHasUppercase(password: string): boolean {
+  return passwordUppercaseRegex.test(password)
+}
+
+export function passwordHasNumber(password: string): boolean {
+  return passwordNumberRegex.test(password)
+}
+
+export function passwordIsValidPasswordLength(password: string): boolean {
+  return passwordLengthRegex.test(password)
+}
+
+export function validatePassword(password: string): boolean {
+  return passwordRegex.test(password)
+}
 
 export function validatePhoneNumber(phoneNumber: string): boolean {
   return phoneRegex.test(phoneNumber)

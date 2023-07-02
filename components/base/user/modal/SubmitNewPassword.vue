@@ -1,8 +1,8 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import * as Yup from 'yup'
-import type { Ref } from 'vue/dist/vue'
-import { ForgotPasswordSection } from '~/models/account/password/PasswordDTO'
-import { UserResetPassword } from '~/services/account/user.password.service'
+import type { Ref } from 'vue'
+import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
+import { UserEditPassword } from '~/services/account/user.profile.service'
 import {
   passwordHasLowercase,
   passwordHasNumber,
@@ -11,21 +11,17 @@ import {
   validatePassword,
 } from '~/utils/Validators'
 
-const props = defineProps({
-  username: {
-    type: String,
-    default: '',
-  },
-})
-const emits = defineEmits(['changeSection'])
+const modelValue = defineModel()
+
+const authStore = useAuthenticateStore()
+
 const loading = ref(false)
 const toast = useToast()
-const router = useRouter()
 
 const formData = reactive({
+  current_password: '',
   password: '',
   confirm_password: '',
-
 })
 const lowercaseValid = ref(false)
 const uppercaseValid = ref(false)
@@ -47,6 +43,42 @@ const formSchema = Yup.object().shape({
 
 })
 
+async function editPassword(data: any, formEvent: any) {
+  if (!formData.password || !validatePassword(formData.password))
+    return
+  if (formData.password !== formData.confirm_password)
+    return
+
+  loading.value = true
+  const result = await UserEditPassword(formData)
+  loading.value = false
+  if (result.success) {
+    modelValue.value = false
+    formData.current_password = ''
+    formData.password = ''
+    formData.confirm_password = ''
+    toast.add({ title: result.message, color: 'green' })
+    localStorage.removeItem('authToken')
+    const tokens = {
+      refresh: result.data.refresh,
+      access: result.data.access,
+    }
+    localStorage.setItem('authToken', JSON.stringify(tokens))
+    await authStore.SetCurrentUserValue()
+  }
+  else {
+    if (result.data.error_input_name) {
+      formEvent.setFieldError(
+        result.data.error_input_name,
+        result.message,
+      )
+    }
+    else {
+      toast.add({ title: result.message, color: 'red' })
+    }
+  }
+}
+
 const getValidationClass: Ref<any> = computed(() => {
   const validCount = [lowercaseValid, uppercaseValid, numberValid, lengthValid].filter(ref => ref.value).length
 
@@ -61,46 +93,41 @@ const getValidationClass: Ref<any> = computed(() => {
   else if (validCount === 4)
     return ['bg-green-500', 'bg-green-500', 'bg-green-500', 'bg-green-500']
 })
-
-async function resetPassword(data: any, formEvent: any) {
-  loading.value = true
-  try {
-    const resetPasswordToken = localStorage.getItem('forgotPasswordToken')
-
-    if (!resetPasswordToken)
-      return emits('changeSection', ForgotPasswordSection.USERNAME)
-    const result = await UserResetPassword(props.username, resetPasswordToken, formData.password, formData.confirm_password)
-    if (result.success) {
-      localStorage.removeItem('forgotPasswordToken')
-      toast.add({ title: result.message, color: 'green' })
-
-      return await router.push('/auth/login/')
-    }
-    else {
-      formEvent.setFieldError(
-        'confirm_password',
-        result.message,
-      )
-    }
-  }
-  catch (error) {
-
-  }
-  loading.value = false
-}
 </script>
 
 <template>
-  <div>
-    <!-- Header -->
-    <div class="mb-10">
-      <h1 class="text-center text-lg text-slate-500 dark:text-slate-400">
-        تغییر کلمه عبور
-      </h1>
-    </div>
-    <!-- Form -->
-    <div class="mb-6">
-      <Form v-slot="{ meta }" :validation-schema="formSchema" @submit="resetPassword">
+  <UModal v-model="modelValue" :ui="{ width: 'max-w-lg' }">
+    <UCard :ui="{ divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+      <template #header>
+        <div class="flex items-center justify-between">
+          <h3 class="text-slate-600 dark:text-slate-300">
+            <template v-if="authStore.currentUser?.has_password">
+              تغییر کلمه عبور
+            </template>
+            <template v-else>
+              ثبت کلمه عبور جدید
+            </template>
+          </h3>
+          <div>
+            <base-button class="py-2 px-4 w-24" theme="rose" @click="modelValue = false">
+              بستن
+            </base-button>
+          </div>
+        </div>
+      </template>
+      <Form
+        v-slot="{ meta }" :validation-schema="formSchema"
+        @submit="editPassword"
+      >
+        <!-- Current Password -->
+        <div class="mb-4">
+          <Field v-slot="{ field }" name="current_password">
+            <base-form-input
+              v-model="formData.current_password" :disabled="loading" focus label="کلمه عبور فعلی" ltr type="password"
+              v-bind="field"
+            />
+          </Field>
+        </div>
         <!-- New Password -->
         <div class="mb-4">
           <Field v-slot="{ field }" name="password">
@@ -109,7 +136,7 @@ async function resetPassword(data: any, formEvent: any) {
               v-bind="field"
             />
           </Field>
-          <div class="mb-5">
+          <div>
             <div class="flex items-center gap-x-2 mb-4">
               <div class="w-full h-[3px] rounded-full " :class="getValidationClass[0]" />
               <div class="w-full h-[3px] rounded-full  " :class="getValidationClass[1]" />
@@ -146,27 +173,29 @@ async function resetPassword(data: any, formEvent: any) {
         <div class="mb-4">
           <Field v-slot="{ field }" name="confirm_password">
             <base-form-input
-              v-model="formData.confirm_password" :disabled="loading" label="تکرار کلمه عبور جدید" ltr
+              v-model="formData.confirm_password" :disabled="loading" focus label="تکرار کلمه عبور جدید" ltr
               type="password"
               v-bind="field"
             />
           </Field>
         </div>
-
-        <div>
+        <div class="flex justify-end">
           <base-button
-            type="submit"
-            w-full
-            :disabled="meta.valid === false || loading"
-            :loading="loading"
-            class="py-3.5"
+            :disabled="meta.valid === false"
+
+            :loading="loading" class="py-2 px-4 md:w-full " theme="sky" type="submit"
           >
-            بازیابی کلمه عبور
+            <template v-if="authStore.currentUser?.has_password">
+              تغییر کلمه عبور
+            </template>
+            <template v-else>
+              ثبت کلمه عبور جدید
+            </template>
           </base-button>
         </div>
       </Form>
-    </div>
-  </div>
+    </UCard>
+  </UModal>
 </template>
 
 <style scoped>

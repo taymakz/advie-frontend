@@ -24,38 +24,54 @@ watch(section, (newVal, oldVal) => {
 </script>
 
 <template>
-  <div class="w-[400px] sm:w-full bg-white dark:bg-gray-900 rounded-lg drop-shadow-xl">
-    <!-- Card -->
-    <div class="py-5 px-10">
-      <!-- Logo -->
-      <div class="flex items-center justify-center mb-8">
-        <div class=" w-60">
-          <nuxt-link to="/">
-            <base-logo class="w-full h-auto" />
-          </nuxt-link>
-        </div>
+  <UCard
+    class=""
+    :ui="{
+      base: 'overflow-hidden w-[400px] sm:w-full relative',
+      body: {
+        padding: 'px-10 py-5 sm:p-6',
+      },
+    }"
+  >
+    <div v-if="section !== AuthenticateSection.USERNAME" class="absolute -top-0 -right-0">
+      <div
+        class="group bg-gray-200 dark:bg-gray-800 hover:bg-sky-600 hover:dark:bg-sky-600 transition-colors duration-150  p-1 w-14 rounded-bl-lg cursor-pointer flex items-center justify-center"
+        @click="section = AuthenticateSection.USERNAME"
+      >
+        <Icon
+          name="ion:arrow-forward-outline" size="25"
+          class="group-hover:text-slate-100 text-sky-500 dark:text-sky-400"
+        />
       </div>
-
-      <template v-if="section === AuthenticateSection.USERNAME">
-        <PagesAuthLoginAuthenticateCheck
-          @username-change="handleUsernameChange"
-          @change-section="(state) => section = state"
-        />
-      </template>
-      <template v-if="section === AuthenticateSection.PASSWORD">
-        <PagesAuthLoginPassword
-          :username="username" @change-section="(state) => section = state"
-          @can-login-with-password="(state) => canLoginWithPassword = state"
-        />
-      </template>
-      <template v-if="section === AuthenticateSection.OTP">
-        <PagesAuthLoginOneTimePassword
-          :username="username" :can-login-with-password="canLoginWithPassword"
-          @change-section="(state) => section = state"
-        />
-      </template>
     </div>
-  </div>
+    <!-- Logo -->
+    <div class="flex items-center justify-center mb-8">
+      <div class=" w-60">
+        <nuxt-link to="/">
+          <base-logo class="w-full h-auto" />
+        </nuxt-link>
+      </div>
+    </div>
+
+    <template v-if="section === AuthenticateSection.USERNAME">
+      <PagesAuthLoginAuthenticateCheck
+        @username-change="handleUsernameChange"
+        @change-section="(state) => section = state"
+      />
+    </template>
+    <template v-if="section === AuthenticateSection.PASSWORD">
+      <PagesAuthLoginPassword
+        :username="username" @change-section="(state) => section = state"
+        @can-login-with-password="(state) => canLoginWithPassword = state"
+      />
+    </template>
+    <template v-if="section === AuthenticateSection.OTP">
+      <PagesAuthLoginOneTimePassword
+        :username="username" :can-login-with-password="canLoginWithPassword"
+        @change-section="(state) => section = state"
+      />
+    </template>
+  </UCard>
 </template>
 
 <style scoped>

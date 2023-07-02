@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@vee-validate/yup": "^4.10.2",
+    "@vee-validate/yup": "^4.10.3",
     "nuxt-swiper": "^1.1.1",
     "yup": "^1.2.0"
   },
@@ -23,13 +23,13 @@
     "@nuxtjs/device": "^3.1.0",
     "@pinia/nuxt": "^0.4.11",
     "@tailwindcss/forms": "^0.5.3",
-    "@types/node": "^18.16.18",
-    "@vee-validate/nuxt": "^4.10.2",
+    "@types/node": "^18.16.19",
+    "@vee-validate/nuxt": "^4.10.3",
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
-    "eslint": "^8.43.0",
+    "eslint": "^8.44.0",
     "nuxt": "^3.6.1",
-    "nuxt-icon": "^0.4.1",
+    "nuxt-icon": "^0.4.2",
     "nuxt-lego": "^0.0.13",
     "tailwind-scrollbar": "^3.0.4",
     "typescript": "latest"

@@ -15,11 +15,11 @@ if (result.value?.data == null)
 
     <PagesProductBreadcrumb :product="result?.data!" />
     <!-- Detail Section -->
-    <div class="bg-white dark:bg-gray-900 rounded-lg ">
+    <div class="bg-white dark:bg-gray-800 rounded-lg ">
       <div class="grid grid-cols-12 gap-x-8 md:gap-x-0 ">
         <!-- image -->
         <div
-          class="col-span-4 lg:col-span-12 p-4 pl-4  md:mb-10 flex justify-center border-l lg:border-none border-gray-200 dark:border-gray-800 "
+          class="col-span-4 lg:col-span-12 p-4 pl-4  md:mb-10 flex justify-center border-l lg:border-none border-gray-200 dark:border-gray-700 "
         >
           <PagesProductDetailImage
             :fetch-pending="pending"
@@ -35,7 +35,7 @@ if (result.value?.data == null)
 
             <!-- Information - Actions -->
 
-            <div class="grid grid-cols-12">
+            <div class="grid grid-cols-12 gap-x-4">
               <div class="col-span-5 lg:col-span-12 lg:mb-6">
                 <PagesProductDetailInformation :product="result?.data!" />
               </div>

@@ -58,7 +58,7 @@ watch(() => router.currentRoute.value, () => {
       </div>
       <div class="flex items-center  gap-x-4">
         <SharedHeaderMobileItemsAccount :loading="authStore.loading" />
-        <SharedHeaderMobileItemsCart :loading="authStore.loading" />
+        <SharedHeaderMobileItemsCart />
       </div>
     </div>
     <!--  Header Navbar -->

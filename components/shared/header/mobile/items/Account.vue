@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 
-defineProps({
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-})
-
 const router = useRouter()
 
 const authStore = useAuthenticateStore()
@@ -17,8 +10,8 @@ const accountDropdown = ref(false)
 
 <template>
   <ClientOnly>
-    <div v-if="loading">
-      <USkeleton v-if="loading" class="h-8 w-[120px]" />
+    <div v-if="authStore.loading">
+      <USkeleton class="h-8 w-[120px]" />
     </div>
     <div v-else>
       <!-- Auth -->
@@ -48,23 +41,35 @@ const accountDropdown = ref(false)
             <div class="w-full mb-4">
               <nuxt-link
                 to="/panel/"
-
                 class="relative flex cursor-pointer items-center justify-between   gap-2 rounded-md border border-gray-200 bg-white  py-3 px-4 text-slate-500  dark:border-gray-800 dark:bg-gray-900 dark:text-slate-400 "
               >
-                <p v-if="authStore.currentUser?.full_name " class="text-sm font-medium">
-                  {{ truncatedText(authStore.currentUser?.full_name, 18) }}
-                </p>
-                <p v-else class="text-base font-medium">
-                  <template v-if="authStore.currentUser?.phone ">
-                    {{ truncatedText(authStore.currentUser?.phone!, 18) }}
-                  </template>
-                  <template v-else>
-                    {{ truncatedText(authStore.currentUser?.email!, 18) }}
-                  </template>
-                </p>
-                <span>
-                  <Icon name="ic:outline-chevron-left" size="20" />
+                <div class="flex items-center gap-x-2">
+                  <div class="w-8 h-8">
+                    <nuxt-img
+                      :src="authStore.currentUser?.profile ? GetImageUrl(authStore.currentUser.profile) : ''"
+                      alt="User Profile"
+                      class="w-full h-auto rounded-full ring-2 "
+                      width="32"
+                      height="32"
+                      placeholder
+                      loading="lazy"
+                    />
+                  </div>
 
+                  <p v-if="authStore.currentUser?.full_name " class="text-sm font-medium">
+                    {{ truncatedText(authStore.currentUser?.full_name, 18) }}
+                  </p>
+                  <p v-else class="text-base font-medium">
+                    <template v-if="authStore.currentUser?.phone ">
+                      {{ truncatedText(authStore.currentUser?.phone!, 18) }}
+                    </template>
+                    <template v-else>
+                      {{ truncatedText(authStore.currentUser?.email!, 18) }}
+                    </template>
+                  </p>
+                </div>
+                <span>
+                  <Icon name="ic:outline-chevron-left" size="20" class="text-sky-600 dark:text-sky-500" />
                 </span>
               </nuxt-link>
             </div>

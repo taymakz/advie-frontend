@@ -125,117 +125,117 @@ onMounted(async () => {
         </template>
         <!-- Address -->
         <template v-else>
-          <template v-if="addresses.length > 0">
-            <div
-              v-for="item in addresses" :key="item.id"
-              class="relative bg-gray-100 dark:bg-gray-900 py-4 px-4 rounded-lg "
-              :class="{ 'blur select-none': removePending === item.id }"
-            >
-              <div class="flex flex-col gap-y-4 text-sm">
-                <p class=" text-slate-700 dark:text-slate-200">
-                  {{ item.receiver_address }}
-                </p>
-                <div class="grid grid-cols-4 lg:grid-cols-2 items-center  center gap-4  w-fit lg:w-full">
-                  <div class="flex items-center  gap-x-2">
-                    <Icon name="solar:signpost-broken" size="20" class="text-sky-500 dark:text-sky-400" />
-                    <p class="text-slate-600 dark:text-slate-300">
-                      {{ item.receiver_province }}, {{ item.receiver_city }}
-                    </p>
-                  </div>
-                  <div class="flex items-center gap-x-2">
-                    <Icon name="material-symbols:mail-outline" size="20" class="text-sky-500 dark:text-sky-400" />
-                    <p class="text-slate-600 dark:text-slate-300">
-                      {{ item.receiver_postal_code }}
-                    </p>
-                  </div>
-                  <div class="flex items-center gap-x-2">
-                    <Icon name="solar:phone-linear" size="20" class="text-sky-500 dark:text-sky-400" />
-                    <p class="text-slate-600 dark:text-slate-300">
-                      {{ item.receiver_phone }}
-                    </p>
-                  </div>
-                  <div class="flex items-center gap-x-2">
-                    <Icon name="solar:user-outline" size="20" class="text-sky-500 dark:text-sky-400" />
-                    <p class="text-slate-600 dark:text-slate-300">
-                      {{ item.receiver_name }} {{ item.receiver_family }}
-                    </p>
-                  </div>
+          <div
+            v-for="item in addresses" :key="item.id"
+            class="relative bg-gray-100 dark:bg-gray-900 py-4 px-4 rounded-lg "
+            :class="{ 'blur select-none': removePending === item.id }"
+          >
+            <div class="flex flex-col gap-y-4 text-sm">
+              <p class=" text-slate-700 dark:text-slate-200">
+                {{ item.receiver_address }}
+              </p>
+              <div class="grid grid-cols-4 lg:grid-cols-2 items-center  center gap-4  w-fit lg:w-full">
+                <div class="flex items-center  gap-x-2">
+                  <Icon name="solar:signpost-broken" size="20" class="text-sky-500 dark:text-sky-400" />
+                  <p class="text-slate-600 dark:text-slate-300">
+                    {{ item.receiver_province }}, {{ item.receiver_city }}
+                  </p>
                 </div>
-                <div class="hidden md:flex items-center justify-end gap-x-4">
-                  <base-button
-                    class="py-3 px-4 w-32 sm:w-full" theme="sky" :disabled="loading"
-                    @click="editAddress(item)"
-                  >
-                    ویرایش
-                  </base-button>
-                  <base-button
-                    class="py-3 px-4 w-32 sm:w-full" theme="rose" :disabled="loading"
-                    @click="removeAddress(item.id)"
-                  >
-                    حذف
-                  </base-button>
+                <div class="flex items-center gap-x-2">
+                  <Icon name="material-symbols:mail-outline" size="20" class="text-sky-500 dark:text-sky-400" />
+                  <p class="text-slate-600 dark:text-slate-300">
+                    {{ item.receiver_postal_code }}
+                  </p>
+                </div>
+                <div class="flex items-center gap-x-2">
+                  <Icon name="solar:phone-linear" size="20" class="text-sky-500 dark:text-sky-400" />
+                  <p class="text-slate-600 dark:text-slate-300">
+                    {{ item.receiver_phone }}
+                  </p>
+                </div>
+                <div class="flex items-center gap-x-2">
+                  <Icon name="solar:user-outline" size="20" class="text-sky-500 dark:text-sky-400" />
+                  <p class="text-slate-600 dark:text-slate-300">
+                    {{ item.receiver_name }} {{ item.receiver_family }}
+                  </p>
                 </div>
               </div>
-              <div class="absolute left-2 top-4 md:hidden">
-                <UPopover v-if="removePending !== item.id ">
-                  <Icon name="humbleicons:dots-vertical" size="20" class="text-sky-500 dark:text-sky-400" />
-
-                  <template #panel>
-                    <div class=" w-52">
-                      <ul>
-                        <li>
-                          <button
-                            type="button"
-                            :disabled="loading"
-                            class="group flex items-center justify-start w-full py-4 px-5 gap-x-2 cursor-pointer disabled:cursor-default text-sky-500 dark:text-sky-400 hover:bg-gray-100 dark:hover:bg-slate-800   text-sm disabled:bg-gray-100  disabled:hover:bg-gray-200 dark:disabled:bg-gray-800  dark:disabled:hover:bg-gray-700 disabled:text-slate-500 disabled:dark:text-slate-400"
-                            @click="editAddress(item)"
-                          >
-                            <Icon
-                              name="ic:outline-edit-location" size="20"
-                              class="group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400"
-                            />
-                            <span>
-                              ویرایش آدرس
-                            </span>
-                          </button>
-                        </li>
-
-                        <li>
-                          <button
-                            type="button"
-                            :disabled="loading"
-
-                            class="group flex items-center justify-start w-full py-4 px-5 gap-x-2 cursor-pointer disabled:cursor-default dark:text-slate-300 hover:bg-red-100 hover:dark:bg-red-900 text-sm disabled:bg-gray-100  disabled:hover:bg-gray-200 dark:disabled:bg-gray-800  dark:disabled:hover:bg-gray-700 disabled:text-slate-500 disabled:dark:text-slate-400"
-                            @click="removeAddress(item.id)"
-                          >
-                            <Icon
-                              name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage" size="20"
-                              class="!text-red-600 dark:!text-red-600 group-hover:dark:!text-red-200 group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400"
-                            />
-                            <span
-                              class="text-red-600 dark:text-red-500 group-hover:dark:text-red-200 group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400"
-                            >
-                              حذف آدرس
-                            </span>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                  </template>
-                </UPopover>
+              <div class="hidden md:flex items-center justify-end gap-x-4">
+                <base-button
+                  class="py-3 px-4 w-32 sm:w-full" theme="sky" :disabled="loading"
+                  @click="editAddress(item)"
+                >
+                  ویرایش
+                </base-button>
+                <base-button
+                  class="py-3 px-4 w-32 sm:w-full" theme="rose" :disabled="loading"
+                  @click="removeAddress(item.id)"
+                >
+                  حذف
+                </base-button>
               </div>
             </div>
-          </template>
-          <template v-else>
-            <div class="flex flex-col gap-y-4 items-center justify-center">
-              <div>
-                <Icon name="ic:twotone-location-off" size="80" class="!text-slate-500 dark:text-slate-400" />
-              </div>
-              <div class="text-slate-500 dark:text-slate-400">
-                آدرسی یافت نشد!
-              </div>
+            <div class="absolute left-2 top-4 md:hidden">
+              <UPopover v-if="removePending !== item.id ">
+                <Icon name="humbleicons:dots-vertical" size="20" class="text-sky-500 dark:text-sky-400" />
+
+                <template #panel>
+                  <div class=" w-52">
+                    <ul>
+                      <li>
+                        <button
+                          type="button"
+                          :disabled="loading"
+                          class="group flex items-center justify-start w-full py-4 px-5 gap-x-2 cursor-pointer disabled:cursor-default text-sky-500 dark:text-sky-400 hover:bg-gray-100 dark:hover:bg-slate-800   text-sm disabled:bg-gray-100  disabled:hover:bg-gray-200 dark:disabled:bg-gray-800  dark:disabled:hover:bg-gray-700 disabled:text-slate-500 disabled:dark:text-slate-400"
+                          @click="editAddress(item)"
+                        >
+                          <Icon
+                            name="ic:outline-edit-location" size="20"
+                            class="group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400"
+                          />
+                          <span>
+                            ویرایش آدرس
+                          </span>
+                        </button>
+                      </li>
+
+                      <li>
+                        <button
+                          type="button"
+                          :disabled="loading"
+
+                          class="group flex items-center justify-start w-full py-4 px-5 gap-x-2 cursor-pointer disabled:cursor-default dark:text-slate-300 hover:bg-red-100 hover:dark:bg-red-900 text-sm disabled:bg-gray-100  disabled:hover:bg-gray-200 dark:disabled:bg-gray-800  dark:disabled:hover:bg-gray-700 disabled:text-slate-500 disabled:dark:text-slate-400"
+                          @click="removeAddress(item.id)"
+                        >
+                          <Icon
+                            name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage" size="20"
+                            class="!text-red-600 dark:!text-red-600 group-hover:dark:!text-red-200 group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400"
+                          />
+                          <span
+                            class="text-red-600 dark:text-red-500 group-hover:dark:text-red-200 group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400"
+                          >
+                            حذف آدرس
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
+              </UPopover>
             </div>
-          </template>
+          </div>
+          <div
+            v-if="canAddMoreAddress"
+            class="bg-gray-100 dark:bg-gray-900 opacity-30 hover:opacity-100 transition-opacity  duration-300 py-4 px-4 rounded-lg cursor-pointer"
+            @click="isOpenCreateAddressModal = true"
+          >
+            <div class="h-14 flex items-center justify-center ">
+              <Icon
+                name="ic:round-plus" size="30"
+                class="text-sky-500 dark:text-sky-400 "
+              />
+            </div>
+          </div>
         </template>
       </div>
     </div>

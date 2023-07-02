@@ -15,8 +15,11 @@ export default defineNuxtConfig({
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },
     '/panel/**/**': { ssr: false },
+
     '/auth/': { ssr: false },
     '/auth/**': { ssr: false },
+    '/checkout/': { ssr: false },
+    '/checkout/**': { ssr: false },
   },
   device: {
     refreshOnResize: true,

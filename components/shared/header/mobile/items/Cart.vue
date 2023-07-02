@@ -1,21 +1,14 @@
 <script setup lang="ts">
 import { useBasketStore } from '~/store/shop/BasketStore'
 
-defineProps({
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-})
-
 const basketStore = useBasketStore()
 </script>
 
 <template>
   <ClientOnly>
     <div>
-      <div v-if="loading">
-        <USkeleton v-if="loading" class="rounded-full h-8 w-8" />
+      <div v-if="basketStore.initLoading">
+        <USkeleton class="rounded-full h-8 w-8" />
       </div>
       <div v-else>
         <nuxt-link
@@ -37,7 +30,3 @@ const basketStore = useBasketStore()
     </div>
   </ClientOnly>
 </template>
-
-<style scoped>
-
-</style>

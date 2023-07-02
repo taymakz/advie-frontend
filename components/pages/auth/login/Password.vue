@@ -26,12 +26,6 @@ const passwordSchema = Yup.object().shape({
   password: Yup.string().required(),
 })
 
-function goBack() {
-  emits('changeSection', AuthenticateSection.USERNAME)
-  password.value = ''
-  loading.value = false
-}
-
 async function redirectToOTP() {
   loading.value = true
   const result = await RequestOTP(props.username, RequestOTPUsage.AUTHENTICATE)
@@ -86,15 +80,7 @@ async function loginUser(data: any, formEvent: any) {
 </script>
 
 <template>
-  <div class="relative">
-    <div class="fixed -top-2 -right-2">
-      <div
-        class="group bg-gray-200 dark:bg-gray-800 hover:bg-sky-600 hover:dark:bg-sky-600 transition-colors duration-150  p-1 rounded-full cursor-pointer flex items-center justify-center"
-        @click="goBack"
-      >
-        <Icon name="ion:arrow-forward-outline" size="25" class="group-hover:text-slate-100" />
-      </div>
-    </div>
+  <div>
     <!-- Header -->
     <div class="mb-8">
       <h1 class="text-right text-slate-500 dark:text-slate-400">
@@ -107,7 +93,7 @@ async function loginUser(data: any, formEvent: any) {
         <Field v-slot="{ field }" name="password">
           <base-form-input
             v-model="password" focus type="password" v-bind="field" :disabled="loading"
-            @focusout-input="validate"
+            ltr @focusout-input="validate"
           />
         </Field>
         <div class="flex flex-col gap-y-2 mb-4">

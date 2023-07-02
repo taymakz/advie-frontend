@@ -22,13 +22,6 @@ const otpSchema = Yup.object().shape({
   otp: Yup.string().required(),
 })
 
-function goBack() {
-  const previousSection: any = route.query.prevSec || ForgotPasswordSection.USERNAME
-  emits('changeSection', previousSection)
-  otp.value = ''
-  loading.value = false
-}
-
 async function confirmOTP(data: any, formEvent: any) {
   loading.value = true
   try {
@@ -121,15 +114,7 @@ function stopTimer() {
 </script>
 
 <template>
-  <div class="relative">
-    <div class="fixed -top-2 -right-2">
-      <div
-        class="group bg-gray-200 dark:bg-gray-800 hover:bg-sky-600 hover:dark:bg-sky-600 transition-colors duration-150  p-1 rounded-full cursor-pointer flex items-center justify-center"
-        @click="goBack"
-      >
-        <Icon name="ion:arrow-forward-outline" size="25" class="group-hover:text-slate-100" />
-      </div>
-    </div>
+  <div>
     <!-- Header -->
     <div class="mb-8">
       <h1 class="text-right text-slate-500 dark:text-slate-400">
@@ -139,8 +124,12 @@ function stopTimer() {
     <!-- Form -->
     <div>
       <Form v-slot="{ validate }" :validation-schema="otpSchema" @submit="confirmOTP">
-        <base-form-input v-model="otp" focus type="text" name="otp" :disabled="loading" @focusout-input="validate" />
-
+        <Field v-slot="{ field }" name="otp">
+          <base-form-input
+            v-model="otp" v-bind="field" focus type="text" :disabled="loading" ltr
+            @focusout-input="validate"
+          />
+        </Field>
         <div class="flex flex-col gap-y-2 mb-4">
           <div>
             <button

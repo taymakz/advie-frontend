@@ -171,13 +171,13 @@ watch(() => route.query, () => {
             <span class="text-sky-600">...</span>
           </div>
           <div
-            class="absolute top-[34px] right-0 w-40 overflow-hidden rounded-b-xl hidden group-hover:block bg-white dark:bg-slate-900 border-r border-b border-l  border-zinc-200 dark:border-none"
+            class="absolute top-[34px] right-0 w-40 overflow-hidden rounded-b-xl hidden group-hover:block bg-white dark:bg-gray-900 border-r border-b border-l  border-zinc-200 dark:border-none"
           >
             <ul class="flex flex-col ">
               <li>
                 <nuxt-link
                   to="/"
-                  class="flex text-sm py-4 pr-4 text-slate-500 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 "
+                  class="flex text-sm py-4 pr-4 text-slate-500 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-800 "
                 >
                   تماس با ما
                 </nuxt-link>
@@ -186,7 +186,7 @@ watch(() => route.query, () => {
               <li>
                 <nuxt-link
                   to="/"
-                  class="flex text-sm py-4  pr-4 text-slate-500 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800   "
+                  class="flex text-sm py-4  pr-4 text-slate-500 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-800   "
                 >
                   سوالات متداول
                 </nuxt-link>
@@ -194,7 +194,7 @@ watch(() => route.query, () => {
               <li>
                 <nuxt-link
                   to="/"
-                  class="flex text-sm py-4 pr-4 text-slate-500 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800   "
+                  class="flex text-sm py-4 pr-4 text-slate-500 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-gray-800   "
                 >
                   درباره ما
                 </nuxt-link>

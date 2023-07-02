@@ -13,5 +13,10 @@ export interface ChangePasswordDTO {
   current_password: string
   password: string
   confirm_password: string
-  refresh: string
+}
+
+export interface ChangePasswordResultDTO {
+  error_input_name?: string
+  access?: string
+  refresh?: string
 }

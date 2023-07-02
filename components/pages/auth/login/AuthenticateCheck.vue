@@ -51,7 +51,7 @@ async function authenticateUser(data: any, formEvent: any) {
         <Field v-slot="{ field }" name="username">
           <base-form-input
             v-model="username" v-bind="field" type="text" focus :auto-complete="false" label="شماره موبایل یا ایمیل"
-            :disabled="loading" @focusout-input="validate"
+            :disabled="loading" ltr @focusout-input="validate"
           />
         </Field>
 
