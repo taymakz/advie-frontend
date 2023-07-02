@@ -16,7 +16,6 @@ const emits = defineEmits(['changeSection'])
 const otp = ref('')
 const loading = ref(false)
 const toast = useToast()
-const route = useRoute()
 
 const otpSchema = Yup.object().shape({
   otp: Yup.string().required(),
