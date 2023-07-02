@@ -19,6 +19,9 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: latest
     version: 0.39.6(eslint@8.44.0)(typescript@5.1.6)
+  '@iconify-json/mdi':
+    specifier: ^1.1.52
+    version: 1.1.52
   '@nuxt/devtools':
     specifier: latest
     version: 0.6.6(nuxt@3.6.1)(vite@4.3.9)
@@ -1035,6 +1038,12 @@ packages:
 
   /@iconify-json/heroicons@1.1.11:
     resolution: {integrity: sha512-Autw98FvUTmBCgb4CuKZ7iQQ2633YBCmcCbAbVNU9hAo6vms9uVcbtrAQt/qlB+qzNi52PV3DWDiRtJgmPeZIw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/mdi@1.1.52:
+    resolution: {integrity: sha512-tLzpFcmoGw1/jHcl+BshUd4bqvP4755OUluaARsuKskTp2aIPIAkRQOhzJGpry9CZ0i82z0alq4HrKrp9uvj4A==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -4048,7 +4057,7 @@ packages:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.12.1
-      resolve: 1.22.3
+      resolve: 1.22.2
     transitivePeerDependencies:
       - supports-color
     dev: true

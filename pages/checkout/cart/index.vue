@@ -13,7 +13,7 @@ const basketStore = useBasketStore()
           <ol
             class="grid grid-cols-3 overflow-hidden divide-x-reverse  divide-x divide-gray-200 dark:divide-gray-700 rounded-lg border border-gray-200 dark:border-gray-700 text-sm text-gray-500"
           >
-            <li class="flex flex-col items-center justify-center  gap-2 p-4 text-sky-600 dark:text-sky-500  bg-gray-800">
+            <li class="flex flex-col items-center justify-center  gap-2 p-4 text-sky-600 dark:text-sky-500  bg-gray-100 dark:bg-gray-800">
               <Icon
                 name="ph:shopping-cart-simple" size="24"
               />
@@ -140,21 +140,15 @@ const basketStore = useBasketStore()
                           </div>
 
                           <!-- Remove -->
-                          <div class="flex items-center justify-center ">
-                            <button
-                              type="button"
-
-                              :disabled="basketStore.loading"
-                              class="group w-10 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-none bg-white dark:bg-gray-800 hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-150 cursor-pointer"
-                              @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
-                            >
-                              <Icon
-                                name="streamline:interface-delete-bin-1-remove-delete-empty-bin-trash-garbage"
-                                size="18"
-                                class="text-red-600 dark:text-red-600 group-hover:text-white "
-                              />
-                            </button>
-                          </div>
+                          <UButton
+                            :disabled="basketStore.loading"
+                            :padded="false"
+                            icon="i-mdi-delete-outline"
+                            variant="ghost"
+                            size="xl"
+                            class=" w-10 h-9 flex items-center justify-center bg-white dark:bg-gray-800 hover:bg-red-600 dark:hover:bg-red-600 transition-colors duration-150 text-red-600 dark:text-red-600 hover:text-white dark:hover:text-white "
+                            @click="basketStore.RemoveItem(item.product_id, item.variant.id)"
+                          />
                         </div>
                       </div>
                     </div>
@@ -217,11 +211,9 @@ const basketStore = useBasketStore()
                 </div>
 
                 <div class="lg:hidden">
-                  <nuxt-link to="/checkout/shipping/">
-                    <base-button w-full theme="sky" class="py-3">
-                      ادامه فرایند خرید
-                    </base-button>
-                  </nuxt-link>
+                  <UButton
+                    to="/checkout/shipping/" block size="xl" color="sky" label="ادامه فرایند خرید"
+                  />
                 </div>
               </div>
             </div>
@@ -232,13 +224,9 @@ const basketStore = useBasketStore()
           >
             <div class="flex items-center justify-between w-full gap-x-5">
               <div class="flex-1 max-w-lg">
-                <nuxt-link to="/checkout/shipping/">
-                  <button
-                    class="gap-x-2 w-full px-2 py-4  text-xs font-iranyekanBold text-slate-200 dark:text-slate-200 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600 transition-colors duration-150"
-                  >
-                    ادامه فرایند خرید
-                  </button>
-                </nuxt-link>
+                <UButton
+                  to="/checkout/shipping/" block size="xl" color="sky" label="ادامه فرایند خرید"
+                />
               </div>
 
               <div class="flex-col gap-y-2">
@@ -246,7 +234,7 @@ const basketStore = useBasketStore()
                   مبلغ قابل پرداخت
                 </div>
                 <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
-                  <div class="font-bold">
+                  <div class="font-iranyekanBold">
                     {{ splitNumber(basketStore.getTotalPrice()) }}
                   </div>
                   <div class="text-xs">

@@ -74,9 +74,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
           فیلتر ها
         </div>
 
-        <base-button theme="rose" class="py-3 w-[100px]" type="button" @click="hideFilter">
-          بستن
-        </base-button>
+        <div class="w-24">
+          <UButton block size="lg" color="red" variant="outline" label="بستن" @click="hideFilter" />
+        </div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
         <div class="w-full ">

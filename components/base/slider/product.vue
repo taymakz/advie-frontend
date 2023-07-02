@@ -112,19 +112,9 @@ const breakpoints = {
             </div>
           </div>
           <div v-if="link" class="flex items-center justify-center">
-            <nuxt-link
-              :to="link"
-              class="flex flex-row items-center justify-between gap-x-2 md:gap-x-1 p-2 text-sm sm:text-xs text-slate-200 dark:text-slate-200 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600 px-4 transition-colors duration-150"
-            >
-              <span>
-                مشاهده همه
-              </span>
-
-              <span>
-                <Icon name="ic:outline-chevron-left" class="!text-slate-200 dark:!text-slate-200" size="18" />
-
-              </span>
-            </nuxt-link>
+            <UButton
+              :to="link" size="md" color="white" label="مشاهده همه" icon="i-mdi-chevron-left" trailing
+            />
           </div>
         </div>
         <div>

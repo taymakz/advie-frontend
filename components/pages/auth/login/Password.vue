@@ -125,15 +125,10 @@ async function loginUser(data: any, formEvent: any) {
           </div>
         </div>
         <div class="mb-4">
-          <base-button
-            type="submit"
-            w-full
-            :disabled="meta.valid === false || loading"
-            :loading="loading"
-            class="py-3.5"
-          >
-            تایید
-          </base-button>
+          <UButton
+            type="submit" block label="ورود" color="sky" :loading="loading"
+            :disabled="meta.valid === false || loading" size="xl"
+          />
         </div>
       </Form>
     </div>

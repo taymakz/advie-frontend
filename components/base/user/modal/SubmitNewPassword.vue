@@ -108,10 +108,9 @@ const getValidationClass: Ref<any> = computed(() => {
               ثبت کلمه عبور جدید
             </template>
           </h3>
-          <div>
-            <base-button class="py-2 px-4 w-24" theme="rose" @click="modelValue = false">
-              بستن
-            </base-button>
+
+          <div class="w-24">
+            <UButton block size="lg" color="red" variant="outline" label="بستن" @click="modelValue = false" />
           </div>
         </div>
       </template>
@@ -132,7 +131,7 @@ const getValidationClass: Ref<any> = computed(() => {
         <div class="mb-4">
           <Field v-slot="{ field }" name="password">
             <base-form-input
-              v-model="formData.password" :disabled="loading" focus label="کلمه عبور جدید" ltr type="password"
+              v-model="formData.password" :disabled="loading" label="کلمه عبور جدید" ltr type="password"
               v-bind="field"
             />
           </Field>
@@ -173,25 +172,23 @@ const getValidationClass: Ref<any> = computed(() => {
         <div class="mb-4">
           <Field v-slot="{ field }" name="confirm_password">
             <base-form-input
-              v-model="formData.confirm_password" :disabled="loading" focus label="تکرار کلمه عبور جدید" ltr
+              v-model="formData.confirm_password" :disabled="loading" label="تکرار کلمه عبور جدید" ltr
               type="password"
               v-bind="field"
             />
           </Field>
         </div>
         <div class="flex justify-end">
-          <base-button
-            :disabled="meta.valid === false"
-
-            :loading="loading" class="py-2 px-4 md:w-full " theme="sky" type="submit"
-          >
-            <template v-if="authStore.currentUser?.has_password">
-              تغییر کلمه عبور
-            </template>
-            <template v-else>
-              ثبت کلمه عبور جدید
-            </template>
-          </base-button>
+          <div class="w-fit md:w-full">
+            <UButton
+              type="submit"
+              block
+              size="lg" color="sky"
+              :label="authStore.currentUser?.has_password ? 'تغییر کلمه عبور' : 'ثبت کلمه عبور جدید'"
+              :disabled="meta.valid === false"
+              :loading="loading"
+            />
+          </div>
         </div>
       </Form>
     </UCard>

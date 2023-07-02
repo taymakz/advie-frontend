@@ -56,15 +56,10 @@ async function authenticateUser(data: any, formEvent: any) {
         </Field>
 
         <div class="mb-4">
-          <base-button
-            type="submit"
-            w-full
-            :disabled="meta.valid === false || loading"
-            :loading="loading"
-            class="py-3.5"
-          >
-            ورود
-          </base-button>
+          <UButton
+            type="submit" block label="ورود" color="sky" :loading="loading"
+            :disabled="meta.valid === false || loading" size="xl"
+          />
         </div>
       </Form>
     </div>

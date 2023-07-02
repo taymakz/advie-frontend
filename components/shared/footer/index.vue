@@ -38,12 +38,7 @@ function backToTop() {
           </p>
         </div>
         <div class="flex md:order-first">
-          <base-button
-            type="button" theme="sky" icon="tabler:chevron-up" icon-classes="!text-slate-100 dark:!text-slate-100"
-            class="px-4 py-2" @click="backToTop"
-          >
-            برگشت به بالا
-          </base-button>
+          <UButton size="lg" color="white" label="برگشت به بالا" icon="i-mdi-chevron-up" trailing @click="backToTop" />
         </div>
       </div>
 

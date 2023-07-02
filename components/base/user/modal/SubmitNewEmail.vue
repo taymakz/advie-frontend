@@ -172,10 +172,9 @@ function stopTimer() {
                 ثبت ایمیل جدید
               </template>
             </h3>
-            <div>
-              <base-button class="py-2 px-4 w-24" theme="rose" @click="modelValue = false">
-                بستن
-              </base-button>
+
+            <div class="w-24">
+              <UButton block size="lg" color="red" variant="outline" label="بستن" @click="modelValue = false" />
             </div>
           </div>
         </template>
@@ -191,13 +190,14 @@ function stopTimer() {
           </Field>
 
           <div class="flex justify-end">
-            <base-button
-              type="submit"
-
-              class="py-2 px-4 md:w-full " theme="sky" :disabled="meta.valid === false" :loading="loading"
-            >
-              ارسال کد تایید
-            </base-button>
+            <div class="w-fit md:w-full">
+              <UButton
+                type="submit"
+                block
+                size="lg" color="sky" label="ارسال کد تایید" :disabled="meta.valid === false"
+                :loading="loading"
+              />
+            </div>
           </div>
         </Form>
       </UCard>
@@ -209,10 +209,11 @@ function stopTimer() {
             <h3 class="text-slate-600 dark:text-slate-300">
               تایید ایمیل
             </h3>
-            <div>
-              <base-button class="py-2 px-4 w-24" theme="sky" @click="section = EmailVerificationSection.EMAIL">
-                برگشت
-              </base-button>
+            <div class="w-24">
+              <UButton
+                block size="lg" color="sky" variant="outline" label="برگشت"
+                @click="section = EmailVerificationSection.EMAIL"
+              />
             </div>
           </div>
         </template>
@@ -240,13 +241,14 @@ function stopTimer() {
             </div>
           </div>
           <div class="flex justify-end">
-            <base-button
-              type="submit"
-
-              class="py-2 px-4 md:w-full " theme="sky" :disabled="meta.valid === false" :loading="loading"
-            >
-              تایید
-            </base-button>
+            <div class="w-fit md:w-full">
+              <UButton
+                type="submit"
+                block
+                size="lg" color="sky" label="تایید" :disabled="meta.valid === false"
+                :loading="loading"
+              />
+            </div>
           </div>
         </Form>
       </UCard>

@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     '/checkout/': { ssr: false },
     '/checkout/**': { ssr: false },
   },
+
   device: {
     refreshOnResize: true,
   },
@@ -55,6 +56,7 @@ export default defineNuxtConfig({
   },
   ui: {
     safelistColors: ['sky', 'red', 'green'],
+    icons: ['mdi'],
   },
 
   colorMode: {

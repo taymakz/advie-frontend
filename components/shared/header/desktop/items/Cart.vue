@@ -169,13 +169,9 @@ const removePending = ref()
                 </div>
               </div>
               <div>
-                <nuxt-link to="/checkout/cart/">
-                  <button
-                    class="gap-x-2 w-full  px-2 py-4  text-xs font-iranyekanBold text-slate-200 dark:text-slate-200 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600  transition-colors duration-150"
-                  >
-                    ویرایش و مشاهده سبد خرید
-                  </button>
-                </nuxt-link>
+                <UButton
+                  to="/checkout/cart/" size="xl" color="sky" label="ویرایش و مشاهده سبد خرید" block
+                />
               </div>
             </div>
           </div>

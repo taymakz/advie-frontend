@@ -61,9 +61,9 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
           مرتب سازی بر اساس
         </div>
 
-        <base-button theme="rose" class="py-3 w-[100px]" type="button" @click="hideSort">
-          بستن
-        </base-button>
+        <div class="w-24">
+          <UButton block size="lg" color="red" variant="outline" label="بستن" @click="hideSort" />
+        </div>
       </div>
       <div class="flex flex-col items-center gap-y-2">
         <button

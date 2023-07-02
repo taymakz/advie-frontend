@@ -146,15 +146,10 @@ function stopTimer() {
           </div>
         </div>
         <div class="mb-4">
-          <base-button
-            type="submit"
-            w-full
-            :disabled="loading"
-            :loading="loading"
-            class="py-3.5"
-          >
-            تایید
-          </base-button>
+          <UButton
+            type="submit" block label="تایید" color="sky" :disabled="loading"
+            :loading="loading" size="xl"
+          />
         </div>
       </Form>
     </div>

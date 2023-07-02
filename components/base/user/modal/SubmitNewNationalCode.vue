@@ -56,10 +56,8 @@ async function SubmitForm() {
               ثبت کد ملی
             </template>
           </h3>
-          <div>
-            <base-button class="py-2 px-4 w-24" theme="rose" @click="modelValue = false">
-              بستن
-            </base-button>
+          <div class="w-24">
+            <UButton block size="lg" color="red" variant="outline" label="بستن" @click="modelValue = false" />
           </div>
         </div>
       </template>
@@ -72,13 +70,14 @@ async function SubmitForm() {
         </Field>
 
         <div class="flex justify-end">
-          <base-button
-            type="submit"
-
-            class="py-2 px-4 md:w-full " theme="sky" :disabled="meta.valid === false" :loading="loading"
-          >
-            ویرایش
-          </base-button>
+          <div class="w-fit md:w-full">
+            <UButton
+              type="submit"
+              block
+              size="lg" color="sky" label="ویرایش" :disabled="meta.valid === false"
+              :loading="loading"
+            />
+          </div>
         </div>
       </Form>
     </UCard>

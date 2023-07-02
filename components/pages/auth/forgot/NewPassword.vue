@@ -154,15 +154,10 @@ async function resetPassword(data: any, formEvent: any) {
         </div>
 
         <div>
-          <base-button
-            type="submit"
-            w-full
-            :disabled="meta.valid === false || loading"
-            :loading="loading"
-            class="py-3.5"
-          >
-            بازیابی کلمه عبور
-          </base-button>
+          <UButton
+            type="submit" block label="تایید" color="sky" :disabled="meta.valid === false || loading"
+            :loading="loading" size="xl"
+          />
         </div>
       </Form>
     </div>

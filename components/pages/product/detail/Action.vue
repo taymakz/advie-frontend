@@ -149,20 +149,15 @@ function addToBasket() {
     <!-- Add to Cart -->
 
     <div class="mb-2 flex flex-row md:flex-col items-center  gap-2">
-      <base-button
-        :loading="basketStore.loading || fetchPending"
-        w-full
-        class="py-4" @click="addToBasket"
-      >
-        افزودن به سبد خرید
-      </base-button>
-      <base-button
-        :loading="loading || fetchPending"
-
-        theme="rose" w-full class="py-4"
-      >
-        افزودن به علاقه مندی ها
-      </base-button>
+      <div class="w-full">
+        <UButton
+          block size="xl" color="sky" label="افزودن به سبد خرید"
+          :loading="basketStore.loading || loading || fetchPending" @click="addToBasket"
+        />
+      </div>
+      <div class="w-full">
+        <UButton block size="xl" color="rose" label="افزودن به علاقه مندی ها" :loading="loading || fetchPending" />
+      </div>
     </div>
 
     <div class="grid grid-cols-12 gap-1 ">

@@ -72,15 +72,10 @@ onMounted(() => {
         </Field>
 
         <div class="mb-4">
-          <base-button
-            type="submit"
-            w-full
-            :disabled="meta.valid === false || loading"
-            :loading="loading"
-            class="py-3.5"
-          >
-            بازیابی کلمه عبور
-          </base-button>
+          <UButton
+            type="submit" block label="بازیابی کلمه عبور" color="sky" :loading="loading"
+            :disabled="meta.valid === false || loading" size="xl"
+          />
         </div>
       </Form>
     </div>

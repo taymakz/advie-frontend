@@ -88,10 +88,8 @@ watch(() => formData.receiver_province, () => {
         <h3 class="text-slate-600 dark:text-slate-300">
           ویرایش آدرس
         </h3>
-        <div>
-          <base-button class="py-2 px-4 w-24" theme="rose" @click="$emit('closeModal')">
-            بستن
-          </base-button>
+        <div class="w-24">
+          <UButton block size="lg" color="red" variant="outline" label="بستن" @click="$emit('closeModal')" />
         </div>
       </div>
     </template>
@@ -175,13 +173,14 @@ watch(() => formData.receiver_province, () => {
       </div>
 
       <div class="flex justify-end">
-        <base-button
-          type="submit"
-
-          class="py-2 px-4 md:w-full " theme="sky" :disabled="meta.valid === false" :loading="loading"
-        >
-          ویرایش آدرس
-        </base-button>
+        <div class="w-fit md:w-full">
+          <UButton
+            type="submit"
+            block
+            size="lg" color="sky" label="ویرایش آدرس" :disabled="meta.valid === false"
+            :loading="loading"
+          />
+        </div>
       </div>
     </Form>
   </UCard>

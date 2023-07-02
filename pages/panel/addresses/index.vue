@@ -74,25 +74,26 @@ onMounted(async () => {
       </div>
 
       <template v-if="canAddMoreAddress">
-        <base-button
+        <UButton
+          size="lg"
+          color="sky"
+          label="ثبت آدرس جدید"
+          icon="i-mdi-map-marker-plus-outline"
           :disabled="pending "
           :loading="loading"
-          class="py-3 px-4"
-          icon="material-symbols:add-location-alt-outline-rounded"
-          icon-pos="right" @click="isOpenCreateAddressModal = true"
-        >
-          ثبت آدرس جدید
-        </base-button>
+          @click="isOpenCreateAddressModal = true"
+        />
       </template>
       <template v-else>
         <UTooltip text="شما نمی توانید بیش از 5 آدرس داشته باشید">
-          <base-button
+          <UButton
+            size="lg"
+            color="sky"
+            label="ثبت آدرس جدید"
+            icon="i-mdi-map-marker-plus-outline"
+
             :disabled="!canAddMoreAddress"
-            class="py-3 px-4" icon="material-symbols:add-location-alt-outline-rounded"
-            icon-classes="!text-slate-200 dark:!text-slate-200" icon-pos="right"
-          >
-            ثبت آدرس جدید
-          </base-button>
+          />
         </UTooltip>
       </template>
     </div>
@@ -161,18 +162,25 @@ onMounted(async () => {
                 </div>
               </div>
               <div class="hidden md:flex items-center justify-end gap-x-4">
-                <base-button
-                  class="py-3 px-4 w-32 sm:w-full" theme="sky" :disabled="loading"
-                  @click="editAddress(item)"
-                >
-                  ویرایش
-                </base-button>
-                <base-button
-                  class="py-3 px-4 w-32 sm:w-full" theme="rose" :disabled="loading"
-                  @click="removeAddress(item.id)"
-                >
-                  حذف
-                </base-button>
+                <div class="w-32 sm:w-full">
+                  <UButton
+                    size="lg"
+                    block
+                    color="sky"
+                    label="ویرایش"
+                    :disabled="loading"
+                    @click="editAddress(item)"
+                  />
+                </div>
+                <div class="w-32 sm:w-full">
+                  <UButton
+                    size="lg"
+                    block
+                    color="rose"
+                    label="حذف" :disabled="loading"
+                    @click="removeAddress(item.id)"
+                  />
+                </div>
               </div>
             </div>
             <div class="absolute left-2 top-4 md:hidden">
@@ -226,20 +234,38 @@ onMounted(async () => {
           </div>
           <div
             v-if="canAddMoreAddress"
-            class="bg-gray-100 dark:bg-gray-900 opacity-30 hover:opacity-100 transition-opacity  duration-300 py-4 px-4 rounded-lg cursor-pointer"
+            class="flex border border-gray-200 dark:border-gray-700 relative not-prose rounded-md  bg-white dark:bg-gray-800 hover:bg-gray-100 hover:dark:bg-gray-900 cursor-pointer  text-slate-600 dark:text-slate-300 text-sm hover:text-sky-500 hover:dark:text-sky-400 transition-all duration-150"
             @click="isOpenCreateAddressModal = true"
           >
-            <div class="h-14 flex items-center justify-center ">
-              <Icon
-                name="ic:round-plus" size="30"
-                class="text-sky-500 dark:text-sky-400 "
-              />
+            <div class="w-full">
+              <div
+                class="relative overflow-hidden rounded  opacity-75 h-[88px]  select-none w-full flex items-center justify-center "
+              >
+                <svg class="absolute inset-0 h-full w-full stroke-gray-900/10 dark:stroke-white/10" fill="none">
+                  <defs>
+                    <pattern
+                      id="pattern-5c1e4f0e-62d5-498b-8ff0-cf77bb448c8e" x="0" y="0" width="10" height="10"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <path d="M-3 13 15-5M-5 5l18-18M-1 21 17 3" />
+                    </pattern>
+
+                  </defs>
+                  <rect
+                    stroke="none" fill="url(#pattern-5c1e4f0e-62d5-498b-8ff0-cf77bb448c8e)" width="100%"
+                    height="100%"
+                  />
+                </svg>
+                <Icon
+                  name="ic:round-plus" size="30"
+                  class="text-sky-500 dark:text-sky-400 "
+                />
+              </div><!---->
             </div>
           </div>
         </template>
       </div>
     </div>
-
     <UModal v-model="isOpenCreateAddressModal" :ui="{ width: 'max-w-2xl' }">
       <PagesPanelAddressCreate
         @close-modal="isOpenCreateAddressModal = false"
