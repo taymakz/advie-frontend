@@ -25,7 +25,9 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
       class="flex items-center gap-x-2 bg-white dark:bg-gray-800 py-2 px-2 text-slate-500 dark:text-slate-400 rounded-lg"
     >
       <div class="flex items-center justify-center rounded p-0.5">
-        <Icon name="ph:sort-ascending" size="25" />
+        <ClientOnly>
+          <Icon name="ph:sort-ascending" size="25" />
+        </ClientOnly>
       </div>
       <div>
         <p class="text-sm font-medium select-none">

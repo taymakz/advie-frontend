@@ -53,20 +53,26 @@ function backToTop() {
         </div>
         <Newsletter />
         <div class="flex items-center justify-center gap-x-4">
-          <div class="  ">
-            <a href="#" target="_blank">
-              <Icon name="mdi:instagram" class="w-7 h-7 hover:text-red-500 transition-colors duration-150" />
-            </a>
+          <div class="text-slate-500 dark:text-slate-400 hover:text-rose-600 hover:dark:text-rose-500">
+            <nuxt-link to="/" target="_blank" external>
+              <ClientOnly>
+                <Icon name="mdi:instagram" class="w-7 h-7" />
+              </ClientOnly>
+            </nuxt-link>
           </div>
-          <div class="text-zinc-600 hover:text-blue-500 ">
-            <a href="#" target="_blank">
-              <Icon name="mdi:twitter" class="w-7 h-7 hover:text-blue-500 transition-colors duration-150" />
-            </a>
+          <div class="text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:dark:text-blue-500">
+            <nuxt-link to="/" target="_blank" external>
+              <ClientOnly>
+                <Icon name="mdi:twitter" class="w-7 h-7" />
+              </ClientOnly>
+            </nuxt-link>
           </div>
-          <div class="text-zinc-600 hover:text-blue-400">
-            <a href="#" target="_blank">
-              <Icon name="simple-icons:aparat" class="w-7 h-7 hover:text-red-500 transition-colors duration-150" />
-            </a>
+          <div class="text-slate-500 dark:text-slate-400 hover:text-red-600 hover:dark:text-red-500">
+            <nuxt-link to="/" target="_blank" external>
+              <ClientOnly>
+                <Icon name="simple-icons:aparat" class="w-7 h-7" />
+              </ClientOnly>
+            </nuxt-link>
           </div>
         </div>
       </div>

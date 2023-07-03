@@ -15,10 +15,12 @@ defineProps<{
         صفحه اصلی
       </div>
       <div>
-        <Icon
-          name="ic:outline-chevron-left" size="18"
-          class="text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
-        />
+        <ClientOnly>
+          <Icon
+            name="ic:outline-chevron-left" size="18"
+            class="text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
+          />
+        </ClientOnly>
       </div>
     </nuxt-link>
 
@@ -32,10 +34,12 @@ defineProps<{
         {{ item.title }}
       </div>
       <div>
-        <Icon
-          name="ic:outline-chevron-left" size="18"
-          class="text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
-        />
+        <ClientOnly>
+          <Icon
+            name="ic:outline-chevron-left" size="18"
+            class="text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
+          />
+        </ClientOnly>
       </div>
     </nuxt-link>
 

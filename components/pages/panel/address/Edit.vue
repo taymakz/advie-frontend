@@ -95,7 +95,7 @@ watch(() => formData.receiver_province, () => {
     </template>
     <Form v-slot="{ meta }" :validation-schema="formSchema" :initial-values="formData" @submit="EditAddress">
       <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-6">
+        <div class="col-span-6 md:col-span-12">
           <Field v-slot="{ field }" name="receiver_name">
             <base-form-input
               v-model="formData.receiver_name" v-bind="field" type="text" label="نام گیرنده"
@@ -103,7 +103,7 @@ watch(() => formData.receiver_province, () => {
             />
           </Field>
         </div>
-        <div class="col-span-6">
+        <div class="col-span-6 md:col-span-12">
           <Field v-slot="{ field }" name="receiver_family">
             <base-form-input
               v-model="formData.receiver_family" v-bind="field" type="text" label="نام خانوادگی گیرنده"
@@ -111,7 +111,7 @@ watch(() => formData.receiver_province, () => {
             />
           </Field>
         </div>
-        <div class="col-span-6">
+        <div class="col-span-6 md:col-span-12">
           <Field v-slot="{ field }" name="receiver_phone">
             <base-form-input
               v-model="formData.receiver_phone" v-bind="field" type="text" label="شماره موبایل گیرنده"
@@ -119,7 +119,7 @@ watch(() => formData.receiver_province, () => {
             />
           </Field>
         </div>
-        <div class="col-span-6">
+        <div class="col-span-6 md:col-span-12">
           <Field v-slot="{ field }" name="receiver_national_code">
             <base-form-input
               v-model="formData.receiver_national_code" v-bind="field" type="text" label="کد ملی گیرنده"
@@ -135,7 +135,7 @@ watch(() => formData.receiver_province, () => {
             />
           </Field>
         </div>
-        <div class="col-span-6 mb-6">
+        <div class="col-span-6 md:col-span-12 mb-6 ">
           <UFormGroup label="استان">
             <USelectMenu
               id="receiver_province" v-model="formData.receiver_province"
@@ -149,7 +149,7 @@ watch(() => formData.receiver_province, () => {
             />
           </UFormGroup>
         </div>
-        <div class="col-span-6 mb-6">
+        <div class="col-span-6 md:col-span-12 mb-6">
           <UFormGroup label="شهر">
             <USelectMenu
               id="receiver_province" v-model="formData.receiver_city"

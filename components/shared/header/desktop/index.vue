@@ -63,7 +63,9 @@ watch(() => route.query, () => {
         >
           <div class="flex items-center justify-start gap-x-2 py-1  cursor-pointer ">
             <div class="text-slate-500 dark:text-slate-400">
-              <Icon name="solar:hamburger-menu-linear" size="22" />
+              <ClientOnly>
+                <Icon name="solar:hamburger-menu-linear" size="22" />
+              </ClientOnly>
             </div>
             <span class="text-sm font-medium text-slate-500 dark:text-slate-400">
               دسته بندی محصولات
@@ -103,14 +105,14 @@ watch(() => route.query, () => {
                       <h3>
                         <nuxt-link
                           :to="item.url"
-                          class="flex items-center justify-center gap-x-1 text-xs py-1 text-slate-500 dark:text-slate-400 dark:hover:text-sky-500 hover:text-sky-600 transition-colors duration-300"
+                          class="flex items-center justify-center gap-x-1 text-sm  py-1 text-slate-500 dark:text-slate-400 dark:hover:text-sky-500 hover:text-sky-600 transition-colors duration-300"
                         >
                           <div>
                             همه محصولات {{ item.title_ir }}
                           </div>
-                          <div>
-                            <Icon name="ic:outline-chevron-left" size="14" />
-                          </div>
+                          <ClientOnly>
+                            <Icon name="ic:outline-chevron-left" size="14" class="text-sky-600 dark:text-sky-500" />
+                          </ClientOnly>
                         </nuxt-link>
                       </h3>
                     </div>
@@ -125,11 +127,11 @@ watch(() => route.query, () => {
                             {{ children.display_title }}
                           </div>
 
-                          <div>
-                            <Icon name="ic:outline-chevron-left" size="18" />
-                          </div>
+                          <ClientOnly>
+                            <Icon name="ic:outline-chevron-left" size="18" class="text-sky-600 dark:text-sky-500" />
+                          </ClientOnly>
                         </nuxt-link>
-                        <ul class="flex flex-col gap-y-2 text-xs text-slate-500 dark:text-slate-400  ">
+                        <ul class="flex flex-col gap-y-2 text-sm text-slate-500 dark:text-slate-400  ">
                           <li v-for="product in children.products" :key="product.id">
                             <nuxt-link
                               :to="product.url"

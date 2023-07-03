@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>
+  <ClientOnly>
     <div role="status" class=" px-4 py-4  border border-gray-200 rounded-lg shadow animate-pulse dark:border-gray-700">
       <!-- image -->
       <div class="flex items-center justify-center  mb-4 bg-gray-300 rounded dark:bg-gray-700">
@@ -27,5 +27,5 @@
       </div>
       <span class="sr-only">Loading...</span>
     </div>
-  </div>
+  </ClientOnly>
 </template>

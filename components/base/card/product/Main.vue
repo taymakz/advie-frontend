@@ -41,7 +41,10 @@ function updateProgress() {
       <div class="flex flex-col">
         <div class="flex items-center justify-center mb-4">
           <nuxt-img
-            :src="GetImageUrl(product.image)" :alt="product.title_ir" class="w-40 h-40 rounded-lg" placeholder
+            :src="GetImageUrl(product.image)" :alt="product.title_ir" class="rounded-lg"
+            width="160"
+            height="160"
+            placeholder
             loading="lazy"
           />
         </div>

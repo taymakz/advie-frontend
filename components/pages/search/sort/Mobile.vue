@@ -45,7 +45,9 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
       @click="showSort = true;utilStore.changeHeaderOverlay(true, 30)"
     >
       <div>
-        <Icon name="ph:sort-ascending" size="25" />
+        <ClientOnly>
+          <Icon name="ph:sort-ascending" size="25" />
+        </ClientOnly>
       </div>
       <div class="text-slate-500 dark:text-slate-400 text-xs">
         مرتب سازی بر اساس

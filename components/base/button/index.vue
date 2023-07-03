@@ -36,24 +36,26 @@ disabled:text-slate-500 disabled:dark:text-slate-400
 
     :disabled="loading"
   >
-    <template v-if="loading">
-      <Icon name="svg-spinners:ring-resize" class="text-sky-600 dark:text-sky-500 " size="20px" />
-    </template>
-    <template v-else>
-      <Icon
-        v-if="icon && iconPos === 'right'" :name="icon" :size="iconSize"
-        class="group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400" :class="[iconClasses]"
-      />
+    <ClientOnly>
+      <template v-if="loading">
+        <Icon name="svg-spinners:ring-resize" class="text-sky-600 dark:text-sky-500 " size="20px" />
+      </template>
+      <template v-else>
+        <Icon
+          v-if="icon && iconPos === 'right'" :name="icon" :size="iconSize"
+          class="group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400" :class="[iconClasses]"
+        />
 
-      <span>
-        <slot />
+        <span>
+          <slot />
 
-      </span>
-      <Icon
-        v-if="icon && iconPos === 'left'" :name="icon" :size="iconSize"
-        class="group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400" :class="[iconClasses]"
-      />
-    </template>
+        </span>
+        <Icon
+          v-if="icon && iconPos === 'left'" :name="icon" :size="iconSize"
+          class="group-disabled:!text-slate-500 group-disabled:dark:!text-slate-400" :class="[iconClasses]"
+        />
+      </template>
+    </ClientOnly>
   </button>
 </template>
 

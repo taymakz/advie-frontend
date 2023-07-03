@@ -74,8 +74,9 @@ function addToBasket() {
           <p class="ml-1 text-sm font-medium text-slate-500 dark:text-slate-300 ">
             4.95
           </p>
-
-          <Icon name="material-symbols:star-rounded" class="w-5 h-5 !text-amber-400 mb-1.5" />
+          <ClientOnly>
+            <Icon name="material-symbols:star-rounded" class="w-5 h-5 !text-amber-400 mb-1.5" />
+          </ClientOnly>
         </div>
       </div>
     </div>
@@ -166,10 +167,12 @@ function addToBasket() {
       >
         <div class="flex items-center gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon
-              name="akar-icons:arrow-counter-clockwise"
-              class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500"
-            />
+            <ClientOnly>
+              <Icon
+                name="akar-icons:arrow-counter-clockwise"
+                class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500"
+              />
+            </ClientOnly>
           </div>
           <div>
             <p class="text-sm sm:text-xs text-slate-500 dark:text-slate-400">
@@ -183,10 +186,12 @@ function addToBasket() {
       >
         <div class="flex items-center gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon
-              name="material-symbols:google-guarantee"
-              class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500"
-            />
+            <ClientOnly>
+              <Icon
+                name="material-symbols:google-guarantee"
+                class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500"
+              />
+            </ClientOnly>
           </div>
           <div>
             <p class="text-sm sm:text-xs  text-slate-500 dark:text-slate-400">
@@ -200,7 +205,9 @@ function addToBasket() {
       >
         <div class="flex items-center gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon name="iconoir:headset-help" class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500" />
+            <ClientOnly>
+              <Icon name="iconoir:headset-help" class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500" />
+            </ClientOnly>
           </div>
           <div>
             <p class="text-sm sm:text-xs  text-slate-500 dark:text-slate-400">
@@ -214,7 +221,9 @@ function addToBasket() {
       >
         <div class="flex items-center  gap-x-4 p-2 cursor-pointer">
           <div>
-            <Icon name="carbon:delivery-parcel" class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500" />
+            <ClientOnly>
+              <Icon name="carbon:delivery-parcel" class="w-8 h-8  sm:w-6 sm:h-6 text-sky-600 dark:text-sky-500" />
+            </ClientOnly>
           </div>
           <div>
             <p class="text-sm sm:text-xs  text-slate-500 dark:text-slate-400">

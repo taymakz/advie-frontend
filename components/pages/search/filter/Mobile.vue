@@ -59,7 +59,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
       @click="showFilter = true;utilStore.changeHeaderOverlay(true, 30)"
     >
       <div>
-        <Icon name="system-uicons:filtering" size="25" />
+        <ClientOnly>
+          <Icon name="system-uicons:filtering" size="25" />
+        </ClientOnly>
       </div>
       <div class="text-slate-500 dark:text-slate-400 text-xs">
         فیلتر

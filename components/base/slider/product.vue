@@ -108,7 +108,9 @@ const breakpoints = {
             </h2>
 
             <div v-if="icon">
-              <Icon :name="icon" size="26" :class="[iconClasses]" />
+              <ClientOnly>
+                <Icon :name="icon" size="26" :class="[iconClasses]" />
+              </ClientOnly>
             </div>
           </div>
           <div v-if="link" class="flex items-center justify-center">

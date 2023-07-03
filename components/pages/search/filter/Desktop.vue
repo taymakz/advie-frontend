@@ -57,7 +57,10 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
               <span
                 class="shrink-0 transition duration-300 group-open:-rotate-90"
               >
-                <Icon name="ic:outline-chevron-left" size="18" />
+                <ClientOnly>
+
+                  <Icon name="ic:outline-chevron-left" size="18" />
+                </ClientOnly>
 
               </span>
             </summary>
@@ -71,8 +74,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -83,8 +87,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -95,8 +100,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -107,8 +113,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -119,8 +126,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -131,8 +139,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -143,8 +152,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
               <li>
@@ -155,8 +165,9 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
                   <span>
                     همه محصولات
                   </span>
-
-                  <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  <ClientOnly>
+                    <Icon name="ep:arrow-left-bold" class="!text-gray-500 dark:!text-gray-400" />
+                  </ClientOnly>
                 </div>
               </li>
             </ul>

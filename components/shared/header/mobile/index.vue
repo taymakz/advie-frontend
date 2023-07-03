@@ -49,7 +49,9 @@ watch(() => router.currentRoute.value, () => {
         class="bg-gray-100 dark:bg-slate-800 p-1 rounded-full text-slate-500 dark:text-slate-400 cursor-pointer select-none"
         @click="showNavbar = true"
       >
-        <Icon name="ri:menu-3-line" size="24" />
+        <ClientOnly>
+          <Icon name="ri:menu-3-line" size="24" />
+        </ClientOnly>
       </div>
       <div>
         <nuxt-link to="/">
@@ -96,9 +98,9 @@ watch(() => router.currentRoute.value, () => {
                 to="/"
                 class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
-                <span>
+                <ClientOnly>
                   <Icon name="solar:home-smile-linear" size="24" />
-                </span>
+                </ClientOnly>
                 <span class="text-slate-500 dark:text-slate-400 text-sm">
                   صفحه اصلی
                 </span>
@@ -109,7 +111,9 @@ watch(() => router.currentRoute.value, () => {
                 to="/"
                 class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
-                <span><Icon name="solar:shop-2-outline" size="24" /> </span>
+                <ClientOnly>
+                  <Icon name="solar:shop-2-outline" size="24" />
+                </ClientOnly>
                 <span class="text-slate-500 dark:text-slate-400 text-sm">
 
                   درباره ما
@@ -122,10 +126,12 @@ watch(() => router.currentRoute.value, () => {
                 to="/"
                 class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
-                <span><Icon
-                  name="streamline:interface-help-customer-support-1-customer-headset-help-microphone-phone-support"
-                  size="24"
-                /> </span>
+                <ClientOnly>
+                  <Icon
+                    name="streamline:interface-help-customer-support-1-customer-headset-help-microphone-phone-support"
+                    size="24"
+                  />
+                </ClientOnly>
                 <span class="text-slate-500 dark:text-slate-400 text-sm">
 
                   تماس با ما

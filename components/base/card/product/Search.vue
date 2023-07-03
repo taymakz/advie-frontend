@@ -14,10 +14,16 @@ defineProps<{
     <nuxt-link :to="product.url" class="relative flex  justify-center px-4 pt-4 ">
       <div class="flex flex-col">
         <div class="flex items-center justify-center mb-4 mx-auto">
-          <nuxt-img
-            :src="GetImageUrl(product.image)" :alt="product.title_ir"
-            class="w-full h-auto md:max-w-64 md:max-h-64 rounded-lg"
-          />
+          <div class=" ">
+            <nuxt-img
+              :src="GetImageUrl(product.image)" :alt="product.title_ir"
+              class="rounded-lg"
+              width="240"
+              height="240"
+              placeholder
+              loading="lazy"
+            />
+          </div>
         </div>
         <div class="mb-2">
           <p class="text-sm text-slate-800 dark:text-slate-300 h-10">
