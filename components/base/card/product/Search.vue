@@ -14,7 +14,7 @@ defineProps<{
     <nuxt-link :to="product.url" class="relative flex  justify-center px-4 pt-4 ">
       <div class="flex flex-col">
         <div class="flex items-center justify-center mb-4 mx-auto">
-          <div class=" ">
+          <div>
             <nuxt-img
               :src="GetImageUrl(product.image)" :alt="product.title_ir"
               class="rounded-lg"

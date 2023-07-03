@@ -46,8 +46,12 @@ watch(timerExpired, (newVal) => {
           class="fixed z-50  left-0 top-0 w-screen h-screen bg-gray-100 dark:bg-gray-900 bg-opacity-50 backdrop-blur-md"
         />
         <nuxt-img
-          :src="GetImageUrl(product.image)" alt="product" class="w-full h-auto rounded-lg  "
+          :src="GetImageUrl(product.image)" alt="product" class="rounded-xl  "
+
+          width="400"
+          height="400"
           placeholder
+          loading="lazy"
         />
       </LegoPreview>
     </div>
