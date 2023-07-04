@@ -67,7 +67,7 @@ watch(() => route.query, () => {
                 <Icon name="solar:hamburger-menu-linear" size="22" />
               </ClientOnly>
             </div>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">
+            <span class="text-base lg:text-sm font-medium text-slate-500 dark:text-slate-400">
               دسته بندی محصولات
             </span>
             <span class="border-l border-slate-400 dark:border-slate-600 h-5 " />
@@ -152,14 +152,14 @@ watch(() => route.query, () => {
 
         <nuxt-link
           to="/search/?special=1"
-          class="text-slate-500 dark:text-slate-400 text-sm py-1.5  px-2 border-b-2 border-transparent hover:border-sky-500 dark:hover:border-sky-400 transition-all duration-300"
+          class="text-slate-500 dark:text-slate-400 text-base lg:text-sm py-1.5  px-2 border-b-2 border-transparent hover:border-sky-500 dark:hover:border-sky-400 transition-all duration-300"
         >
           فروش ویژه
         </nuxt-link>
 
         <nuxt-link
           to="/"
-          class="text-slate-500 dark:text-slate-400 text-sm py-1.5  px-2 border-b-2 border-transparent hover:border-sky-500 dark:hover:border-sky-400 transition-all duration-300"
+          class="text-slate-500 dark:text-slate-400 text-base lg:text-sm py-1.5  px-2 border-b-2 border-transparent hover:border-sky-500 dark:hover:border-sky-400 transition-all duration-300"
         >
           راهنمای خرید
         </nuxt-link>
@@ -167,7 +167,7 @@ watch(() => route.query, () => {
           class="relative group cursor-pointer py-1 px-2 border-b-2 border-transparent  hover:border-sky-500 dark:hover:border-sky-400 transition-all duration-300"
         >
           <div class="flex items-center gap-x-2 ">
-            <div class="text-sm text-slate-500 dark:text-slate-400">
+            <div class="text-base lg:text-sm text-slate-500 dark:text-slate-400">
               سایر
             </div>
             <span class="text-sky-600">...</span>

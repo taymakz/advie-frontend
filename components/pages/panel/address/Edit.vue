@@ -59,7 +59,7 @@ async function EditAddress() {
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
 
-    emits('edited')
+    emits('edited', formData)
   }
   else {
     toast.add({ title: result.message, color: 'red' })

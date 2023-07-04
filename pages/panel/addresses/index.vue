@@ -51,15 +51,22 @@ async function removeAddress(id: number) {
   removePending.value = null
 }
 
-async function refreshData() {
-  isOpenCreateAddressModal.value = false
-  isOpenEditAddressModal.value = false
-  await getAddresses()
-}
-
 onMounted(async () => {
   await getAddresses()
 })
+
+function editedAddress(newAddress: AddressDetailDTO) {
+  const index = addresses.value.findIndex(item => item.id === newAddress.id)
+  if (index !== -1)
+    addresses.value[index] = newAddress
+
+  isOpenEditAddressModal.value = false
+}
+
+function createdAddress(newAddress: AddressDetailDTO) {
+  addresses.value.push(newAddress)
+  isOpenCreateAddressModal.value = false
+}
 </script>
 
 <template>
@@ -167,6 +174,7 @@ onMounted(async () => {
                     size="lg"
                     block
                     color="sky"
+                    variant="outline"
                     label="ویرایش"
                     :disabled="loading"
                     @click="editAddress(item)"
@@ -177,6 +185,7 @@ onMounted(async () => {
                     size="lg"
                     block
                     color="rose"
+                    variant="outline"
                     label="حذف" :disabled="loading"
                     @click="removeAddress(item.id)"
                   />
@@ -269,14 +278,14 @@ onMounted(async () => {
     <UModal v-model="isOpenCreateAddressModal" :ui="{ width: 'max-w-2xl' }">
       <PagesPanelAddressCreate
         @close-modal="isOpenCreateAddressModal = false"
-        @created="refreshData"
+        @created="(newAddress) => createdAddress(newAddress)"
       />
     </UModal>
     <UModal v-model="isOpenEditAddressModal" :ui="{ width: 'max-w-2xl' }">
       <PagesPanelAddressEdit
         :address="selectedAddress"
         @close-modal="isOpenEditAddressModal = false"
-        @edited="refreshData"
+        @edited="(newAddress) => editedAddress(newAddress)"
       />
     </UModal>
   </div>

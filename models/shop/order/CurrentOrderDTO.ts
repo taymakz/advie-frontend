@@ -3,7 +3,6 @@ import type { Variant } from '~/models/shop/product/ProductDetailDTO'
 export interface CurrentOrderDTO {
   id: number
   items: CurrentOrderItemDTO[]
-  total_price: number
 
 }
 

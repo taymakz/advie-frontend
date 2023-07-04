@@ -136,11 +136,11 @@ function addToBasket() {
             </p>
           </div>
         </div>
-        <div class="h-5 flex justify-end">
+        <div class="h-5 flex  justify-end">
           <USkeleton v-if="loading || fetchPending" class="h-5 w-32 " />
           <template v-else>
-            <div v-if="selectedVariant.is_special" class="text-sm font-medium text-red-600  ">
-              <strong> ({{ selectedVariant.special_price_percent }}%)</strong>
+            <div v-if="selectedVariant.is_special" class="text-sm flex gap-x-2 font-iranyekanMedium text-red-600  ">
+              <strong> ( {{ selectedVariant.special_price_percent }}% )</strong>
               <del>{{ splitNumber(selectedVariant.price) }}</del>
             </div>
           </template>

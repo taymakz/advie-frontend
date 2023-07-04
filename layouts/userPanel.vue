@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div>
     <SharedHeader />
@@ -19,11 +16,5 @@
         </div>
       </div>
     </main>
-
-    <SharedFooter />
   </div>
 </template>
-
-<style scoped>
-
-</style>

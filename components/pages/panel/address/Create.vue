@@ -48,7 +48,7 @@ async function CreateAddress() {
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
 
-    emits('created')
+    emits('created', result.data)
   }
   else {
     toast.add({ title: result.message, color: 'red' })

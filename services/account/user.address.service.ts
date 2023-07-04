@@ -5,7 +5,7 @@ export function GetAddressList(): Promise<ApiResponse<AddressDetailDTO[]>> {
   return FetchApi('/user/address/')
 }
 
-export function UserCreateAddress(command: AddressCreateDTO): Promise<ApiResponse<undefined>> {
+export function UserCreateAddress(command: AddressCreateDTO): Promise<ApiResponse<AddressDetailDTO>> {
   return FetchApi('/user/address/', {
     method: 'POST',
     body: command,

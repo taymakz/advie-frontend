@@ -4,7 +4,6 @@ import tailwind_scrollbar from 'tailwind-scrollbar'
 import tailwind_forms from '@tailwindcss/forms'
 
 export default <Partial<Config>>{
-  content: [],
   darkMode: 'class',
   theme: {
     zIndex: {

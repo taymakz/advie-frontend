@@ -3,8 +3,12 @@ import type { Ref } from 'vue'
 import type { AddressDetailDTO } from '~/models/account/user/AddressDTO'
 import { GetAddressList, UserRemoveAddress } from '~/services/account/user.address.service'
 
+const props = defineProps({
+  selectedAddressId: Number,
+})
 const emits = defineEmits(['selected'])
 const modelValue = defineModel()
+
 const toast = useToast()
 
 const loading = ref(false)
@@ -30,6 +34,11 @@ const canAddMoreAddress = computed(() => {
   return addresses.value.length < 6
 })
 
+function selectAddress(address: AddressDetailDTO) {
+  modelValue.value = false
+  emits('selected', address)
+}
+
 function editAddress(address: AddressDetailDTO) {
   selectedAddress.value = address
   isOpenEditAddressModal.value = true
@@ -42,6 +51,8 @@ async function removeAddress(id: number) {
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
     addresses.value = addresses.value.filter(f => f.id !== id)
+    if (id === props.selectedAddressId)
+      emits('selected', null)
   }
   else {
     toast.add({ title: result.message, color: 'red' })
@@ -49,12 +60,6 @@ async function removeAddress(id: number) {
 
   loading.value = false
   removePending.value = null
-}
-
-async function refreshData() {
-  isOpenCreateAddressModal.value = false
-  isOpenEditAddressModal.value = false
-  await getAddresses()
 }
 
 onMounted(async () => {
@@ -66,6 +71,21 @@ watch(() => isOpenCreateAddressModal.value, (newVal) => {
 watch(() => isOpenEditAddressModal.value, (newVal) => {
   modelValue.value = !newVal
 })
+
+function editedAddress(newAddress: AddressDetailDTO) {
+  const index = addresses.value.findIndex(item => item.id === newAddress.id)
+  if (index !== -1) {
+    addresses.value[index] = newAddress
+    if (newAddress.id === props.selectedAddressId)
+      emits('selected', newAddress)
+  }
+  isOpenEditAddressModal.value = false
+}
+
+function createdAddress(newAddress: AddressDetailDTO) {
+  addresses.value.push(newAddress)
+  isOpenCreateAddressModal.value = false
+}
 </script>
 
 <template>
@@ -116,7 +136,8 @@ watch(() => isOpenEditAddressModal.value, (newVal) => {
               <div
                 v-for="item in addresses" :key="item.id"
                 class="relative bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 py-4 px-4 rounded-lg "
-                :class="{ 'blur select-none': removePending === item.id }"
+                :class="[{ 'blur select-none': removePending === item.id },
+                         { '!border-sky-500 dark:!border-sky-400': item.id === selectedAddressId }]"
               >
                 <div class="flex flex-col gap-y-4 text-sm">
                   <p class=" text-slate-700 dark:text-slate-200">
@@ -153,7 +174,19 @@ watch(() => isOpenEditAddressModal.value, (newVal) => {
                       <UButton
                         size="lg"
                         block
+                        color="green"
+                        variant="outline"
+                        label="انتخاب"
+                        :disabled="loading"
+                        @click="selectAddress(item)"
+                      />
+                    </div>
+                    <div class="w-32 sm:w-full">
+                      <UButton
+                        size="lg"
+                        block
                         color="sky"
+                        variant="outline"
                         label="ویرایش"
                         :disabled="loading"
                         @click="editAddress(item)"
@@ -164,6 +197,7 @@ watch(() => isOpenEditAddressModal.value, (newVal) => {
                         size="lg"
                         block
                         color="rose"
+                        variant="outline"
                         label="حذف" :disabled="loading"
                         @click="removeAddress(item.id)"
                       />
@@ -220,9 +254,18 @@ watch(() => isOpenEditAddressModal.value, (newVal) => {
                   </UPopover>
                 </div>
                 <div class="absolute -top-4 -right-1 md:hidden">
-                  <div class="w-28">
+                  <div v-show="selectedAddressId !== item.id" class="w-28">
                     <UButton
-                      to="/checkout/shipping/" block size="xs" color="sky" label="انتخاب"
+                      block
+                      size="xs" color="sky" label="انتخاب" @click="selectAddress(item)"
+                    />
+                  </div>
+                  <div v-show="selectedAddressId === item.id" class="w-10">
+                    <UButton
+                      block
+                      icon="i-mdi-check"
+                      variant="soft"
+                      size="xl" :padded="false"
                     />
                   </div>
                 </div>
@@ -266,14 +309,14 @@ watch(() => isOpenEditAddressModal.value, (newVal) => {
     <UModal v-model="isOpenCreateAddressModal" :ui="{ width: 'max-w-2xl' }">
       <PagesPanelAddressCreate
         @close-modal="isOpenCreateAddressModal = false"
-        @created="refreshData"
+        @created="(newAddress) => createdAddress(newAddress)"
       />
     </UModal>
     <UModal v-model="isOpenEditAddressModal" :ui="{ width: 'max-w-2xl' }">
       <PagesPanelAddressEdit
         :address="selectedAddress"
         @close-modal="isOpenEditAddressModal = false"
-        @edited="refreshData"
+        @edited="(newAddress) => editedAddress(newAddress)"
       />
     </UModal>
   </div>
