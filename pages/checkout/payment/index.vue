@@ -22,7 +22,8 @@ const gatewayMessage = ref('درحال پردازش')
 
 onMounted(async () => {
   loading.value = true
-  const basketStore = useBasketStore()
+  const basketStore = await useBasketStore()
+  await basketStore.Init()
   if (basketStore.currentOrder?.shipping === null)
     await router.push('/checkout/cart/')
   loading.value = false

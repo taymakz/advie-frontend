@@ -45,7 +45,7 @@ watch(selectedAddress, (newValue) => {
 })
 
 onMounted(async () => {
-  const basketStore = useBasketStore()
+  const basketStore = await useBasketStore()
   if (basketStore.getItemsCount <= 0)
     return router.push('/checkout/cart/')
   const result = await GetShippingServices()
