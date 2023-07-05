@@ -1,8 +1,10 @@
 import type { Variant } from '~/models/shop/product/ProductDetailDTO'
+import type { ShippingRateDTO } from '~/models/shop/order/checkout/ShippingMethodDTO'
 
 export interface CurrentOrderDTO {
   id: number
   items: CurrentOrderItemDTO[]
+  shipping: ShippingRateDTO | null
 
 }
 

@@ -18,6 +18,7 @@ useAsyncData('categories', () => utilStore.setCategories())
 
 const basketStore = useBasketStore()
 const favoriteStore = useFavoriteStore()
+
 basketStore.Init()
 favoriteStore.Init()
 </script>

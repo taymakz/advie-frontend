@@ -125,7 +125,9 @@ function stopTimer() {
       <Form v-slot="{ validate }" :validation-schema="otpSchema" @submit="confirmOTP">
         <Field v-slot="{ field }" name="otp">
           <base-form-input
-            v-model="otp" v-bind="field" focus type="text" :disabled="loading" ltr
+            v-model="otp" v-bind="field" focus type="number" :auto-complete="false"
+            :disabled="loading"
+            ltr
             @focusout-input="validate"
           />
         </Field>

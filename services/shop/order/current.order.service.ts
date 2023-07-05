@@ -34,18 +34,12 @@ export function DecreaseCurrentOrderItemCount(variant_id: number, item_id: numbe
     },
   })
 }
+
 export function RemoveCurrentOrderItem(item_id: number): Promise<ApiResponse<any>> {
   return FetchApi('/order/current/item/remove/', {
     method: 'DELETE',
     body: {
       item_id,
     },
-  })
-}
-
-export function CurrentOrderPaymentRequest(command: any): Promise<ApiResponse<any>> {
-  return FetchApi('/payment/request/', {
-    method: 'POST',
-    body: command,
   })
 }

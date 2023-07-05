@@ -45,7 +45,7 @@ watch(selectedAddress, (newValue) => {
 })
 
 onMounted(async () => {
-  const basketStore = await useBasketStore()
+  const basketStore = useBasketStore()
   if (basketStore.getItemsCount <= 0)
     return router.push('/checkout/cart/')
   const result = await GetShippingServices()
@@ -191,7 +191,7 @@ async function paymentRequest() {
                   </h4>
                 </div>
                 <div>
-                  <fieldset v-if="selectedAddress" class="grid grid-cols-2 gap-4">
+                  <fieldset v-if="selectedAddress" class="grid grid-cols-2 sm:grid-cols-1 gap-4">
                     <div v-for="item in filteredShippingServices" :key="item.id">
                       <input
                         :id="`DeliveryOption-${item.id}`"
@@ -210,6 +210,7 @@ async function paymentRequest() {
                       >
                         <div class="flex items-center justify-between">
                           <div class="flex items-center gap-x-4">
+                            <p class="text-gray-700 dark:text-gray-200">{{ item.shipping_service.name }}</p>
                             <div>
                               <nuxt-img
                                 :src="GetImageUrl(item.shipping_service.image)"
@@ -222,7 +223,7 @@ async function paymentRequest() {
                                 loading="lazy"
                               />
                             </div>
-                            <p class="text-gray-700 dark:text-gray-200">{{ item.shipping_service.name }}</p>
+
                           </div>
 
                           <svg
@@ -445,7 +446,7 @@ async function paymentRequest() {
                   <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
                     <div class=" flex items-center gap-x-1">
                       <div class="font-iranyekanBold">
-                        {{ splitNumber(basketStore.getTotalPrice()) }}
+                        {{ splitNumber(basketStore.getTotalPrice() + (selectedShipping ? selectedShipping.price : 0)) }}
                       </div>
 
                       <div class="text-xs">
@@ -484,7 +485,7 @@ async function paymentRequest() {
                 </div>
                 <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
                   <div class="font-bold">
-                    {{ splitNumber(basketStore.getTotalPrice()) }}
+                    {{ splitNumber(basketStore.getTotalPrice() + (selectedShipping ? selectedShipping.price : 0)) }}
                   </div>
                   <div class="text-xs">
                     تومان
@@ -498,7 +499,3 @@ async function paymentRequest() {
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

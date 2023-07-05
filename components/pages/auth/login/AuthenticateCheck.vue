@@ -50,7 +50,7 @@ async function authenticateUser(data: any, formEvent: any) {
       <Form v-slot="{ meta, validate }" :validation-schema="usernameSchema" @submit="authenticateUser">
         <Field v-slot="{ field }" name="username">
           <base-form-input
-            v-model="username" v-bind="field" type="text" focus :auto-complete="false" label="شماره موبایل یا ایمیل"
+            v-model="username" v-bind="field" type="text" focus label="شماره موبایل یا ایمیل"
             :disabled="loading" ltr @focusout-input="validate"
           />
         </Field>

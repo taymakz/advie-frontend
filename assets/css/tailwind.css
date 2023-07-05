@@ -63,6 +63,13 @@
         @apply scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-500 dark:scrollbar-track-slate-900 scrollbar scrollbar-thumb-rounded-3xl  scrollbar-w-1 ;
     }
 
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number'] {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield !important;
+    }
 
 }
 

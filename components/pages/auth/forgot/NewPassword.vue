@@ -146,7 +146,8 @@ async function resetPassword(data: any, formEvent: any) {
         <div class="mb-4">
           <Field v-slot="{ field }" name="confirm_password">
             <base-form-input
-              v-model="formData.confirm_password" :disabled="loading" label="تکرار کلمه عبور جدید" ltr
+              v-model="formData.confirm_password" :auto-complete="false" :disabled="loading"
+              label="تکرار کلمه عبور جدید" ltr
               type="password"
               v-bind="field"
             />
@@ -155,7 +156,8 @@ async function resetPassword(data: any, formEvent: any) {
 
         <div>
           <UButton
-            type="submit" block label="تایید" color="sky" :disabled="meta.valid === false || loading"
+            type="submit" block label="تایید" color="sky" :auto-complete="false"
+            :disabled="meta.valid === false || loading"
             :loading="loading" size="xl"
           />
         </div>
