@@ -5,6 +5,7 @@ import type {
   PaymentRequestSubmitDTO,
   PaymentRequestSubmitResultDTO,
 } from '~/models/shop/order/checkout/PaymentRequestDTO'
+import type { CheckoutResultDTO } from '~/models/shop/order/checkout/CheckoutDTO'
 
 export function PaymentRequestCheck(command: PaymentRequestCheckDTO): Promise<ApiResponse<PaymentRequestCheckResultDTO>> {
   return FetchApi('/payment/request/check/', {
@@ -18,4 +19,8 @@ export function PaymentRequestSubmit(command: PaymentRequestSubmitDTO): Promise<
     method: 'POST',
     body: command,
   })
+}
+
+export function GetCheckoutResult(transaction_id: string, transaction_slug: string): Promise<ApiResponse<CheckoutResultDTO | null>> {
+  return FetchApi(`/checkout/result/${transaction_id}/${transaction_slug}/`)
 }
