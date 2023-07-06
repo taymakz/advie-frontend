@@ -5,12 +5,22 @@ export function GetCurrentOrder(): Promise<ApiResponse<CurrentOrderDTO>> {
   return FetchApi('/order/current/')
 }
 
-export function AddItemToCurrentOrder(product_id: number, variant_id: number): Promise<ApiResponse<number>> {
+export function ValidateLocalBasket(variants_id: number[]): Promise<ApiResponse<number[]>> {
+  return FetchApi('/order/current/validate/', {
+    method: 'POST',
+    body: {
+      variants_id,
+    },
+  })
+}
+
+export function AddItemToCurrentOrder(product_id: number, variant_id: number, count = 1): Promise<ApiResponse<number>> {
   return FetchApi('/order/current/add/', {
     method: 'POST',
     body: {
       product_id,
       variant_id,
+      count,
     },
   })
 }

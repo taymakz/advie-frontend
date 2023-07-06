@@ -17,8 +17,21 @@ watch(() => props.fetchPending, () => {
 // const favoriteStore = useFavoriteStore()
 const basketStore = useBasketStore()
 const loading = ref(false)
+const toast = useToast()
 
 function addToBasket() {
+  if (!props.product.is_available_in_stock) {
+    return toast.add({
+      title: 'محصول مورد نظر موجود نمی باشد',
+      color: 'red',
+    })
+  }
+  if (!selectedVariant.value) {
+    return toast.add({
+      title: `لطفا ${props.product.variant_type.title_ir} مورد نظر خود را انتخاب کنید`,
+      color: 'red',
+    })
+  }
   loading.value = true
   const orderDetail = {
     id: 1,
@@ -81,13 +94,17 @@ function addToBasket() {
       </div>
     </div>
     <!-- Variants -->
-    <div class="mb-8">
+    <div
+      class="mb-8"
+      :class="{ blur: !product.is_available_in_stock }"
+    >
       <div class="mb-4">
         <p class="text-sm text-slate-500 dark:text-slate-400">
           انتخاب {{ product.variant_type.title_ir }}
         </p>
       </div>
       <div
+        v-if="product.is_available_in_stock"
         class="grid grid-cols-12 gap-x-4 border   p-3 rounded-lg border-gray-200 dark:border-gray-700"
       >
         <div v-for="item in product.variants" :key="item.id" class="col-span-3 xl:col-span-4 sm:col-span-6">
@@ -101,7 +118,7 @@ function addToBasket() {
               type="radio"
               name="variant"
               :value="item"
-              :disabled="loading"
+              :disabled="loading || !product.is_available_in_stock"
               class="peer  hidden [&:checked_+_label]:block "
             >
 
@@ -124,8 +141,11 @@ function addToBasket() {
     </div>
 
     <!-- Price  -->
-    <div class="flex  justify-end mb-4">
-      <div class="flex flex-col gap-y-1">
+    <div
+      class="flex  justify-end mb-4"
+      :class="{ blur: !product.is_available_in_stock }"
+    >
+      <div v-if="product.is_available_in_stock" class="flex flex-col gap-y-1">
         <div>
           <div v-if="fetchPending">
             <USkeleton v-if="loading" class="h-7 w-40 " />
@@ -149,7 +169,11 @@ function addToBasket() {
     </div>
     <!-- Add to Cart -->
 
-    <div class="mb-2 flex flex-row md:flex-col items-center  gap-2">
+    <div
+      v-if="product.is_available_in_stock"
+
+      class="mb-2 flex flex-row md:flex-col items-center  gap-2"
+    >
       <div class="w-full">
         <UButton
           block size="xl" color="sky" label="افزودن به سبد خرید"
@@ -160,7 +184,12 @@ function addToBasket() {
         <UButton block size="xl" color="rose" label="افزودن به علاقه مندی ها" :loading="loading || fetchPending" />
       </div>
     </div>
-
+    <div v-else class="mb-2">
+      <UButton
+        block size="xl" color="teal" label="موجود شد به من اطلاع بده"
+        :loading="basketStore.loading || loading || fetchPending" @click="addToBasket"
+      />
+    </div>
     <div class="grid grid-cols-12 gap-1 ">
       <div
         class="flex items-center col-span-6 md:col-span-12 rounded-lg border border-gray-200 hover:border-gray-300 dark:border-gray-700 hover:dark:border-gray-700 h-14 "

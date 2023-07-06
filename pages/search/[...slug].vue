@@ -27,7 +27,7 @@ const skeletonCount = computed(() => {
 <template>
   <div>
     <!-- content section -->
-    <div class="container-2xl pt-4 md:pt-2">
+    <div class="container-2xl pt-4 md:pt-2 md:pb-52">
       <!-- Mobile section -->
       <div class="hidden md:flex items-center justify-between gap-x-3  mb-4">
         <!-- sidebar section -->

@@ -5,6 +5,7 @@ import type { AuthenticateDTO } from '~/models/account/authenticate/Authenticate
 
 import { GetCurrentUser, LogoutUser } from '~/services/account/user.service'
 import type { UserDetailDTO } from '~/models/account/user/UserDTO'
+import { useBasketStore } from '~/store/shop/BasketStore'
 
 export const useAuthenticateStore = defineStore('authenticate', () => {
   const authenticateResult: Ref<AuthenticateDTO | null> = ref(null)
@@ -48,6 +49,8 @@ export const useAuthenticateStore = defineStore('authenticate', () => {
       authenticateResult.value = null
       currentUser.value = null
       localStorage.removeItem('authToken')
+      const basketStore = useBasketStore()
+      await basketStore.Init()
       // Redirect to the login page with the current URL as the backUrl parameter
       await router.push({ path: '/auth/login', query: { backUrl: router.currentRoute.value.fullPath || '/' } })
     }

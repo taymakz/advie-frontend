@@ -6,6 +6,7 @@ import { UserPasswordAuthentication } from '~/services/account/user.authenticate
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { RequestOTP } from '~/services/account/user.service'
 import { RequestOTPUsage } from '~/models/account/user/UserDTO'
+import { useBasketStore } from '~/store/shop/BasketStore'
 
 const props = defineProps({
   username: {
@@ -18,6 +19,7 @@ const toast = useToast()
 const router = useRouter()
 const route = useRoute()
 const authStore = useAuthenticateStore()
+const basketStore = useBasketStore()
 
 const password = ref('')
 const loading = ref(false)
@@ -60,7 +62,7 @@ async function loginUser(data: any, formEvent: any) {
       localStorage.removeItem('authToken')
       localStorage.setItem('authToken', JSON.stringify(result.data))
       await authStore.SetCurrentUserValue()
-      // basketStore.SyncRemoteBasket()
+      await basketStore.SyncRemoteBasket()
 
       const backUrl: any = route.query.backUrl || '/'
 

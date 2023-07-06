@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'empty',
+  layout: false,
 })
 
 const router = useRouter()
@@ -16,3 +16,7 @@ onBeforeMount(() => {
   router.push('/')
 })
 </script>
+
+<template>
+  <div />
+</template>

@@ -8,6 +8,7 @@ import {
   GetCurrentOrder,
   IncreaseCurrentOrderItemCount,
   RemoveCurrentOrderItem,
+  ValidateLocalBasket,
 } from '~/services/shop/order/current.order.service'
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 
@@ -19,11 +20,11 @@ export const useBasketStore = defineStore('basket', () => {
 
   const loading = ref(false)
   const initLoading = ref(false)
-  const { isLogin } = useAuthenticateStore()
   const Init = async () => {
     if (process.server)
       return
-    if (isLogin) {
+    const authStore = useAuthenticateStore()
+    if (authStore.isLogin) {
       initLoading.value = true
       const result = await GetCurrentOrder()
       items.value = result.data?.items ?? []
@@ -32,37 +33,57 @@ export const useBasketStore = defineStore('basket', () => {
     }
     else {
       const data = localStorage.getItem('basketItems')
-      if (!data)
+      if (!data) {
+        items.value = []
         return
+      }
+
+      initLoading.value = true
       items.value = JSON.parse(data) as CurrentOrderItemDTO[]
+      const variants_id = items.value
+        .filter(item => item.variant.stock > 0)
+        .map(item => item.variant.id)
+      const result = await ValidateLocalBasket(variants_id)
+      if (result.data.length > 0) {
+        // Filter out items that are not in the result
+        items.value = items.value.filter(item => result.data.includes(item.variant.id))
+      }
+      else {
+        // If the result is empty, remove basketItems from localStorage
+        localStorage.removeItem('basketItems')
+        items.value = []
+      }
+      initLoading.value = false
     }
   }
   const SyncRemoteBasket = async () => {
-    if (!isLogin)
+    const authStore = useAuthenticateStore()
+
+    if (!authStore.isLogin)
       return
     const data = localStorage.getItem('basketItems')
 
     if (!data)
       return
     initLoading.value = true
-
     const localBasketItems = JSON.parse(data) as CurrentOrderItemDTO[]
     for (const e of localBasketItems)
-      await AddItemToCurrentOrder(e.product_id, e.variant.id)
-
+      await AddItemToCurrentOrder(e.product_id, e.variant.id, 0)
+    await Init()
     initLoading.value = false
     localStorage.removeItem('basketItems')
   }
   const SyncLocalBasket = () => {
-    if (isLogin)
+    const authStore = useAuthenticateStore()
+    if (authStore.isLogin)
       return
     localStorage.removeItem('basketItems')
     localStorage.setItem('basketItems', JSON.stringify(items.value))
   }
   const AddItem = async (item: CurrentOrderItemDTO) => {
     loading.value = true
-
-    if (isLogin) {
+    const authStore = useAuthenticateStore()
+    if (authStore.isLogin) {
       const result = await AddItemToCurrentOrder(item.product_id, item.variant.id)
       item.id = result.data
       if (!result.success) {
@@ -105,7 +126,8 @@ export const useBasketStore = defineStore('basket', () => {
     const currentItem = items.value.find(f => f.product_id === product_id && f.variant.id === variant_id)
     if (currentItem) {
       loading.value = true
-      if (isLogin) {
+      const authStore = useAuthenticateStore()
+      if (authStore.isLogin) {
         const result = await RemoveCurrentOrderItem(currentItem.id)
         if (!result.success) {
           toast.add({ title: result.message, color: 'red' })
@@ -127,7 +149,8 @@ export const useBasketStore = defineStore('basket', () => {
     loading.value = true
 
     if (currentItem && currentItem.variant.stock > currentItem.count && currentItem.count < 5) {
-      if (isLogin) {
+      const authStore = useAuthenticateStore()
+      if (authStore.isLogin) {
         const result = await IncreaseCurrentOrderItemCount(currentItem.variant.id, currentItem.id)
         if (!result.success) {
           toast.add({ title: result.message, color: 'red' })
@@ -146,7 +169,8 @@ export const useBasketStore = defineStore('basket', () => {
     const currentItem = items.value.find(f => f.product_id === product_id && f.variant.id === variant_id)
     if (currentItem) {
       loading.value = true
-      if (isLogin) {
+      const authStore = useAuthenticateStore()
+      if (authStore.isLogin) {
         const result = await DecreaseCurrentOrderItemCount(currentItem.variant.id, currentItem.id)
         if (!result.success) {
           toast.add({ title: result.message, color: 'red' })

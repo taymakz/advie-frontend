@@ -6,7 +6,7 @@ export interface ProductDetailDTO {
   title_en: string
   description: string
   sku: number
-  available_in_stock: boolean
+  is_available_in_stock: boolean
   variant_type: VariantType
   variants: Variant[]
   longest_special_price_end_date: number
@@ -14,6 +14,7 @@ export interface ProductDetailDTO {
   properties: Property[]
   breadcrumbs: ProductCategoryBreadcrumbs[]
 }
+
 export interface ProductCategoryBreadcrumbs {
   title: string
   url: string
@@ -26,6 +27,7 @@ export interface VariantType {
   select_style: string
   is_none: boolean
 }
+
 export interface Value {
   id: number
   prefix: VariantValuePrefix
@@ -33,11 +35,13 @@ export interface Value {
   color_code: string | null
   type: number
 }
+
 export interface VariantValuePrefix {
   id: number
   name: string
 
 }
+
 export interface Variant {
   id: number
   type: VariantType
@@ -49,12 +53,14 @@ export interface Variant {
   special_price_percent: number | null
   is_special: boolean
 }
+
 export interface Property {
   id: number
   product: number
   property: PropertyInfo
   value: string
 }
+
 export interface PropertyInfo {
   id: number
   name: string

@@ -6,6 +6,7 @@ import { UserOTPAuthentication } from '~/services/account/user.authenticate.serv
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { RequestOTP } from '~/services/account/user.service'
 import { RequestOTPUsage } from '~/models/account/user/UserDTO'
+import { useBasketStore } from '~/store/shop/BasketStore'
 
 const props = defineProps({
   canLoginWithPassword: {
@@ -24,6 +25,7 @@ const toast = useToast()
 const router = useRouter()
 const route = useRoute()
 const authStore = useAuthenticateStore()
+const basketStore = useBasketStore()
 
 const otpSchema = Yup.object().shape({
   otp: Yup.string().required(),
@@ -39,7 +41,7 @@ async function loginUser(data: any, formEvent: any) {
       localStorage.removeItem('authToken')
       localStorage.setItem('authToken', JSON.stringify(result.data))
       await authStore.SetCurrentUserValue()
-      // basketStore.SyncRemoteBasket()
+      await basketStore.SyncRemoteBasket()
 
       const backUrl: any = route.query.backUrl || '/'
       return await router.push(backUrl)

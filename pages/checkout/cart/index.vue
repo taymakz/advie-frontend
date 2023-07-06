@@ -240,7 +240,3 @@ const basketStore = useBasketStore()
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>
