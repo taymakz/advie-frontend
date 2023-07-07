@@ -81,7 +81,3 @@ const skeletonCount = computed(() => {
     </div>
   </div>
 </template>
-
-<style>
-
-</style>

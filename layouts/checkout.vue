@@ -1,9 +1,14 @@
-<template>
-  <div class="flex flex-col min-h-screen">
-    <SharedHeader />
+<script setup lang="ts">
+</script>
 
-    <main class="flex-grow bg-gray-100 dark:bg-gray-950 pt-28 md:pt-32 pb-24">
-      <slot />
-    </main>
+<template>
+  <div>
+    <div class="flex flex-col min-h-screen">
+      <SharedHeader />
+
+      <main class="flex-grow bg-gray-100 dark:bg-gray-950 pt-28 md:pt-32 pb-24">
+        <slot />
+      </main>
+    </div>
   </div>
 </template>

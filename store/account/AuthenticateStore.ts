@@ -29,8 +29,10 @@ export const useAuthenticateStore = defineStore('authenticate', () => {
       currentUser.value = result.data
     }
     else {
-      authenticateResult.value = null
-      localStorage.removeItem('authToken')
+      if (result.status) {
+        authenticateResult.value = null
+        localStorage.removeItem('authToken')
+      }
     }
     loading.value = false
   }

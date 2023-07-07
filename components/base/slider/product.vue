@@ -96,7 +96,7 @@ const breakpoints = {
   <div>
     <!-- Skeleton -->
 
-    <div v-if="!pending && !loading && products " class="container py-2">
+    <div v-if="!pending && !loading && products && products?.length > 0 " class="container py-2">
       <div class="bg-white dark:bg-gray-900  rounded-lg py-2 px-4">
         <div v-if="title || link" class="flex justify-between mb-6">
           <div class="flex items-center justify-center gap-x-2">
@@ -136,7 +136,7 @@ const breakpoints = {
         </div>
       </div>
     </div>
-    <div v-else class="container py-2">
+    <div v-if="pending || loading " class="container py-2">
       <div class="bg-white dark:bg-gray-900  rounded-lg py-2 px-4">
         <div class="flex justify-between mb-6">
           <USkeleton class="w-48 h-9" />

@@ -36,13 +36,17 @@ function updateProgress() {
     wrapper-class="before:rounded-md"
     bg-class="rounded-[5px] bg-white dark:bg-gray-800 "
   >
-    <nuxt-link :to="product.url" class="relative flex  justify-center px-4 pt-4 ">
+    <nuxt-link :to="product.url" class="relative flex  justify-center px-4 pt-4 " draggable="false">
       <div class="flex flex-col">
         <div class="flex items-center justify-center mb-4 mx-auto">
           <div class="relative">
             <nuxt-img
-              :src="GetImageUrl(product.image)" :alt="product.title_ir"
+              :src="GetImageUrl(product.image)"
+              :alt="product.title_ir"
+              draggable="false"
               class="rounded-lg"
+              :quality="product.is_available_in_stock ? 80 : 10"
+              :class="{ 'opacity-25': !product.is_available_in_stock }"
               width="240"
               height="240"
               placeholder
@@ -136,12 +140,8 @@ function updateProgress() {
           </ClientOnly>
         </div>
         <div v-else>
-          <div class="h-10" />
-          <div class=" h-9 mb-1">
-            <UButton
-              block color="teal" label="موجود شد به من اطلاع بده"
-            />
-          </div>
+          <div class="h-10 mb-1" />
+          <div class=" h-9" />
         </div>
       </div>
     </nuxt-link>

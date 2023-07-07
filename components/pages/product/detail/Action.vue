@@ -186,7 +186,7 @@ function addToBasket() {
     </div>
     <div v-else class="mb-2">
       <UButton
-        block size="xl" color="teal" label="موجود شد به من اطلاع بده"
+        block size="xl" color="teal" variant="outline" label="موجود شد به من اطلاع بده"
         :loading="basketStore.loading || loading || fetchPending" @click="addToBasket"
       />
     </div>

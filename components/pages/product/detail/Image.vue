@@ -41,13 +41,13 @@ watch(timerExpired, (newVal) => {
 <template>
   <div class="flex items-center flex-col gap-y-4">
     <div class="max-w-[400px]  ">
-      <LegoPreview class="transition-transform ease-in-out duration-500 outline-none ">
+      <LegoPreview class="transition-transform ease-in-out duration-500 outline-none " :max-width="500">
         <LegoPreviewDialog
           class="fixed z-50  left-0 top-0 w-screen h-screen bg-gray-100 dark:bg-gray-900 bg-opacity-50 backdrop-blur-md"
         />
         <nuxt-img
           :src="GetImageUrl(product.image)" alt="product" class="rounded-xl  "
-
+          quality="80"
           width="400"
           height="400"
           placeholder

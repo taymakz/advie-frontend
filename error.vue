@@ -14,6 +14,8 @@ useAsyncData('categories', () => utilStore.setCategories())
 
 <template>
   <div>
-    error 404
+    <div v-if="error?.statusCode === 404">
+      error 404
+    </div>
   </div>
 </template>

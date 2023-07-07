@@ -19,7 +19,7 @@ export async function FetchApi<T>(url: string, config: any = {}): Promise<ApiRes
   try {
     return await $fetch<ApiResponse<T>>(url, config)
   }
-  catch (error: FetchError) {
+  catch (error: any) {
     if (error.status === 401 && authStore.authenticateResult) {
       await authStore.RefreshToken()
       if (authStore.authenticateResult) {
@@ -31,7 +31,7 @@ export async function FetchApi<T>(url: string, config: any = {}): Promise<ApiRes
       try {
         return await $fetch<ApiResponse<T>>(url, config)
       }
-      catch (newError: FetchError) {
+      catch (newError: any) {
         if (newError.status === 401 && authStore.authenticateResult) {
           const router = useRouter()
           if (!router.currentRoute.value.fullPath.includes('/auth/login')) {
