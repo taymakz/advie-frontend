@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const phoneNotification = ref(false)
 const emailNotification = ref(false)
+const loading = ref(false)
 </script>
 
 <template>

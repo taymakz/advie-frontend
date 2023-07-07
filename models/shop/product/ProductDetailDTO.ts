@@ -24,8 +24,14 @@ export interface VariantType {
   id: number
   title_ir: string
   title_en: string
-  select_style: string
+  select_style: VariantSelectStyle
   is_none: boolean
+}
+
+export enum VariantSelectStyle {
+  RADIO_BOX = 'RADIO_BOX',
+  RADIO_COLOR = 'RADIO_COLOR',
+  DROP_DOWN = 'DROP_DOWN',
 }
 
 export interface Value {

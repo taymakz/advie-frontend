@@ -3,11 +3,11 @@ import * as Yup from 'yup'
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { UserEditDetail } from '~/services/account/user.profile.service'
 
+const emits = defineEmits(['loading'])
 const modelValue = defineModel()
 const authStore = useAuthenticateStore()
 const isFormChanged = ref(false)
 const loading = ref(false)
-
 const toast = useToast()
 const formSchema = Yup.object().shape({
   first_name: Yup.string().required(),
@@ -32,6 +32,7 @@ async function SubmitForm() {
   newUserData.append('first_name', formData.first_name ?? '')
   newUserData.append('last_name', formData.last_name ?? '')
   loading.value = true
+  emits('loading', true)
   const result = await UserEditDetail(newUserData)
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
@@ -42,6 +43,7 @@ async function SubmitForm() {
   else {
     toast.add({ title: result.message, color: 'red' })
   }
+  emits('loading', false)
   loading.value = false
 }
 </script>

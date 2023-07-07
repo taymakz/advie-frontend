@@ -7,8 +7,8 @@ import { RequestOTPUsage } from '~/models/account/user/UserDTO'
 import { UserEditPhoneConfirm, UserEditPhoneRequest } from '~/services/account/user.profile.service'
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 
+const emits = defineEmits(['loading'])
 const modelValue = defineModel()
-
 const authStore = useAuthenticateStore()
 const isFormChanged = ref(false)
 const section: Ref<PhoneVerificationSection> = ref(PhoneVerificationSection.PHONE)
@@ -67,10 +67,13 @@ async function editPhoneRequest(data: any, formEvent: any) {
     modelValue.value = false
     return
   }
+  emits('loading', true)
 
   loading.value = true
   const result = await UserEditPhoneRequest(formData.phone, RequestOTPUsage.VERIFY)
   loading.value = false
+  emits('loading', false)
+
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
     section.value = PhoneVerificationSection.OTP

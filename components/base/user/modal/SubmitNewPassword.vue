@@ -11,6 +11,8 @@ import {
   validatePassword,
 } from '~/utils/Validators'
 
+const emits = defineEmits(['loading'])
+
 const modelValue = defineModel()
 
 const authStore = useAuthenticateStore()
@@ -48,10 +50,11 @@ async function editPassword(data: any, formEvent: any) {
     return
   if (formData.password !== formData.confirm_password)
     return
+  emits('loading', true)
 
   loading.value = true
   const result = await UserEditPassword(formData)
-  loading.value = false
+
   if (result.success) {
     modelValue.value = false
     formData.current_password = ''
@@ -77,6 +80,8 @@ async function editPassword(data: any, formEvent: any) {
       toast.add({ title: result.message, color: 'red' })
     }
   }
+  loading.value = false
+  emits('loading', false)
 }
 
 const getValidationClass: Ref<any> = computed(() => {
@@ -114,83 +119,87 @@ const getValidationClass: Ref<any> = computed(() => {
           </div>
         </div>
       </template>
-      <Form
-        v-slot="{ meta }" :validation-schema="formSchema"
-        @submit="editPassword"
-      >
-        <!-- Current Password -->
-        <div class="mb-4">
-          <Field v-slot="{ field }" name="current_password">
-            <base-form-input
-              v-model="formData.current_password" :disabled="loading" focus label="کلمه عبور فعلی" ltr type="password"
-              v-bind="field"
-            />
-          </Field>
-        </div>
-        <!-- New Password -->
-        <div class="mb-4">
-          <Field v-slot="{ field }" name="password">
-            <base-form-input
-              v-model="formData.password" :disabled="loading" label="کلمه عبور جدید" ltr type="password"
-              v-bind="field"
-            />
-          </Field>
-          <div>
-            <div class="flex items-center gap-x-2 mb-4">
-              <div class="w-full h-[3px] rounded-full " :class="getValidationClass[0]" />
-              <div class="w-full h-[3px] rounded-full  " :class="getValidationClass[1]" />
-              <div class="w-full h-[3px] rounded-full   " :class="getValidationClass[2]" />
-              <div class="w-full h-[3px] rounded-full   " :class="getValidationClass[3]" />
-            </div>
+
+      <div>
+        <Form
+          v-slot="{ meta }" :validation-schema="formSchema"
+          @submit="editPassword"
+        >
+          <!-- Current Password -->
+          <div v-if="authStore.currentUser?.has_password" class="mb-4">
+            <Field v-slot="{ field }" name="current_password">
+              <base-form-input
+                v-model="formData.current_password" :disabled="loading" focus label="کلمه عبور فعلی" ltr
+                type="password"
+                v-bind="field"
+              />
+            </Field>
+          </div>
+          <!-- New Password -->
+          <div class="mb-4">
+            <Field v-slot="{ field }" name="password">
+              <base-form-input
+                v-model="formData.password" :disabled="loading" label="کلمه عبور جدید" ltr type="password"
+                v-bind="field"
+              />
+            </Field>
             <div>
-              <ul class="text-xs md:text-sm text-slate-500 dark:text-slate-400 select-none list-disc px-4 space-y-2">
-                <li v-show="!lengthValid">
-                  <p>
-                    حداقل 6 حرف
-                  </p>
-                </li>
-                <li v-show="!lowercaseValid">
-                  <p>
-                    شامل عدد
-                  </p>
-                </li>
-                <li v-show="!uppercaseValid">
-                  <p>
-                    شامل یک حرف بزرگ
-                  </p>
-                </li>
-                <li v-show="!numberValid">
-                  <p>
-                    شامل یک حرف کوچک
-                  </p>
-                </li>
-              </ul>
+              <div class="flex items-center gap-x-2 mb-4">
+                <div class="w-full h-[3px] rounded-full " :class="getValidationClass[0]" />
+                <div class="w-full h-[3px] rounded-full  " :class="getValidationClass[1]" />
+                <div class="w-full h-[3px] rounded-full   " :class="getValidationClass[2]" />
+                <div class="w-full h-[3px] rounded-full   " :class="getValidationClass[3]" />
+              </div>
+              <div>
+                <ul class="text-xs md:text-sm text-slate-500 dark:text-slate-400 select-none list-disc px-4 space-y-2">
+                  <li v-show="!lengthValid">
+                    <p>
+                      حداقل 6 حرف
+                    </p>
+                  </li>
+                  <li v-show="!lowercaseValid">
+                    <p>
+                      شامل عدد
+                    </p>
+                  </li>
+                  <li v-show="!uppercaseValid">
+                    <p>
+                      شامل یک حرف بزرگ
+                    </p>
+                  </li>
+                  <li v-show="!numberValid">
+                    <p>
+                      شامل یک حرف کوچک
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Confirm New Password -->
-        <div class="mb-4">
-          <Field v-slot="{ field }" name="confirm_password">
-            <base-form-input
-              v-model="formData.confirm_password" :disabled="loading" label="تکرار کلمه عبور جدید" ltr
-              type="password"
-              v-bind="field"
-            />
-          </Field>
-        </div>
-        <div class="flex justify-end">
-          <div class="w-fit md:w-full">
-            <UButton
-              type="submit"
-              block
-              size="lg" color="sky"
-              :label="authStore.currentUser?.has_password ? 'تغییر کلمه عبور' : 'ثبت کلمه عبور جدید'"
-              :disabled="meta.valid === false"
-              :loading="loading"
-            />
+          <!-- Confirm New Password -->
+          <div class="mb-4">
+            <Field v-slot="{ field }" name="confirm_password">
+              <base-form-input
+                v-model="formData.confirm_password" :disabled="loading" label="تکرار کلمه عبور جدید" ltr
+                type="password"
+                v-bind="field"
+              />
+            </Field>
           </div>
-        </div>
-      </Form>
+          <div class="flex justify-end">
+            <div class="w-fit md:w-full">
+              <UButton
+                type="submit"
+                block
+                size="lg" color="sky"
+                :label="authStore.currentUser?.has_password ? 'تغییر کلمه عبور' : 'ثبت کلمه عبور جدید'"
+                :disabled="meta.valid === false"
+                :loading="loading"
+              />
+            </div>
+          </div>
+        </Form>
+      </div>
     </UCard>
   </UModal>
 </template>

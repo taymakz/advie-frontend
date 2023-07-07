@@ -7,8 +7,8 @@ import { UserEditEmailConfirm, UserEditEmailRequest } from '~/services/account/u
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { EmailVerificationSection } from '~/models/account/verification/EmailVerificationDTO'
 
+const emits = defineEmits(['loading'])
 const modelValue = defineModel()
-
 const authStore = useAuthenticateStore()
 const isFormChanged = ref(false)
 const section: Ref<EmailVerificationSection> = ref(EmailVerificationSection.EMAIL)
@@ -63,10 +63,13 @@ async function editEmailRequest(data: any, formEvent: any) {
     modelValue.value = false
     return
   }
+  emits('loading', true)
 
   loading.value = true
   const result = await UserEditEmailRequest(formData.email, RequestOTPUsage.VERIFY)
   loading.value = false
+  emits('loading', false)
+
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
     section.value = EmailVerificationSection.OTP

@@ -206,7 +206,7 @@ async function paymentRequest() {
                       <label
                         :for="`DeliveryOption-${item.id}`"
 
-                        class="block cursor-pointer rounded-lg border border-gray-100 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+                        class="block cursor-pointer rounded-lg border border-gray-200 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-300 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
                       >
                         <div class="flex items-center justify-between">
                           <div class="flex items-center gap-x-4">

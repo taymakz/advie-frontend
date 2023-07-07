@@ -4,6 +4,8 @@ import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 import { UserEditDetail } from '~/services/account/user.profile.service'
 import { validateNationalCode } from '~/utils/Validators'
 
+const emits = defineEmits(['loading'])
+
 const modelValue = defineModel()
 const authStore = useAuthenticateStore()
 const isFormChanged = ref(false)
@@ -29,6 +31,8 @@ async function SubmitForm() {
   const newUserData = new FormData()
   newUserData.append('national_code', formData.national_code ?? '')
   loading.value = true
+  emits('loading', true)
+
   const result = await UserEditDetail(newUserData)
   if (result.success) {
     toast.add({ title: result.message, color: 'green' })
@@ -39,6 +43,8 @@ async function SubmitForm() {
   else {
     toast.add({ title: result.message, color: 'red' })
   }
+  emits('loading', false)
+
   loading.value = false
 }
 </script>

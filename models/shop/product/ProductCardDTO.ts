@@ -13,5 +13,6 @@ export interface ProductCardDTO {
   longest_special_price_start_date: number
   final_price: number
   is_available_in_stock: boolean
+  is_only_one_variant: boolean
 
 }
