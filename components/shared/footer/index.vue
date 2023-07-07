@@ -54,22 +54,31 @@ function backToTop() {
         <Newsletter />
         <div class="flex items-center justify-center gap-x-4">
           <div class="text-slate-500 dark:text-slate-400 hover:text-rose-600 hover:dark:text-rose-500">
-            <nuxt-link to="/" target="_blank" external>
+            <nuxt-link to="/" target="_blank" external aria-label="Follow us on instagram">
               <ClientOnly>
+                <div class="sr-only">
+                  instagram link
+                </div>
                 <Icon name="mdi:instagram" class="w-7 h-7" />
               </ClientOnly>
             </nuxt-link>
           </div>
           <div class="text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:dark:text-blue-500">
-            <nuxt-link to="/" target="_blank" external>
+            <nuxt-link to="/" target="_blank" external aria-label="Follow us on twitter">
               <ClientOnly>
+                <div class="sr-only">
+                  twitter link
+                </div>
                 <Icon name="mdi:twitter" class="w-7 h-7" />
               </ClientOnly>
             </nuxt-link>
           </div>
           <div class="text-slate-500 dark:text-slate-400 hover:text-red-600 hover:dark:text-red-500">
-            <nuxt-link to="/" target="_blank" external>
+            <nuxt-link to="/" target="_blank" external aria-label="Follow us on aparat">
               <ClientOnly>
+                <div class="sr-only">
+                  aparat link
+                </div>
                 <Icon name="simple-icons:aparat" class="w-7 h-7" />
               </ClientOnly>
             </nuxt-link>
@@ -81,9 +90,9 @@ function backToTop() {
         <div class="col-span-6 md:col-span-12 ">
           <div class="grid grid-cols-12 md:justify-items-center">
             <div class="col-span-6 flex flex-col gap-y-5">
-              <h5 class="text-slate-600 dark:text-slate-300 text-lg select-none">
+              <p class="text-slate-600 dark:text-slate-300 text-lg select-none">
                 فروشگاه
-              </h5>
+              </p>
               <ul class="space-y-4 text-slate-500 dark:text-slate-400">
                 <li>
                   <nuxt-link to="/" class=" py-2 hover:text-sky-600 hover:dark:text-sky-600">
@@ -108,9 +117,9 @@ function backToTop() {
               </ul>
             </div>
             <div class="col-span-6 flex flex-col gap-y-5">
-              <h5 class="text-slate-600 dark:text-slate-300 text-lg select-none">
+              <p class="text-slate-600 dark:text-slate-300 text-lg select-none">
                 دسترسی سریع
-              </h5>
+              </p>
               <ul class="space-y-4 text-slate-500 dark:text-slate-400 ">
                 <li>
                   <nuxt-link to="/" class=" py-2  hover:text-sky-600 hover:dark:text-sky-600">

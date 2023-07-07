@@ -4,6 +4,9 @@
       <div
         class="bg-gray-100 dark:bg-gray-800 hover:bg-sky-500 dark:hover:bg-sky-500  group flex items-center justify-center w-8 h-8 transition-colors duration-150 rounded-full cursor-pointer"
       >
+        <div class="sr-only">
+          Website Theme Toggle
+        </div>
         <Icon
           :name="$colorMode.value === 'dark' ? 'ph:moon-stars' : 'material-symbols:sunny-outline-rounded'"
           size="20"

@@ -39,7 +39,7 @@ const { data, error, pending } = useAsyncData('home_data', () => FetchApi<HomeDa
       <!-- LG Banner Section -->
       <div class="container py-2 md:hidden">
         <nuxt-link to="/">
-          <nuxt-img src="/images/banners/lg-banner.jpg" class="rounded-lg" />
+          <nuxt-img src="/images/banners/lg-banner.jpg" alt="large banner" class="rounded-lg" />
         </nuxt-link>
       </div>
       <!-- Sale Products Section -->

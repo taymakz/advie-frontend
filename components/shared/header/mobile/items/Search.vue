@@ -51,13 +51,13 @@ const breakpoints = {
   <ClientOnly>
     <div ref="searchDropdownSection" class="relative" @click="searchDropdown = true">
       <div
-        class="transition-all duration-300 bg-gray-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-xl flex items-center justify-between gap-x-3 p-1 px-4"
+        class="transition-all duration-300 bg-gray-100 dark:bg-slate-800  rounded-xl flex items-center justify-between gap-x-3 p-1 px-4"
         :class="{ 'rounded-b-none': searchDropdown }"
       >
         <input
           v-model="searchValue"
 
-          class="placeholder:text-xs text-sm   focus:outline-none bg-transparent w-full p-2 border-none focus:ring-0"
+          class="placeholder:text-sm placeholder:text-slate-600 placeholder:dark:text-slate-400 text-slate-800 dark:text-slate-200   focus:outline-none bg-transparent w-full p-2 border-none focus:ring-0"
           type="text" placeholder="جستجو "
         >
         <div>
