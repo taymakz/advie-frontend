@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     public: {
       baseApi: '', // Base Api environment variable
       baseMedia: '', // Base Media environment variable
+      domain: '', // Domain environment variable
     },
   },
   image: {

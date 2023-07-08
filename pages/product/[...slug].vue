@@ -7,6 +7,26 @@ const route = useRoute()
 const { data: result, refresh, pending } = await useAsyncData('product_detail', () => GetProduct(route.params.slug[0]))
 if (result.value?.data == null)
   throw createError({ statusCode: 404, message: 'صفحه مورد نظر یافت نشد' })
+const runtimeConfig = useRuntimeConfig()
+useSeoMeta({
+
+  title: result.value?.data.title_ir,
+  description: `خرید و بررسی محصول ${result.value?.data.title_ir} ${result.value?.data.title_en}`,
+
+  ogTitle: result.value?.data.title_ir,
+  ogDescription: `خرید و بررسی محصول ${result.value?.data.title_ir} ${result.value?.data.title_en}`,
+  ogImage: `${runtimeConfig.public.baseMedia}/${result.value?.data.image}`,
+  ogUrl: `${runtimeConfig.public.domain}${result.value?.data.url}`,
+
+  twitterTitle: result.value?.data.title_ir,
+  twitterDescription: `خرید و بررسی محصول ${result.value?.data.title_ir} ${result.value?.data.title_en}`,
+  twitterImage: `${runtimeConfig.public.baseMedia}/${result.value?.data.image}`,
+  twitterCard: 'summary',
+})
+
+useServerSeoMeta({
+  robots: 'index, follow',
+})
 </script>
 
 <template>

@@ -107,7 +107,7 @@ async function paymentRequest() {
                   کد تخفیف
                 </h4>
                 <div class="w-1/2 md:w-full ">
-                  <Form v-slot="{ meta }" :validation-schema="couponSchema">
+                  <Form v-slot="{ meta }" :validation-schema="couponSchema" @submit="usedCoupon ? '' : useCoupon()">
                     <Field v-slot="{ field }" name="coupon">
                       <BaseFormInput
                         v-model="couponForm"
@@ -117,7 +117,7 @@ async function paymentRequest() {
                         label-classes="bg-white dark:bg-slate-800"
                         :auto-complete="false"
                         with-button
-                        :disabled="loading || gatewayLoading"
+                        :disabled="loading || gatewayLoading || usedCoupon"
                         :button-color="usedCoupon ? 'red' : 'sky'"
                         :button-label="usedCoupon ? 'حذف' : 'ثبت'"
                         :button-disabled="meta.valid === false || loading || gatewayLoading"

@@ -68,7 +68,7 @@ export const useBasketStore = defineStore('basket', () => {
     initLoading.value = true
     const localBasketItems = JSON.parse(data) as CurrentOrderItemDTO[]
     for (const e of localBasketItems)
-      await AddItemToCurrentOrder(e.product_id, e.variant.id, 0)
+      await AddItemToCurrentOrder(e.product_id, e.variant.id, e.count)
     await Init()
     initLoading.value = false
     localStorage.removeItem('basketItems')

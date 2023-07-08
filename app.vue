@@ -4,8 +4,17 @@ import { useBasketStore } from '~/store/shop/BasketStore'
 import { useFavoriteStore } from '~/store/shop/FavoriteStore'
 
 useHead({
-
-  title: 'Ecommerce Project',
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/ico',
+      href: '/images/favicon.ico',
+    },
+  ],
+  title: 'فروشگاه اینترنتی ادویه',
+  meta: [
+    { property: 'og:locale', content: 'fa_IR' },
+  ],
   htmlAttrs: {
     lang: 'fa',
     dir: 'rtl',
