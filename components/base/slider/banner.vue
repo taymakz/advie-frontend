@@ -23,7 +23,10 @@ const filteredBanners = props.banners?.filter(f => f.position === props.position
   >
     <template #item="{ item }">
       <nuxt-link :to="item.url" target="_blank" external>
-        <nuxt-img :src="GetImageUrl(item.image)" :alt="item.image_alt" :title="item.image_alt" />
+        <nuxt-img
+          :src="GetImageUrl(item.image)" :alt="item.image_alt" :title="item.image_alt" width="1350"
+          height="450"
+        />
       </nuxt-link>
     </template>
   </BaseSwiper>

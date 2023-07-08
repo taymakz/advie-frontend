@@ -13,7 +13,7 @@ const { data, error, pending } = useAsyncData('home_data', () => FetchApi<HomeDa
         <div class="rounded-lg overflow-hidden ">
           <base-slider-banner
             v-if="data?.data.banners" :banners="data.data.banners"
-            :position="BannerPosition.SLIDER"
+            :position="BannerPosition.HOME_PAGE_SLIDER_BANNER"
           />
         </div>
       </div>
@@ -37,10 +37,14 @@ const { data, error, pending } = useAsyncData('home_data', () => FetchApi<HomeDa
         icon="carbon:3d-cursor" icon-classes="!text-green-500 dark:!text-green-400"
       />
       <!-- LG Banner Section -->
-      <div class="container py-2 md:hidden">
-        <nuxt-link to="/">
-          <nuxt-img src="/images/banners/lg-banner.jpg" alt="large banner" class="rounded-lg" />
-        </nuxt-link>
+      <div class="container py-2 lg:hidden">
+        <BaseBanner
+          v-if="data?.data.banners" :banners="data.data.banners"
+          :position="BannerPosition.HOME_PAGE_LARGE_BANNER"
+          :count="1"
+          :width="1350"
+          :height="170"
+        />
       </div>
       <!-- Sale Products Section -->
       <BaseSliderProduct
