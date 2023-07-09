@@ -40,7 +40,7 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
     <div class="bg-white dark:bg-gray-800  rounded-xl  sticky top-32 mb-4 overflow-hidden ">
       <!--          Filters          -->
       <div
-        class="flex flex-col max-h-[calc(90vh_-_100px)]overflow-y-auto overflow-x-hidden main-scroll px-4 py-3 divide-y-[0.5px] divide-gray-200 dark:divide-gray-700 "
+        class="flex flex-col max-h-[calc(90vh_-_100px)] overflow-y-auto overflow-x-hidden main-scroll px-4 py-3 divide-y-[0.5px] divide-gray-200 dark:divide-gray-700 "
       >
         <div>
           <h5 class="text-slate-800 dark:text-slate-300 py-3">
