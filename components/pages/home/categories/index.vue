@@ -9,7 +9,7 @@ const children = computed(() => {
 </script>
 
 <template>
-  <div class="container py-2">
+  <div v-if="children" class="container py-2">
     <div class="bg-white dark:bg-gray-900  rounded-lg py-2 px-4">
       <div class="flex justify-center mb-6">
         <div class="flex items-center justify-center">
@@ -26,7 +26,7 @@ const children = computed(() => {
       <div
         class="grid grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 items-center place-self-end  gap-y-4"
       >
-        <div v-for="category in children.slice(0, 6)" :key="category.id" class="">
+        <div v-for="category in children.slice(0, 6)" :key="category.id">
           <BaseCardCategoryCircle :category="category" />
         </div>
       </div>
