@@ -74,7 +74,7 @@ function addToBasket() {
     <!-- SKU - Review  -->
     <div class="flex mb-4">
       <div class="flex items-center justify-between w-full ">
-        <div class="text-xs text-slate-500 dark:text-slate-400 ">
+        <div class="text-sm text-slate-500 dark:text-slate-400 ">
           کد کالا : #{{ product.sku }}
         </div>
         <div class="flex items-center">
@@ -99,7 +99,7 @@ function addToBasket() {
       :class="{ blur: !product.is_available_in_stock }"
     >
       <div class="mb-4">
-        <p class="text-sm text-slate-500 dark:text-slate-400">
+        <p class="text-slate-500 dark:text-slate-400">
           انتخاب {{ product.variant_type.title_ir }}
         </p>
       </div>
@@ -124,7 +124,7 @@ function addToBasket() {
 
             <label
               :for="item.id.toString()"
-              class="relative flex cursor-pointer items-center  gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-gray-900 hover:border-gray-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700  "
+              class="relative flex cursor-pointer items-center  gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-gray-900 hover:border-gray-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700  text-base"
             >
               <span
                 v-if="item.is_special"
@@ -133,7 +133,7 @@ function addToBasket() {
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
 
               </span>
-              <small class="text-sm font-medium">{{ item.value.value }} {{ item.value.prefix.name }}</small>
+              {{ item.value.value }} {{ item.value.prefix.name }}
             </label>
           </template>
         </div>

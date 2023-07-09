@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxtjs/device',
     'nuxt-icon',
     'nuxt-swiper',
+    'nuxt-delay-hydration',
   ],
 
   routeRules: {
@@ -23,7 +24,10 @@ export default defineNuxtConfig({
     '/checkout/': { ssr: false },
     '/checkout/**': { ssr: false },
   },
-
+  delayHydration: {
+    // enables nuxt-delay-hydration in dev mode for testing
+    debug: process.env.NODE_ENV === 'development',
+  },
   device: {
     refreshOnResize: true,
   },

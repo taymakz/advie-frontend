@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { GetCheckoutResult } from '~/services/shop/order/checkout/order.payment.service'
+import { GetCheckoutResult, RePaymentRequestSubmit } from '~/services/shop/order/checkout/order.payment.service'
 import { TransactionStatus } from '~/models/shop/order/checkout/CheckoutDTO'
 
 definePageMeta({
   layout: 'checkout',
   middleware: 'authenticated',
 })
-
+const router = useRouter()
+const toast = useToast()
+const loading = ref(false)
+const gatewayLoading = ref(false)
+const gatewayMessage = ref('درحال پردازش')
 const route = useRoute()
 
 const transaction_id = route.params.slug[0].toString()
@@ -20,6 +24,25 @@ const {
 } = await useAsyncData('checkout_result', () => GetCheckoutResult(transaction_id, transaction_slug))
 if (result.value?.data == null)
   throw createError({ statusCode: 404, message: 'صفحه مورد نظر یافت نشد', fatal: true })
+
+async function rePaymentRequest() {
+  if (!result.value?.data?.order_slug)
+    return
+  gatewayLoading.value = true
+
+  const res = await RePaymentRequestSubmit(result.value?.data?.order_slug)
+  if (res.success) {
+    gatewayMessage.value = res.message
+    await window.location.replace(res.data.payment_gateway_link)
+  }
+  else {
+    toast.add({ title: res.message, color: 'red' })
+
+    if (res.data.redirect_to)
+      await router.push(res.data.redirect_to)
+    gatewayLoading.value = false
+  }
+}
 </script>
 
 <template>
@@ -110,7 +133,7 @@ if (result.value?.data == null)
             </div>
           </div>
           <div class="flex flex-col gap-y-4 items-start justify-center mb-6 text-sm ">
-            <div class="flex gap-x-2  ">
+            <div v-if="result.data?.repayment_date_expire" class="flex gap-x-2  ">
               <div>
                 <Icon name="bx:error-circle" size="20" class="text-red-600 dark:text-red-500" />
               </div>
@@ -153,11 +176,32 @@ if (result.value?.data == null)
             </div>
           </div>
           <div class="flex items-center justify-center gap-x-4">
-            <div class="w-32 sm:w-full">
-              <UButton size="xl" block color="green" variant="outline" label="پرداخت مجدد" />
+            <div v-if="result.data?.repayment_date_expire" class="w-32 sm:w-full">
+              <UButton
+                :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" size="xl" block
+                color="green" variant="outline" label="پرداخت مجدد" @click="rePaymentRequest"
+              />
             </div>
             <div class="w-32 sm:w-full">
-              <UButton to="/" size="xl" block color="sky" variant="outline" label="بازگشت" />
+              <UButton
+                :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" to="/" size="xl" block
+                color="sky" variant="outline" label="بازگشت"
+              />
+            </div>
+          </div>
+          <div
+            v-if="gatewayLoading"
+            class="fixed top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-gray-200/75 dark:bg-gray-800/75"
+          >
+            <div
+              class=" py-10 px-24 bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 shadow rounded-lg flex items-center flex-col"
+            >
+              <div>
+                <Icon name="svg-spinners:3-dots-scale" size="40" class="text-sky-500 dark:text-sky-400" />
+              </div>
+              <div class="text-gray-500 dark:text-gray-400  text-sm sm:text-xs font-medium mt-2 text-center">
+                {{ gatewayMessage }}
+              </div>
             </div>
           </div>
         </div>

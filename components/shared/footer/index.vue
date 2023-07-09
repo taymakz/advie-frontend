@@ -147,10 +147,10 @@ function backToTop() {
         </div>
         <div class="col-span-4 md:col-span-12 flex items-center justify-end md:justify-center gap-x-2">
           <nuxt-link to="/" class="w-[140px]  border border-gray-200 dark:border-gray-800 rounded-lg p-2">
-            <img src="/images/namad.png" alt="namad" class="w-full h-auto">
+            <nuxt-img src="/images/namad.png" alt="namad" width="122" height="122" />
           </nuxt-link>
           <nuxt-link to="/" class="w-[140px]  border border-gray-200 dark:border-gray-800 rounded-lg p-2">
-            <img src="/images/namad.png" alt="namad" class="w-full h-auto">
+            <nuxt-img src="/images/namad.png" alt="namad" width="122" height="122" />
           </nuxt-link>
         </div>
       </div>

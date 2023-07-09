@@ -39,7 +39,7 @@ watch(() => route.query, () => {
     <div class="z-30 relative  bg-white dark:bg-gray-900 ">
       <div class="container-2xl flex items-center justify-between gap-x-4 py-2.5 ">
         <nuxt-link to="/">
-          <BaseLogo class="h-8" />
+          <BaseLogo />
         </nuxt-link>
         <SharedHeaderDesktopItemsSearch />
 

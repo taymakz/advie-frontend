@@ -15,7 +15,7 @@ defineProps<{
     </div>
     <div class="flex items-center  gap-x-2">
       <div>
-        <h2 class="text-xs text-slate-500 dark:text-slate-400">
+        <h2 class="text-sm text-slate-500 dark:text-slate-400">
           {{ product.title_en }}
         </h2>
       </div>

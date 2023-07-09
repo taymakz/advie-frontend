@@ -55,7 +55,7 @@ watch(() => router.currentRoute.value, () => {
       </div>
       <div>
         <nuxt-link to="/">
-          <BaseLogo class="h-8 " />
+          <BaseLogo />
         </nuxt-link>
       </div>
       <div class="flex items-center  gap-x-4">
