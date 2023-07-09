@@ -27,7 +27,7 @@ const skeletonCount = computed(() => {
 <template>
   <div>
     <!-- content section -->
-    <div class="container-2xl pt-4 md:pt-2 md:pb-52">
+    <div class="container-2xl pt-4 md:pt-2 pb-10 ">
       <!-- Mobile section -->
       <div class="hidden md:flex items-center justify-between gap-x-3  mb-4">
         <!-- sidebar section -->
@@ -36,7 +36,7 @@ const skeletonCount = computed(() => {
         <PagesSearchSortMobile />
       </div>
 
-      <div class="grid grid-cols-12 grid-rows-[60px_minmax(500px,_1fr)]  gap-2 ">
+      <div class="grid grid-cols-12 grid-rows-[60px_min(500px,_1fr)]  gap-2 ">
         <!-- Desktop section -->
 
         <!-- sidebar section -->
