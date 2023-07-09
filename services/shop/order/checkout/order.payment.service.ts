@@ -21,7 +21,7 @@ export function PaymentRequestSubmit(command: PaymentRequestSubmitDTO): Promise<
   })
 }
 
-export function RePaymentRequestSubmit(order_slug: number): Promise<ApiResponse<PaymentRequestSubmitResultDTO>> {
+export function RePaymentRequestSubmit(order_slug: string): Promise<ApiResponse<PaymentRequestSubmitResultDTO>> {
   return FetchApi('/payment/request/submit/pending/', {
     method: 'POST',
     body: {

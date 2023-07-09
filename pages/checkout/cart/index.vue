@@ -11,7 +11,10 @@ const basketStore = useBasketStore()
   <div>
     <!-- Breadcrumb -->
     <div class="container-checkout py-2">
-      <div v-if="basketStore.getItemsCount > 0">
+      <div v-if="basketStore.initLoading">
+        <USkeleton class="w-full h-96" />
+      </div>
+      <div v-else-if="basketStore.getItemsCount > 0">
         <PagesCheckoutCartBreadcrumb />
 
         <div class="grid grid-cols-12 gap-4">

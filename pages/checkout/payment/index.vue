@@ -24,7 +24,7 @@ onMounted(async () => {
   loading.value = true
   const basketStore = await useBasketStore()
   await basketStore.Init()
-  if (basketStore.currentOrder?.shipping === null)
+  if (basketStore.currentOrder?.shipping === null || basketStore.getItemsCount <= 0)
     await router.push('/checkout/cart/')
   loading.value = false
 })

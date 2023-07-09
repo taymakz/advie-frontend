@@ -29,8 +29,7 @@ async function rePaymentRequest() {
   if (!result.value?.data?.order_slug)
     return
   gatewayLoading.value = true
-
-  const res = await RePaymentRequestSubmit(result.value?.data?.order_slug)
+  const res = await RePaymentRequestSubmit(result.value?.data?.order_slug.toString())
   if (res.success) {
     gatewayMessage.value = res.message
     await window.location.replace(res.data.payment_gateway_link)
