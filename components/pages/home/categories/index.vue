@@ -9,7 +9,7 @@ const children = computed(() => {
 </script>
 
 <template>
-  <div v-if="children" class="container py-2">
+  <div v-if="children.length > 0" class="container py-2">
     <div class="bg-white dark:bg-gray-900  rounded-lg py-2 px-4">
       <div class="flex justify-center mb-6">
         <div class="flex items-center justify-center">
