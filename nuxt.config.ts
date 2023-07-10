@@ -13,16 +13,15 @@ export default defineNuxtConfig({
   ],
 
   routeRules: {
-    '/': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
-    '/product/**': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
-    '/product/**/**': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
+    '/': { isr: 60 },
+    '/product/**': { isr: 60 },
+    '/product/**/**': { isr: 60 },
 
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },
     '/panel/**/**': { ssr: false },
 
-    '/auth/': { ssr: false },
-    '/auth/**': { ssr: false },
+    '/auth/**': { ssr: false, prerender: true },
     '/checkout/': { ssr: false },
     '/checkout/**': { ssr: false },
   },
