@@ -52,6 +52,7 @@ async function submitEmail() {
             >
             <base-button
               :disabled="meta.valid === false || loading"
+              aria-label="Submit to Newsletter"
               type="submit"
               class="text-sm py-3 sm:py-3.5 text-slate-100 dark:text-slate-100 rounded-l-lg rounded-r-none bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600 px-8"
             >
