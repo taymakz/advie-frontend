@@ -13,9 +13,36 @@ export default defineNuxtConfig({
   ],
   spaLoadingTemplate: false,
   routeRules: {
-    '/': { swr: 3600 },
-    '/product/**': { swr: 120 },
-    '/product/**/**': { swr: 120 },
+    '/**': process.env.NODE_ENV === 'development'
+      ? {}
+      : {
+          cache: {
+            swr: true,
+            maxAge: 120,
+            staleMaxAge: 60,
+            headersOnly: true,
+          },
+        },
+    '/product/**': process.env.NODE_ENV === 'development'
+      ? {}
+      : {
+          cache: {
+            swr: true,
+            maxAge: 120,
+            staleMaxAge: 60,
+            headersOnly: true,
+          },
+        },
+    '/product/**/**': process.env.NODE_ENV === 'development'
+      ? {}
+      : {
+          cache: {
+            swr: true,
+            maxAge: 120,
+            staleMaxAge: 60,
+            headersOnly: true,
+          },
+        },
 
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },
