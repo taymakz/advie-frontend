@@ -44,20 +44,22 @@ async function submitEmail() {
               aria-labelledby="email-label"
               dir="ltr"
               type="text"
-              class="placeholder:text-sm placeholder:text-right placeholder:text-slate-600 placeholder:dark:text-slate-400 text-slate-800 dark:text-slate-200  focus:outline-none bg-transparent w-full py-1 px-4 border-none focus:ring-0"
+              class="placeholder:text-sm placeholder:text-right placeholder:text-slate-600 placeholder:dark:text-slate-400 text-slate-800 dark:text-slate-200  focus:outline-none bg-transparent w-full py-2 px-4 border-none focus:ring-0"
               v-bind="field"
               placeholder="ایمیل شما"
               autocomplete="off"
               :disabled="loading"
             >
-            <base-button
-              :disabled="meta.valid === false || loading"
-              aria-label="Submit to Newsletter"
-              type="submit"
-              class="text-sm py-3 sm:py-3.5 text-slate-100 dark:text-slate-100 rounded-l-lg rounded-r-none bg-sky-600 hover:bg-sky-700 dark:bg-sky-900 dark:hover:bg-sky-600 px-8"
-            >
-              <span>  ثبت </span>
-            </base-button>
+            <div class="w-24">
+              <UButton
+                :disabled="meta.valid === false || loading"
+                aria-label="Submit to Newsletter"
+                block
+                size="lg"
+              >
+                <span>  ثبت </span>
+              </UButton>
+            </div>
           </div>
         </Field>
       </div>
