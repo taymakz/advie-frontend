@@ -25,6 +25,10 @@ const {
 if (result.value?.data == null)
   throw createError({ statusCode: 404, message: 'صفحه مورد نظر یافت نشد', fatal: true })
 
+useSeoMeta({
+  title: `${result!.data!.transaction_status === TransactionStatus.SUCCESS ? 'تراکنش موفق' : 'تراکنش  ناموفق'}`,
+})
+
 async function rePaymentRequest() {
   if (!result.value?.data?.order_slug)
     return

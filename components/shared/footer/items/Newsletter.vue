@@ -29,7 +29,7 @@ async function submitEmail() {
   <div class="flex-1 max-w-lg w-full">
     <Form v-slot="{ meta }" :validation-schema="emailSchema" @submit="submitEmail">
       <div
-        class="relative bg-gray-100 dark:bg-slate-900  rounded-xl flex items-center justify-between"
+        class="bg-gray-100 dark:bg-slate-900  rounded-lg flex items-center justify-between"
       >
         <Field
           v-slot="{ field }"

@@ -7,7 +7,9 @@ definePageMeta({
   middleware: 'not-authenticated',
 
 })
-
+useSeoMeta({
+  title: 'ورود | ثبت نام - فروشگاه اینترنتی ادویه',
+})
 const username = ref('')
 const canLoginWithPassword = ref(false)
 const section: Ref<AuthenticateSection> = ref(AuthenticateSection.USERNAME)

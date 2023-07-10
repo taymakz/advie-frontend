@@ -6,6 +6,9 @@ import type { ShippingRateDTO } from '~/models/shop/order/checkout/ShippingMetho
 import { GetShippingServices } from '~/services/shop/order/checkout/order.shipping.service'
 import { PaymentRequestCheck } from '~/services/shop/order/checkout/order.payment.service'
 
+useSeoMeta({
+  title: 'انتخاب شیوه ارسال - فروشگاه اینترنتی ادویه',
+})
 definePageMeta({
   middleware: 'authenticated',
   layout: 'checkout',

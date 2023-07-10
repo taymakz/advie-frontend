@@ -10,7 +10,7 @@ defineProps<{
   <div class="flex items-center flex-wrap gap-x-2 mb-2">
     <nuxt-link to="/" class="group flex items-center justify-center gap-x-1 py-1 px-1 ">
       <div
-        class="text-sm md:text-xs text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
+        class="text-sm md:text-xs text-slate-600 dark:text-slate-300 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
       >
         صفحه اصلی
       </div>
@@ -18,7 +18,7 @@ defineProps<{
         <ClientOnly>
           <Icon
             name="ic:outline-chevron-left" size="18"
-            class="text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
+            class="text-slate-600 dark:text-slate-300 group-hover:text-slate-300 dark:group-hover:text-sky-400 transition-colors duration-150"
           />
         </ClientOnly>
       </div>
@@ -29,7 +29,7 @@ defineProps<{
       class="group flex items-center justify-center gap-x-1 py-1 px-1 "
     >
       <div
-        class="text-sm md:text-xs text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
+        class="text-sm md:text-xs text-slate-600 dark:text-slate-300 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
       >
         {{ item.title }}
       </div>
@@ -37,13 +37,13 @@ defineProps<{
         <ClientOnly>
           <Icon
             name="ic:outline-chevron-left" size="18"
-            class="text-slate-500 dark:text-slate-400 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
+            class="text-slate-600 dark:text-slate-300 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors duration-150"
           />
         </ClientOnly>
       </div>
     </nuxt-link>
 
-    <div class="text-sm  md:text-xstext-slate-500 dark:text-slate-400">
+    <div class="text-sm  md:text-xs text-slate-600 dark:text-slate-300">
       دارچین
     </div>
   </div>

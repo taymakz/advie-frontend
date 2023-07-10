@@ -2,6 +2,9 @@
 import type { Ref } from 'vue'
 import { ForgotPasswordSection } from '~/models/account/password/PasswordDTO'
 
+useSeoMeta({
+  title: 'بازیابی کلمه عبور - فروشگاه اینترنتی ادویه',
+})
 definePageMeta({
   layout: false,
   middleware: 'not-authenticated',

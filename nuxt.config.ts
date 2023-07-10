@@ -13,7 +13,9 @@ export default defineNuxtConfig({
   ],
 
   routeRules: {
-    '/**': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
+    '/': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
+    '/product/**': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
+    '/product/**/**': { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
 
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },

@@ -2,6 +2,7 @@
 definePageMeta({
   layout: 'user-panel',
 })
+useSeoMeta({})
 </script>
 
 <template>

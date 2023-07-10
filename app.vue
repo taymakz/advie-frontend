@@ -11,17 +11,19 @@ useHead({
       href: '/images/favicon.ico',
     },
   ],
-  title: 'فروشگاه اینترنتی ادویه',
   meta: [
     { property: 'og:locale', content: 'fa_IR' },
   ],
+
   htmlAttrs: {
     lang: 'fa',
     dir: 'rtl',
 
   },
 })
-
+useSeoMeta({
+  title: 'فروشگاه اینترنتی ادویه',
+})
 const utilStore = useWebsiteUtilStore()
 useAsyncData('categories', () => utilStore.setCategories())
 

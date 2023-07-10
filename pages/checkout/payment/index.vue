@@ -6,6 +6,9 @@ import type { DiscountDTO } from '~/models/shop/order/checkout/DiscountDTO'
 import { UseCoupon } from '~/services/shop/order/checkout/order.coupon.service'
 import { PaymentRequestSubmit } from '~/services/shop/order/checkout/order.payment.service'
 
+useSeoMeta({
+  title: 'پرداخت نهایی سبد خرید - فروشگاه اینترنتی ادویه',
+})
 definePageMeta({
   middleware: 'authenticated',
   layout: 'checkout',

@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <div class="flex flex-col gap-y-2">
     <div>
-      <h1 class="text-lg text-slate-600 dark:text-slate-300">
+      <h1 class="text-lg text-slate-700 dark:text-slate-200">
         {{ product.title_ir }}
       </h1>
     </div>

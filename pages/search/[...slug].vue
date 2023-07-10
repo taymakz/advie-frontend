@@ -22,6 +22,30 @@ const skeletonCount = computed(() => {
 
   return Math.max(remainColumns, minSkeletons)
 })
+
+const runtimeConfig = useRuntimeConfig()
+
+useServerSeoMeta({
+  title: 'فروشگاه اینترنتی ادویه',
+  description: 'قیمت و خرید ادویه های مخصوص استفاده در نوشیدنی , دارویی و غذایی و غیره با 10 روز مرجوعی',
+
+  ogTitle: 'فروشگاه اینترنتی ادویه',
+  ogDescription: 'قیمت و خرید ادویه های مخصوص استفاده در نوشیدنی , دارویی و غذایی و غیره با 10 روز مرجوعی',
+  ogImage: `${runtimeConfig.public.domain}/images/logo.svg`,
+  ogUrl: `${runtimeConfig.public.domain}`,
+
+  twitterTitle: 'فروشگاه اینترنتی ادویه',
+  twitterDescription: 'قیمت و خرید ادویه های مخصوص استفاده در نوشیدنی , دارویی و غذایی و غیره با 10 روز مرجوعی',
+  twitterImage: `${runtimeConfig.public.domain}/images/logo.svg`,
+  twitterCard: 'summary',
+  robots: 'index, follow',
+})
+useSeoMeta({
+  title: 'فروشگاه اینترنتی ادویه',
+})
+useServerSeoMeta({
+  robots: 'index, follow',
+})
 </script>
 
 <template>

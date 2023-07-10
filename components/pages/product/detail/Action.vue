@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ProductDetailDTO, Variant } from '~/models/shop/product/ProductDetailDTO'
+import { VariantSelectStyle } from '~/models/shop/product/ProductDetailDTO'
 import type { CurrentOrderItemDTO } from '~/models/shop/order/CurrentOrderDTO'
 import { useBasketStore } from '~/store/shop/BasketStore'
 
@@ -107,36 +108,38 @@ function addToBasket() {
         v-if="product.is_available_in_stock"
         class="grid grid-cols-12 gap-x-4 border   p-3 rounded-lg border-gray-200 dark:border-gray-700"
       >
-        <div v-for="item in product.variants" :key="item.id" class="col-span-3 xl:col-span-4 sm:col-span-6">
-          <template v-if="fetchPending">
-            <USkeleton class="h-10 w-28" />
-          </template>
-          <template v-else>
-            <input
-              :id="item.id.toString()"
-              v-model="selectedVariant"
-              type="radio"
-              name="variant"
-              :value="item"
-              :disabled="loading || !product.is_available_in_stock"
-              class="peer  hidden [&:checked_+_label]:block "
-            >
-
-            <label
-              :for="item.id.toString()"
-              class="relative flex cursor-pointer items-center  gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-gray-900 hover:border-gray-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700  text-base"
-            >
-              <span
-                v-if="item.is_special"
-                class="inline-flex absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full"
+        <template v-if="product.variant_type.select_style === VariantSelectStyle.RADIO_BOX">
+          <div v-for="item in product.variants" :key="item.id" class="col-span-3 xl:col-span-4 sm:col-span-6">
+            <template v-if="fetchPending">
+              <USkeleton class="h-10 w-28" />
+            </template>
+            <template v-else>
+              <input
+                :id="item.id.toString()"
+                v-model="selectedVariant"
+                type="radio"
+                name="variant"
+                :value="item"
+                :disabled="loading || !product.is_available_in_stock"
+                class="peer  hidden [&:checked_+_label]:block "
               >
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
 
-              </span>
-              {{ item.value.value }} {{ item.value.prefix.name }}
-            </label>
-          </template>
-        </div>
+              <label
+                :for="item.id.toString()"
+                class="relative flex cursor-pointer items-center  gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-gray-900 hover:border-gray-300 peer-checked:border-blue-500 peer-checked:bg-sky-600 peer-checked:dark:bg-sky-800 peer-checked:text-white peer-checked:border-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700  text-base"
+              >
+                <span
+                  v-if="item.is_special"
+                  class="inline-flex absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full"
+                >
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+
+                </span>
+                {{ item.value.value }} {{ item.value.prefix.name }}
+              </label>
+            </template>
+          </div>
+        </template>
       </div>
     </div>
 

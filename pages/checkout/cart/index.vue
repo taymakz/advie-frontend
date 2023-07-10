@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useBasketStore } from '~/store/shop/BasketStore'
 
+useSeoMeta({
+  title: 'سبد خرید - فروشگاه اینترنتی ادویه',
+})
 definePageMeta({
   layout: 'checkout',
 })
