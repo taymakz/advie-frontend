@@ -11,11 +11,10 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     'nuxt-delay-hydration',
   ],
-  ssr: false,
   routeRules: {
-    '/**': { isr: 60 },
-    '/product/**': { isr: 60 },
-    '/product/**/**': { isr: 60 },
+    '/': { swr: 60 },
+    '/product/**': { swr: 60 },
+    '/product/**/**': { swr: 60 },
 
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },
