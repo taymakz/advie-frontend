@@ -13,42 +13,11 @@ export default defineNuxtConfig({
   ],
   spaLoadingTemplate: false,
   routeRules: {
-    '/**': process.env.NODE_ENV === 'development'
-      ? {}
-      : {
-          cache: {
-            swr: true,
-            maxAge: 120,
-            staleMaxAge: 60,
-            headersOnly: true,
-          },
-        },
-    '/product/**': process.env.NODE_ENV === 'development'
-      ? {}
-      : {
-          cache: {
-            swr: true,
-            maxAge: 120,
-            staleMaxAge: 60,
-            headersOnly: true,
-          },
-        },
-    '/product/**/**': process.env.NODE_ENV === 'development'
-      ? {}
-      : {
-          cache: {
-            swr: true,
-            maxAge: 120,
-            staleMaxAge: 60,
-            headersOnly: true,
-          },
-        },
-
     '/panel': { ssr: false },
     '/panel/**': { ssr: false },
     '/panel/**/**': { ssr: false },
 
-    '/auth/**': { ssr: false, prerender: true },
+    '/auth/**': { ssr: false },
     '/checkout/': { ssr: false },
     '/checkout/**': { ssr: false },
   },
