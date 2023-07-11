@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-swiper',
     'nuxt-delay-hydration',
+    '@nuxtjs/html-validator',
   ],
   spaLoadingTemplate: false,
   routeRules: {
@@ -50,17 +51,15 @@ export default defineNuxtConfig({
       media: process.env.NUXT_PUBLIC_BASE_MEDIA ?? '',
     },
   },
+  ui: {
+    safelistColors: ['sky', 'red', 'green', 'rose'],
+    icons: ['mdi'],
+  },
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: 'tailwind.config',
-    exposeConfig: false,
-    exposeLevel: 2,
-    injectPosition: 'first',
-    viewer: true,
-  },
-  ui: {
-    safelistColors: ['sky', 'red', 'green'],
-    icons: ['mdi'],
+    exposeConfig: true,
+    viewer: false,
   },
 
   colorMode: {

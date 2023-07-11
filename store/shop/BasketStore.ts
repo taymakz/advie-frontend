@@ -1,7 +1,12 @@
 import { defineStore } from 'pinia'
 import type { Ref } from 'vue'
 
-import type { CurrentOrderDTO, CurrentOrderItemDTO } from '~/models/shop/order/CurrentOrderDTO'
+import type {
+  CurrentOpenOrderDTO,
+  CurrentOrderItemDTO,
+  CurrentPendingOrderDTO,
+} from '~/models/shop/order/CurrentOrderDTO'
+
 import {
   AddItemToCurrentOrder,
   DecreaseCurrentOrderItemCount,
@@ -15,7 +20,8 @@ import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 export const useBasketStore = defineStore('basket', () => {
   const toast = useToast()
   const items: Ref<CurrentOrderItemDTO[]> = ref([])
-  const currentOrder: Ref<CurrentOrderDTO | null> = ref(null)
+  const currentOpenOrder: Ref<CurrentOpenOrderDTO | null> = ref(null)
+  const currentPendingOrder: Ref<CurrentPendingOrderDTO[]> = ref([])
   const getItemsCount = computed(() => items.value.length)
 
   const loading = ref(false)
@@ -27,8 +33,9 @@ export const useBasketStore = defineStore('basket', () => {
     if (authStore.isLogin) {
       initLoading.value = true
       const result = await GetCurrentOrder()
-      items.value = result.data?.items ?? []
-      currentOrder.value = result.data
+      items.value = result.data?.open.items ?? []
+      currentOpenOrder.value = result.data.open
+      currentPendingOrder.value = result.data.pending
       initLoading.value = false
     }
     else {
@@ -223,7 +230,10 @@ export const useBasketStore = defineStore('basket', () => {
   }
   return {
     items,
-    currentOrder,
+
+    currentPendingOrder,
+
+    currentOpenOrder,
     AddItem,
     RemoveItem,
     IncreaseCount,

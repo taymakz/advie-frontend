@@ -2,9 +2,8 @@ import type { Variant } from '~/models/shop/product/ProductDetailDTO'
 import type { ShippingRateDTO } from '~/models/shop/order/checkout/ShippingMethodDTO'
 
 export interface CurrentOrderDTO {
-  id: number
-  items: CurrentOrderItemDTO[]
-  shipping: ShippingRateDTO | null
+  open: CurrentOpenOrderDTO
+  pending: CurrentPendingOrderDTO[]
 
 }
 
@@ -19,4 +18,18 @@ export interface CurrentOrderItemDTO {
   variant: Variant
   count: number
   total_price: number
+}
+
+export interface CurrentOpenOrderDTO {
+  id: number
+  items: CurrentOrderItemDTO[]
+  shipping: ShippingRateDTO | null
+}
+
+export interface CurrentPendingOrderDTO {
+  id: number
+  slug: string
+  price: number
+  repayment_date_expire: Date
+
 }

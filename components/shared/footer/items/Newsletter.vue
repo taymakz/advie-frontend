@@ -52,6 +52,7 @@ async function submitEmail() {
             >
             <div class="w-24">
               <UButton
+                type="submit"
                 :disabled="meta.valid === false || loading"
                 aria-label="Submit to Newsletter"
                 block

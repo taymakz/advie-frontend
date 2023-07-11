@@ -1,6 +1,6 @@
 import type { baseFilterResult } from '~/models/filter/BaseFilterResult'
 import type { Variant } from '~/models/shop/product/ProductDetailDTO'
-import type { AddressDTO } from '~/models/account/user/AddressDTO'
+import type { AddressDetailDTO } from '~/models/account/user/AddressDTO'
 
 export interface OrderFilterResult extends baseFilterResult<PaidOrderDTO> {
 
@@ -19,7 +19,7 @@ export interface PaidOrderDTO {
   transaction: string
   tracking_code: string
   shipping_method: OrderShippingServiceDTO
-  address: AddressDTO
+  address: AddressDetailDTO
 }
 
 export interface OrderDetailDTO {
@@ -35,7 +35,7 @@ export interface OrderDetailDTO {
   transaction_id: string
   tracking_code: string
   shipping_service: OrderShippingServiceDTO
-  address: AddressDTO
+  address: AddressDetailDTO
   items: PaidOrderItemDTO[]
 
 }
@@ -67,6 +67,7 @@ export interface PaidOrderItemDTO {
   final_price: number
   final_price_before_discount: number
 }
+
 export enum RefundStatusDTO {
   NOT_REQUESTED = 'درخواست نشده',
   PENDING = 'در انتظار تایید',

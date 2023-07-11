@@ -27,15 +27,15 @@ onMounted(async () => {
   loading.value = true
   const basketStore = await useBasketStore()
   await basketStore.Init()
-  if (basketStore.currentOrder?.shipping === null || basketStore.getItemsCount <= 0)
+  if (basketStore.currentOpenOrder?.shipping === null || basketStore.getItemsCount <= 0)
     await router.push('/checkout/cart/')
   loading.value = false
 })
 
 const isFreeShipping = computed(() => {
   const total_price = basketStore.getTotalPrice()
-  if (basketStore.currentOrder?.shipping)
-    return basketStore.currentOrder?.shipping.price === 0 || (basketStore.currentOrder?.shipping.free_shipping_threshold > 0 && basketStore.currentOrder?.shipping.free_shipping_threshold <= total_price)
+  if (basketStore.currentOpenOrder?.shipping)
+    return basketStore.currentOpenOrder?.shipping.price === 0 || (basketStore.currentOpenOrder?.shipping.free_shipping_threshold > 0 && basketStore.currentOpenOrder?.shipping.free_shipping_threshold <= total_price)
   else
     return false
 })
@@ -258,8 +258,8 @@ async function paymentRequest() {
                   </div>
                   <div class="flex items-center justify-center gap-x-1  text-sm ">
                     <div class=" flex items-center gap-x-1">
-                      <template v-if="basketStore.currentOrder?.shipping">
-                        <template v-if="basketStore.currentOrder?.shipping.pay_at_destination">
+                      <template v-if="basketStore.currentOpenOrder?.shipping">
+                        <template v-if="basketStore.currentOpenOrder?.shipping.pay_at_destination">
                           <div class="font-iranyekanBold text-sky-500 dark:text-sky-400">
                             کرایه در مقصد
                           </div>
@@ -272,7 +272,7 @@ async function paymentRequest() {
                           </template>
                           <template v-else>
                             <div class="font-iranyekanBold text-sky-500 dark:text-sky-400">
-                              {{ splitNumber(basketStore.currentOrder?.shipping?.price) }}
+                              {{ splitNumber(basketStore.currentOpenOrder?.shipping?.price) }}
                             </div>
 
                             <div class="text-xs text-sky-500 dark:text-sky-400">
@@ -300,7 +300,7 @@ async function paymentRequest() {
                     <div class=" flex items-center gap-x-1">
                       <div class="font-iranyekanBold">
                         {{
-                          splitNumber((basketStore.getTotalPrice() - (usedCoupon ? usedCoupon.discount_amount : 0)) + (basketStore.currentOrder?.shipping ? basketStore.currentOrder?.shipping.price : 0))
+                          splitNumber((basketStore.getTotalPrice() - (usedCoupon ? usedCoupon.discount_amount : 0)) + (basketStore.currentOpenOrder?.shipping ? basketStore.currentOpenOrder?.shipping.price : 0))
                         }}
                       </div>
 
@@ -335,7 +335,7 @@ async function paymentRequest() {
                 <div class="flex items-center justify-center gap-x-1 text-sky-500 dark:text-sky-400 text-sm ">
                   <div class="font-bold">
                     {{
-                      splitNumber((basketStore.getTotalPrice() - (usedCoupon ? usedCoupon.discount_amount : 0)) + (basketStore.currentOrder?.shipping ? basketStore.currentOrder?.shipping.price : 0))
+                      splitNumber((basketStore.getTotalPrice() - (usedCoupon ? usedCoupon.discount_amount : 0)) + (basketStore.currentOpenOrder?.shipping ? basketStore.currentOpenOrder?.shipping.price : 0))
                     }}
                   </div>
                   <div class="text-xs">

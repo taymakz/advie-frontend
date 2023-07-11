@@ -26,14 +26,14 @@ if (result.value?.data == null)
   throw createError({ statusCode: 404, message: 'صفحه مورد نظر یافت نشد', fatal: true })
 
 useSeoMeta({
-  title: `${result!.data!.transaction_status === TransactionStatus.SUCCESS ? 'تراکنش موفق' : 'تراکنش  ناموفق'}`,
+  title: `${result.value.data.transaction_status === TransactionStatus.SUCCESS ? 'تراکنش موفق | فروشگاه اینترنتی ادویه' : 'تراکنش  ناموفق | فروشگاه اینترنتی ادویه'}`,
 })
 
 async function rePaymentRequest() {
   if (!result.value?.data?.order_slug)
     return
   gatewayLoading.value = true
-  const res = await RePaymentRequestSubmit(result.value?.data?.order_slug.toString())
+  const res = await RePaymentRequestSubmit(result.value.data.order_slug.toString())
   if (res.success) {
     gatewayMessage.value = res.message
     await window.location.replace(res.data.payment_gateway_link)
@@ -46,6 +46,33 @@ async function rePaymentRequest() {
     gatewayLoading.value = false
   }
 }
+
+const currentDate: Date = new Date()
+const countdownEndDate: Date = new Date(result.value.data?.repayment_date_expire)
+
+function startCountdown() {
+  const timeDifference = countdownEndDate.getTime() - currentDate.getTime()
+
+  if (timeDifference > 0) {
+    // Start the countdown
+    setTimeout(() => {
+      toast.add({ title: 'سفارش شما به دلیل عدم پرداخت و گذشت 1 ساعت حذف گردید', color: 'red' })
+
+      router.push('/')
+    }, timeDifference)
+  }
+  else {
+    if (countdownEndDate) {
+      toast.add({ title: 'سفارش شما به دلیل عدم پرداخت و گذشت 1 ساعت حذف گردید', color: 'red' })
+
+      router.push('/')
+    }
+  }
+}
+
+onMounted(() => {
+  startCountdown()
+})
 </script>
 
 <template>
@@ -179,13 +206,13 @@ async function rePaymentRequest() {
             </div>
           </div>
           <div class="flex items-center justify-center gap-x-4">
-            <div v-if="result.data?.repayment_date_expire" class="w-32 sm:w-full">
+            <div v-if="result.data?.repayment_date_expire" class="w-40 sm:w-full">
               <UButton
                 :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" size="xl" block
                 color="green" variant="outline" label="پرداخت مجدد" @click="rePaymentRequest"
               />
             </div>
-            <div class="w-32 sm:w-full">
+            <div class="w-40 sm:w-full">
               <UButton
                 :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" to="/" size="xl" block
                 color="sky" variant="outline" label="بازگشت"
