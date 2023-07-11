@@ -3,6 +3,7 @@ import type { ProductDetailDTO, Variant } from '~/models/shop/product/ProductDet
 import { VariantSelectStyle } from '~/models/shop/product/ProductDetailDTO'
 import type { CurrentOrderItemDTO } from '~/models/shop/order/CurrentOrderDTO'
 import { useBasketStore } from '~/store/shop/BasketStore'
+import { AddProductToFavorite } from '~/services/account/user.favorite.service'
 
 const props = defineProps<{
   product: ProductDetailDTO
@@ -51,23 +52,23 @@ function addToBasket() {
   loading.value = false
 }
 
-// const addToFavorite = () => {
-//   const productDetail = {
-//     id: props.product.id,
-//     url: props.product.url,
-//     image: props.product.image,
-//     title_ir: props.product.title_ir,
-//     title_en: props.product.title_en,
-//
-//     sku: props.product.sku,
-//     available_in_stock: props.product.available_in_stock,
-//     variant_type: props.product.variant_type,
-//     variants: props.product.variants,
-//     longest_special_price_end_date: props.product.longest_special_price_end_date,
-//     longest_special_price_start_date: props.product.longest_special_price_start_date
-//   } as ProductCardDTO
-//   favoriteStore.AddItem(productDetail)
-// }
+async function addToFavorite() {
+  loading.value = true
+  const result = await AddProductToFavorite(props.product.id)
+  loading.value = false
+  if (result.success) {
+    toast.add({
+      title: result.message,
+      color: 'green',
+    })
+  }
+  else {
+    toast.add({
+      title: result.message,
+      color: 'red',
+    })
+  }
+}
 </script>
 
 <template>
@@ -184,13 +185,16 @@ function addToBasket() {
         />
       </div>
       <div class="w-full">
-        <UButton block size="xl" color="rose" label="افزودن به علاقه مندی ها" :loading="loading || fetchPending" />
+        <UButton
+          block size="xl" color="rose" label="افزودن به علاقه مندی ها" :loading="loading || fetchPending"
+          @click="addToFavorite"
+        />
       </div>
     </div>
     <div v-else class="mb-2">
       <UButton
         block size="xl" color="teal" variant="outline" label="موجود شد به من اطلاع بده"
-        :loading="basketStore.loading || loading || fetchPending" @click="addToBasket"
+        :loading="basketStore.loading || loading || fetchPending"
       />
     </div>
     <div class="grid grid-cols-12 gap-1 ">
@@ -267,7 +271,3 @@ function addToBasket() {
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

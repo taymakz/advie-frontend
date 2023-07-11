@@ -8,7 +8,6 @@ const toast = useToast()
 const loading = ref(false)
 const gatewayLoading = ref(false)
 const gatewayMessage = ref('درحال پردازش')
-const route = useRoute()
 
 async function rePaymentRequest(slug: string) {
   if (!slug)

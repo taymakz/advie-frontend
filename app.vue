@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useWebsiteUtilStore } from '~/store/website/webUtilStore'
 import { useBasketStore } from '~/store/shop/BasketStore'
-import { useFavoriteStore } from '~/store/shop/FavoriteStore'
 
 useHead({
   link: [
@@ -28,10 +27,8 @@ const utilStore = useWebsiteUtilStore()
 useAsyncData('categories', () => utilStore.setCategories())
 
 const basketStore = useBasketStore()
-const favoriteStore = useFavoriteStore()
 
 basketStore.Init()
-favoriteStore.Init()
 </script>
 
 <template>
