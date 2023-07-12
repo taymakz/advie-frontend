@@ -18,7 +18,9 @@ watch(() => props.fetchPending, () => {
 
 // const favoriteStore = useFavoriteStore()
 const basketStore = useBasketStore()
-const loading = ref(false)
+const addToBasketLoading = ref(false)
+const addToFavoriteLoading = ref(false)
+
 const toast = useToast()
 
 function addToBasket() {
@@ -34,7 +36,7 @@ function addToBasket() {
       color: 'red',
     })
   }
-  loading.value = true
+  addToBasketLoading.value = true
   const orderDetail = {
     id: 1,
     order_id: 1,
@@ -49,13 +51,13 @@ function addToBasket() {
 
   } as CurrentOrderItemDTO
   basketStore.AddItem(orderDetail)
-  loading.value = false
+  addToBasketLoading.value = false
 }
 
 async function addToFavorite() {
-  loading.value = true
+  addToFavoriteLoading.value = true
   const result = await AddProductToFavorite(props.product.id)
-  loading.value = false
+  addToFavoriteLoading.value = false
   if (result.success) {
     toast.add({
       title: result.message,
@@ -121,7 +123,7 @@ async function addToFavorite() {
                 type="radio"
                 name="variant"
                 :value="item"
-                :disabled="loading || !product.is_available_in_stock"
+                :disabled="addToBasketLoading || !product.is_available_in_stock"
                 class="peer  hidden [&:checked_+_label]:block "
               >
 
@@ -152,7 +154,7 @@ async function addToFavorite() {
       <div v-if="product.is_available_in_stock" class="flex flex-col gap-y-1">
         <div>
           <div v-if="fetchPending">
-            <USkeleton v-if="loading" class="h-7 w-40 " />
+            <USkeleton class="h-7 w-40 " />
           </div>
           <div v-else>
             <p class="text-lg text-sky-500 dark:text-sky-500 font-bold ">
@@ -161,7 +163,7 @@ async function addToFavorite() {
           </div>
         </div>
         <div class="h-5 flex  justify-end">
-          <USkeleton v-if="loading || fetchPending" class="h-5 w-32 " />
+          <USkeleton v-if="fetchPending" class="h-5 w-32 " />
           <template v-else>
             <div v-if="selectedVariant.is_special" class="text-sm flex gap-x-2 font-iranyekanMedium text-red-600  ">
               <strong> ( {{ selectedVariant.special_price_percent }}% )</strong>
@@ -180,13 +182,15 @@ async function addToFavorite() {
     >
       <div class="w-full">
         <UButton
-          block size="xl" color="sky" label="افزودن به سبد خرید"
-          :loading="basketStore.loading || loading || fetchPending" @click="addToBasket"
+          block size="xl" color="sky"
+          :label="basketStore.loading || addToBasketLoading || fetchPending ? '' : 'افزودن به سبد خرید'"
+          :loading="basketStore.loading || addToBasketLoading || fetchPending" @click="addToBasket"
         />
       </div>
       <div class="w-full">
         <UButton
-          block size="xl" color="rose" label="افزودن به علاقه مندی ها" :loading="loading || fetchPending"
+          block size="xl" color="rose" :label="addToFavoriteLoading || fetchPending ? '' : 'افزودن به علاقه مندی ها'"
+          :loading="addToFavoriteLoading || fetchPending"
           @click="addToFavorite"
         />
       </div>
@@ -194,7 +198,7 @@ async function addToFavorite() {
     <div v-else class="mb-2">
       <UButton
         block size="xl" color="teal" variant="outline" label="موجود شد به من اطلاع بده"
-        :loading="basketStore.loading || loading || fetchPending"
+        :loading="fetchPending"
       />
     </div>
     <div class="grid grid-cols-12 gap-1 ">

@@ -83,7 +83,7 @@ const accountDropdown = ref(false)
                   class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
                 >
                   <span>
-                    <Icon name="ph:handbag-light" size="24" />
+                    <Icon name="solar:bag-3-linear" size="24" />
                   </span>
                   <span class="text-slate-500 dark:text-slate-400 text-sm">
                     سفارش های من
@@ -96,7 +96,7 @@ const accountDropdown = ref(false)
                   class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
                 >
                   <span>
-                    <Icon name="ic:baseline-favorite-border" size="24" />
+                    <Icon name="ph:heart-straight" size="24" />
                   </span>
                   <span class="text-slate-500 dark:text-slate-400 text-sm">
                     علاقه مندی های من

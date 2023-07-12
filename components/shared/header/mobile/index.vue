@@ -50,7 +50,7 @@ watch(() => router.currentRoute.value, () => {
         @click="showNavbar = true"
       >
         <ClientOnly>
-          <Icon name="ri:menu-3-line" size="24" />
+          <Icon name="ri:menu-3-line" size="24" class="text-sky-500 dark:text-sky-400" />
         </ClientOnly>
       </div>
       <div>

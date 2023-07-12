@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ProductCardDTO } from '~/models/shop/product/ProductCardDTO'
-import { truncatedText } from '~/utils/TextUtils'
 
 const props = defineProps<{
   product: ProductCardDTO
@@ -61,8 +60,8 @@ function updateProgress() {
           </div>
         </div>
         <div class="mb-2">
-          <p class="text-sm text-slate-800 dark:text-slate-300 h-10">
-            {{ truncatedText(product.title_ir, 60) }}
+          <p class="text-sm text-slate-800 dark:text-slate-300 h-10 text-ellipsis overflow-hidden">
+            {{ product.title_ir }}
           </p>
         </div>
         <div v-if="product.is_available_in_stock">

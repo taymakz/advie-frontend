@@ -60,8 +60,8 @@ function updateProgress() {
           </div>
         </div>
         <div class="mb-2">
-          <p class="text-sm text-slate-800 dark:text-slate-300 h-10">
-            {{ truncatedText(product.title_ir, 80) }}
+          <p class="text-sm text-slate-800 dark:text-slate-300 h-10 text-ellipsis overflow-hidden">
+            {{ product.title_ir }}
           </p>
         </div>
         <div v-if="product.is_available_in_stock">
