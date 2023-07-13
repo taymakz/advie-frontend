@@ -36,6 +36,8 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
       </div>
 
       <button
+        aria-label="Sort Latest"
+        type="button"
         class="py-2 px-2 relative rounded-lg "
         :class="[{ 'bg-gray-100 dark:bg-gray-900  text-sky-500 dark:text-sky-400 font-bold': selectedSort === ProductSearchSortBy.LATEST }]"
         @click="selectedSort = ProductSearchSortBy.LATEST"
@@ -45,6 +47,8 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
         </span>
       </button>
       <button
+        aria-label="Sort Best Sale"
+        type="button"
         class="py-2 px-2 relative rounded-lg "
         :class="[{ 'bg-gray-100 dark:bg-gray-900 text-sky-500 dark:text-sky-400 font-bold': selectedSort === ProductSearchSortBy.BEST_SALE }]"
         @click="selectedSort = ProductSearchSortBy.BEST_SALE"
@@ -55,6 +59,8 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
         </span>
       </button>
       <button
+        aria-label="Sort Expensive"
+        type="button"
         class="py-2 px-2 relative rounded-lg "
         :class="[{ 'bg-gray-100 dark:bg-gray-900 text-sky-500 dark:text-sky-400 font-bold': selectedSort === ProductSearchSortBy.EXPENSIVE }]"
         @click="selectedSort = ProductSearchSortBy.EXPENSIVE"
@@ -65,6 +71,8 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
         </span>
       </button>
       <button
+        aria-label="Sort Cheapest"
+        type="button"
         class="py-2 px-2 relative rounded-lg "
         :class="[{ 'bg-gray-100 dark:bg-gray-900 text-sky-500 dark:text-sky-400 font-bold': selectedSort === ProductSearchSortBy.CHEAPEST }]"
         @click="selectedSort = ProductSearchSortBy.CHEAPEST"

@@ -5,7 +5,7 @@
 <template>
   <ClientOnly>
     <div
-      class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 hover:dark:bg-gray-700 transition-all duration-300 flex items-center justify-between rounded-xl py-3 px-4 cursor-pointer"
+      class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 hover:dark:bg-gray-700 flex items-center justify-between rounded-xl py-3 px-4 cursor-pointer"
     >
       <div class="text-sm text-slate-700 dark:text-slate-300">
         جستجو کنید ...
