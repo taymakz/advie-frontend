@@ -8,7 +8,6 @@ definePageMeta({
 
 const router = useRouter()
 const toast = useToast()
-const loading = ref(false)
 const gatewayLoading = ref(false)
 const gatewayMessage = ref('درحال پردازش')
 const {

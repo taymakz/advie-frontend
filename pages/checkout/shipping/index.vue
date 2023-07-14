@@ -117,8 +117,8 @@ async function paymentRequest() {
                   class="flex border border-gray-200 dark:border-gray-700 relative not-prose rounded-md  bg-white dark:bg-gray-800 hover:bg-gray-100 hover:dark:bg-gray-900 cursor-pointer  text-slate-600 dark:text-slate-300 text-sm hover:text-sky-500 hover:dark:text-sky-400 transition-all duration-150 disabled:blur disabled:cursor-not-allowed"
                   @click="isOpenSelectAddressModal = true"
                 >
-                  <div class="w-full">
-                    <div
+                  <span class="w-full">
+                    <span
                       class="relative overflow-hidden rounded  opacity-75 h-20  select-none w-full flex items-center justify-center "
                     >
                       <svg class="absolute inset-0 h-full w-full stroke-gray-900/10 dark:stroke-white/10" fill="none">
@@ -139,8 +139,8 @@ async function paymentRequest() {
                       <span>
                         انتخاب, تغییر یا ویرایش آدرس
                       </span>
-                    </div><!---->
-                  </div>
+                    </span><!---->
+                  </span>
                 </button>
                 <div v-show="selectedAddress">
                   <div
@@ -211,10 +211,10 @@ async function paymentRequest() {
 
                         class="block cursor-pointer rounded-lg border border-gray-200 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-300 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
                       >
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center gap-x-4">
-                            <p class="text-gray-700 dark:text-gray-200">{{ item.shipping_service.name }}</p>
-                            <div>
+                        <span class="flex items-center justify-between">
+                          <span class="flex items-center gap-x-4">
+                            <span class="text-gray-700 dark:text-gray-200">{{ item.shipping_service.name }}</span>
+                            <span>
                               <nuxt-img
                                 :src="GetImageUrl(item.shipping_service.image)"
                                 class="rounded-full"
@@ -225,9 +225,9 @@ async function paymentRequest() {
                                 placeholder
                                 loading="lazy"
                               />
-                            </div>
+                            </span>
 
-                          </div>
+                          </span>
 
                           <svg
                             class="hidden h-5 w-5 text-blue-600"
@@ -241,9 +241,9 @@ async function paymentRequest() {
                               clip-rule="evenodd"
                             />
                           </svg>
-                        </div>
+                        </span>
 
-                        <p class="mt-1 md:mt-2 text-gray-900 dark:text-white">
+                        <span class="mt-1 md:mt-2 text-gray-900 dark:text-white">
                           <template v-if="item.pay_at_destination">
                             <!-- Display when pay_at_destination is true -->
                             <span>کرایه در مقصد</span>
@@ -281,7 +281,7 @@ async function paymentRequest() {
                             </div>
                           </template>
 
-                        </p>
+                        </span>
                       </label>
                     </div>
                   </fieldset>
@@ -302,10 +302,10 @@ async function paymentRequest() {
                           <label
                             class="block cursor-pointer rounded-lg border border-gray-100 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700 h-24 w-full"
                           >
-                            <div class="flex items-center justify-between">
-                              <div class="flex items-center gap-x-4">
-                                <div />
-                              </div>
+                            <span class="flex items-center justify-between">
+                              <span class="flex items-center gap-x-4">
+                                <span />
+                              </span>
 
                               <svg
                                 class="hidden h-5 w-5 text-blue-600"
@@ -319,7 +319,7 @@ async function paymentRequest() {
                                   clip-rule="evenodd"
                                 />
                               </svg>
-                            </div>
+                            </span>
 
                           </label>
                         </div>
@@ -332,10 +332,10 @@ async function paymentRequest() {
                           <label
                             class="block cursor-pointer rounded-lg border border-gray-100 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700 h-24 w-full"
                           >
-                            <div class="flex items-center justify-between">
-                              <div class="flex items-center gap-x-4">
-                                <div />
-                              </div>
+                            <span class="flex items-center justify-between">
+                              <span class="flex items-center gap-x-4">
+                                <span />
+                              </span>
 
                               <svg
                                 class="hidden h-5 w-5 text-blue-600"
@@ -349,7 +349,7 @@ async function paymentRequest() {
                                   clip-rule="evenodd"
                                 />
                               </svg>
-                            </div>
+                            </span>
 
                           </label>
                         </div>
