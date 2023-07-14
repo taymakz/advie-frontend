@@ -143,7 +143,7 @@ function updateProgress() {
           <div class="h-10" />
           <div class=" h-9 mb-1">
             <UButton
-              block size="xs" color="teal" variant="outline" label="موجود شد به من اطلاع بده"
+              block size="xs" color="teal" label="موجود شد به من اطلاع بده"
             />
           </div>
         </div>

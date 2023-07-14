@@ -106,7 +106,7 @@ async function paymentRequest() {
                   <div class="w-28">
                     <UButton
                       :disabled="loading"
-                      block label="تغییر" variant="outline" color="sky"
+                      block label="تغییر" color="sky"
                       @click="isOpenSelectAddressModal = true"
                     />
                   </div>

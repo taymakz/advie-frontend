@@ -89,7 +89,7 @@ watch(() => formData.receiver_province, () => {
           ویرایش آدرس
         </h3>
         <div class="w-24">
-          <UButton block size="lg" color="red" variant="outline" label="بستن" @click="$emit('closeModal')" />
+          <UButton block size="lg" color="red" label="بستن" @click="$emit('closeModal')" />
         </div>
       </div>
     </template>

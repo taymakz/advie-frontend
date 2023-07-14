@@ -92,7 +92,7 @@ async function rePaymentRequest(slug: string) {
                   <div class="w-32 md:w-full">
                     <UButton
                       :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" size="lg" block
-                      color="green" variant="outline" label="پرداخت مجدد" @click="rePaymentRequest(item.slug)"
+                      color="green" label="پرداخت مجدد" @click="rePaymentRequest(item.slug)"
                     />
                   </div>
                   <div class="w-32 md:w-full">
@@ -100,7 +100,7 @@ async function rePaymentRequest(slug: string) {
                       :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading"
                       :to="`/panel/orders/${item.slug}/`" size="lg"
                       block
-                      color="sky" variant="outline" label="جزئیات"
+                      color="sky" label="جزئیات"
                     />
                   </div>
                 </div>

@@ -16,7 +16,7 @@ export default defineAppConfig({
         'xl': 'px-3.5 py-3',
       },
       variant: {
-        solid: 'shadow-sm text-white dark:text-slate-200 bg-{color}-600 hover:bg-{color}-700 disabled:bg-{color}-600 dark:bg-{color}-800 hover:dark:bg-{color}-600 dark:disabled:bg-{color}-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-{color}-500 dark:focus-visible:outline-{color}-400',
+        solid: 'shadow-sm text-white dark:text-slate-200 bg-{color}-600 hover:bg-{color}-700 disabled:bg-{color}-600 dark:bg-{color}-700 hover:dark:bg-{color}-600 dark:disabled:bg-{color}-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-{color}-500 dark:focus-visible:outline-{color}-400',
       },
     },
     notifications: {

@@ -115,7 +115,7 @@ const getValidationClass: Ref<any> = computed(() => {
           </h3>
 
           <div class="w-24">
-            <UButton block size="lg" color="red" variant="outline" label="بستن" @click="modelValue = false" />
+            <UButton block size="lg" color="red" label="بستن" @click="modelValue = false" />
           </div>
         </div>
       </template>

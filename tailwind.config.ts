@@ -43,6 +43,13 @@ export default <Partial<Config>>{
     },
 
   },
+  safelist: [
+    {
+      pattern: /(bg|text)-(red|sky|rose|green)-(100|200|300|400|500|600|700|800|900|950)/,
+      variants: ['hover', 'dark', 'hover:dark', 'dark:hover'],
+    },
+
+  ],
   plugins: [
     tailwind_forms(),
     tailwind_scrollbar({ nocompatible: true }),

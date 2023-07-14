@@ -129,12 +129,12 @@ onMounted(() => {
           <div class="flex items-center justify-center gap-x-4">
             <div class="w-32 sm:w-full">
               <UButton
-                :to="`/panel/orders/${result?.data?.order_slug}`" size="xl" block color="green" variant="outline"
+                :to="`/panel/orders/${result?.data?.order_slug}`" size="xl" block color="green"
                 label="پیگیری سفارش"
               />
             </div>
             <div class="w-32 sm:w-full">
-              <UButton to="/" size="xl" block color="sky" variant="outline" label="بازگشت" />
+              <UButton to="/" size="xl" block color="sky" label="بازگشت" />
             </div>
           </div>
         </div>
@@ -212,13 +212,13 @@ onMounted(() => {
             <div v-if="result.data?.repayment_date_expire" class="w-40 sm:w-full">
               <UButton
                 :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" size="xl" block
-                color="green" variant="outline" label="پرداخت مجدد" @click="rePaymentRequest"
+                color="green" label="پرداخت مجدد" @click="rePaymentRequest"
               />
             </div>
             <div class="w-40 sm:w-full">
               <UButton
                 :loading="gatewayLoading || loading" :disabled="gatewayLoading || loading" to="/" size="xl" block
-                color="sky" variant="outline" label="بازگشت"
+                color="sky" label="بازگشت"
               />
             </div>
           </div>

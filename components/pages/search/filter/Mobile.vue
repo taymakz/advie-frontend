@@ -77,7 +77,7 @@ watch(() => router.currentRoute.value.query.available, (newVal) => {
         </div>
 
         <div class="w-24">
-          <UButton block size="lg" color="red" variant="outline" label="بستن" @click="hideFilter" />
+          <UButton block size="lg" color="red" label="بستن" @click="hideFilter" />
         </div>
       </div>
       <div class="flex flex-col items-center gap-y-2">

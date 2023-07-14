@@ -174,7 +174,7 @@ function createdAddress(newAddress: AddressDetailDTO) {
                     size="lg"
                     block
                     color="sky"
-                    variant="outline"
+
                     label="ویرایش"
                     :disabled="loading"
                     @click="editAddress(item)"
@@ -185,7 +185,7 @@ function createdAddress(newAddress: AddressDetailDTO) {
                     size="lg"
                     block
                     color="rose"
-                    variant="outline"
+
                     label="حذف" :disabled="loading"
                     @click="removeAddress(item.id)"
                   />

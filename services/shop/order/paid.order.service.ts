@@ -11,9 +11,6 @@ export function GetPaidOrderList(page: number, take: number): Promise<ApiRespons
   })
 }
 
-export function GetPaidOrderDetail(transaction: number): Promise<ApiResponse<PaidOrderDTO>> {
-  return FetchApi(`/order/${transaction}`, {
-    method: 'GET',
-
-  })
+export function GetPaidOrderDetail(slug: string): Promise<ApiResponse<PaidOrderDTO>> {
+  return FetchApi(`/order/detail/${slug}`)
 }

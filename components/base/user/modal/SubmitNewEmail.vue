@@ -177,7 +177,7 @@ function stopTimer() {
             </h3>
 
             <div class="w-24">
-              <UButton block size="lg" color="red" variant="outline" label="بستن" @click="modelValue = false" />
+              <UButton block size="lg" color="red" label="بستن" @click="modelValue = false" />
             </div>
           </div>
         </template>
@@ -214,7 +214,7 @@ function stopTimer() {
             </h3>
             <div class="w-24">
               <UButton
-                block size="lg" color="sky" variant="outline" label="برگشت"
+                block size="lg" color="sky" label="برگشت"
                 @click="section = EmailVerificationSection.EMAIL"
               />
             </div>

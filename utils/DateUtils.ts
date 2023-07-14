@@ -396,7 +396,7 @@ export function getPersianDate(date: Date, format: string) {
     return ` ${padTo2Digits(day)} / ${months[month - 1]} / ${ye}` // 04 / شهريور / ۱۴۰۱
 }
 
-export function GetTime(date: Date): string {
+export function GetDateTime(date: Date): string {
   let hours = date.getHours().toString()
   hours = (`0${hours}`).slice(-2)
   let min = date.getMinutes().toString()

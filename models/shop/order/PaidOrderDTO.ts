@@ -14,6 +14,7 @@ export interface PaidOrderDTO {
   delivery_status: OrderDeliveryStatus
   payment_status: OrderPaymentStatus
 
+  date_delivery_status_updated: Date
   date_ordered: Date
   date_shipped: Date
   date_delivered: Date

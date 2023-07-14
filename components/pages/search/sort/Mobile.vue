@@ -64,7 +64,7 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
         </div>
 
         <div class="w-24">
-          <UButton block size="lg" color="red" variant="outline" label="بستن" @click="hideSort" />
+          <UButton block size="lg" color="red" label="بستن" @click="hideSort" />
         </div>
       </div>
       <div class="flex flex-col items-center gap-y-2">

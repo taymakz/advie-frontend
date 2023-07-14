@@ -98,7 +98,7 @@ function createdAddress(newAddress: AddressDetailDTO) {
               آدرس ها
             </h3>
             <div class="w-24">
-              <UButton block size="lg" color="red" variant="outline" label="بستن" @click="modelValue = false" />
+              <UButton block size="lg" color="red" label="بستن" @click="modelValue = false" />
             </div>
           </div>
         </template>
@@ -175,7 +175,7 @@ function createdAddress(newAddress: AddressDetailDTO) {
                         size="lg"
                         block
                         color="green"
-                        variant="outline"
+
                         label="انتخاب"
                         :disabled="loading"
                         @click="selectAddress(item)"
@@ -186,7 +186,7 @@ function createdAddress(newAddress: AddressDetailDTO) {
                         size="lg"
                         block
                         color="sky"
-                        variant="outline"
+
                         label="ویرایش"
                         :disabled="loading"
                         @click="editAddress(item)"
@@ -197,7 +197,7 @@ function createdAddress(newAddress: AddressDetailDTO) {
                         size="lg"
                         block
                         color="rose"
-                        variant="outline"
+
                         label="حذف" :disabled="loading"
                         @click="removeAddress(item.id)"
                       />

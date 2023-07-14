@@ -52,7 +52,6 @@ export default defineNuxtConfig({
     },
   },
   ui: {
-    safelistColors: ['sky', 'red', 'green', 'rose'],
     icons: ['mdi'],
   },
   tailwindcss: {
