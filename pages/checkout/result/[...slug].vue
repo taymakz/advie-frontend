@@ -24,7 +24,9 @@ const {
 } = await useAsyncData('checkout_result', () => GetCheckoutResult(transaction_id, transaction_slug))
 if (result.value?.data == null)
   throw createError({ statusCode: 404, message: 'صفحه مورد نظر یافت نشد', fatal: true })
-
+useServerSeoMeta({
+  title: 'نتیجه تراکنش | فروشگاه اینترنتی ادویه',
+})
 useSeoMeta({
   title: `${result.value.data.transaction_status === TransactionStatus.SUCCESS ? 'تراکنش موفق | فروشگاه اینترنتی ادویه' : 'تراکنش  ناموفق | فروشگاه اینترنتی ادویه'}`,
 })
@@ -51,21 +53,22 @@ const currentDate: Date = new Date()
 const countdownEndDate: Date = new Date(result.value.data?.repayment_date_expire)
 
 function startCountdown() {
-  const timeDifference = countdownEndDate.getTime() - currentDate.getTime()
+  if (result.value?.data?.transaction_status === TransactionStatus.FAILED && result.value?.data?.repayment_date_expire) {
+    const timeDifference = countdownEndDate.getTime() - currentDate.getTime()
+    if (timeDifference > 0) {
+      // Start the countdown
+      setTimeout(() => {
+        toast.add({ title: 'سفارش شما به دلیل عدم پرداخت و گذشت 1 ساعت حذف گردید', color: 'red' })
 
-  if (timeDifference > 0) {
-    // Start the countdown
-    setTimeout(() => {
-      toast.add({ title: 'سفارش شما به دلیل عدم پرداخت و گذشت 1 ساعت حذف گردید', color: 'red' })
+        router.push('/')
+      }, timeDifference)
+    }
+    else {
+      if (countdownEndDate) {
+        toast.add({ title: 'سفارش شما به دلیل عدم پرداخت و گذشت 1 ساعت حذف گردید', color: 'red' })
 
-      router.push('/')
-    }, timeDifference)
-  }
-  else {
-    if (countdownEndDate) {
-      toast.add({ title: 'سفارش شما به دلیل عدم پرداخت و گذشت 1 ساعت حذف گردید', color: 'red' })
-
-      router.push('/')
+        router.push('/')
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import type { ApiResponse } from '~/models/api/ApiResponse'
-import type { OrderDetailDTO, OrderFilterResult } from '~/models/shop/order/PaidOrderDTO'
+import type { OrderFilterResult, PaidOrderDTO } from '~/models/shop/order/PaidOrderDTO'
 
 export function GetPaidOrderList(page: number, take: number): Promise<ApiResponse<OrderFilterResult>> {
   return FetchApi('/order/list/', {
@@ -10,7 +10,8 @@ export function GetPaidOrderList(page: number, take: number): Promise<ApiRespons
     },
   })
 }
-export function GetPaidOrderDetail(transaction: number): Promise<ApiResponse<OrderDetailDTO>> {
+
+export function GetPaidOrderDetail(transaction: number): Promise<ApiResponse<PaidOrderDTO>> {
   return FetchApi(`/order/${transaction}`, {
     method: 'GET',
 

@@ -31,5 +31,6 @@ export interface CurrentPendingOrderDTO {
   slug: string
   price: number
   repayment_date_expire: Date
+  items: CurrentOrderItemDTO[]
 
 }
