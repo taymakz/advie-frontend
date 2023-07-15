@@ -163,10 +163,10 @@ const removePending = ref()
               class=" bottom-0  left-0 border-t border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900  w-full  rounded-b-xl py-4 px-4"
             >
               <div class="flex items-center justify-between select-none mb-4">
-                <p class="text-xs  text-slate-500 dark:text-slate-400 font-iranyekanBold ">
+                <p class="text-slate-500 dark:text-slate-400 font-iranyekanBold ">
                   مجموع سبد خرید
                 </p>
-                <div class="text-sky-500 dark:text-sky-400 text-sm font-medium ">
+                <div class="text-sky-500 dark:text-sky-400 font-medium ">
                   {{ splitNumber(basketStore.getTotalPrice()) }}
                   <span class="text-xs">تومان</span>
                 </div>

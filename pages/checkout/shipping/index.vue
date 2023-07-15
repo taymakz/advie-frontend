@@ -179,7 +179,7 @@ async function paymentRequest() {
                     </div>
                   </div>
                 </div>
-                <PagesCheckoutShippingSelectAddressModal
+                <BaseUserModalSelectAddress
                   v-model="isOpenSelectAddressModal"
                   :selected-address-id="selectedAddress?.id"
                   @selected="(address) => selectedAddress = address"

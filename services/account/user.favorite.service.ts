@@ -1,10 +1,17 @@
-import type { ProductCardDTO } from '~/models/shop/product/ProductCardDTO'
 import type { ApiResponse } from '~/models/api/ApiResponse'
+import type { UserFavoriteFilterResult } from '~/models/shop/product/ProductFavoriteCardDTO'
 
-export function GetCurrentFavorite(): Promise<ApiResponse<ProductCardDTO[]>> {
-  return FetchApi('/product/user/favorite/')
+export function GetUserFavorite(page: number, take: number): Promise<ApiResponse<UserFavoriteFilterResult>> {
+  return FetchApi('/product/user/favorite/list/', {
+    method: 'GET',
+    query: {
+      page,
+      take,
+    },
+  })
 }
-export function AddProductToFavorite(product_id: number): Promise<ApiResponse<undefined>> {
+
+export function AddProductToFavorite(product_id: number): Promise<ApiResponse<{ 'color': string }>> {
   return FetchApi('/product/user/favorite/', {
     method: 'POST',
     body: {
@@ -12,11 +19,12 @@ export function AddProductToFavorite(product_id: number): Promise<ApiResponse<un
     },
   })
 }
-export function RemoveProductFromFavorite(product_id: number): Promise<ApiResponse<undefined>> {
+
+export function RemoveProductFromFavorite(id: number): Promise<ApiResponse<undefined>> {
   return FetchApi('/product/user/favorite/', {
     method: 'DELETE',
     body: {
-      product_id,
+      id,
     },
   })
 }

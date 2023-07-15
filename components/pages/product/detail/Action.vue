@@ -61,7 +61,7 @@ async function addToFavorite() {
   if (result.success) {
     toast.add({
       title: result.message,
-      color: 'green',
+      color: result.data.color,
     })
   }
   else {

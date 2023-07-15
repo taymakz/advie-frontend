@@ -54,7 +54,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6 hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <Icon name="ph:house" size="22" />
@@ -67,7 +67,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/orders/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <div>
@@ -81,7 +81,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/favorite/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <div>
@@ -95,7 +95,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/recent/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <div>
@@ -109,7 +109,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/notification/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <div>
@@ -125,7 +125,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/addresses/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <div>
@@ -141,7 +141,7 @@ const authStore = useAuthenticateStore()
         <li>
           <nuxt-link
             to="/panel/profile/"
-            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 "
+            class="flex items-center gap-x-4   py-4 px-6  hover:bg-gray-200  dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200 "
             active-class="bg-sky-500 dark:bg-sky-600 !text-slate-100 dark:!text-slate-100 hover:bg-sky-500 dark:hover:bg-sky-600 "
           >
             <div>
@@ -156,7 +156,7 @@ const authStore = useAuthenticateStore()
         </li>
         <li>
           <div
-            class="relative flex items-center gap-x-4   cursor-pointer py-4 px-6 hover:bg-gray-200 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300"
+            class="relative flex items-center gap-x-4   cursor-pointer py-4 px-6 hover:bg-gray-200 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200"
             @click="authStore.Logout"
           >
             <div>

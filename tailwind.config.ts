@@ -26,6 +26,7 @@ export default <Partial<Config>>{
       'lg': { max: '1023px' },
       'md': { max: '767px' },
       'sm': { max: '639px' },
+      'xs': { max: '567px' },
     },
     container: {
       center: true,
@@ -46,7 +47,7 @@ export default <Partial<Config>>{
   safelist: [
     {
       pattern: /(bg|text)-(red|sky|rose|green)-(100|200|300|400|500|600|700|800|900|950)/,
-      variants: ['hover', 'dark', 'hover:dark', 'dark:hover'],
+      variants: ['hover', 'dark', 'hover:dark', 'dark:hover', 'disabled', 'dark:disabled', 'hover:disabled'],
     },
 
   ],

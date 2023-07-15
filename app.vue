@@ -19,6 +19,7 @@ useHead({
     dir: 'rtl',
 
   },
+
 })
 useSeoMeta({
   title: 'فروشگاه اینترنتی ادویه',
@@ -42,32 +43,15 @@ basketStore.Init()
 </template>
 
 <style>
-.page-enter-active {
-  animation: page-fade-in 0.1s ease-out;
-}
-
+.page-enter-active,
 .page-leave-active {
-  animation: page-fade-out 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.1s;
 }
 
-@keyframes page-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes page-fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-  }
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
 
 .layout-enter-active {

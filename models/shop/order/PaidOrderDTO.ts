@@ -14,6 +14,7 @@ export interface PaidOrderDTO {
   delivery_status: OrderDeliveryStatus
   payment_status: OrderPaymentStatus
 
+  repayment_date_expire: Date
   date_delivery_status_updated: Date
   date_ordered: Date
   date_shipped: Date
@@ -22,6 +23,7 @@ export interface PaidOrderDTO {
   total_payment_price: number
   total_price: number
   total_profit: number
+  total_profit_before_discount: number
   total_price_before_discount: number
   coupon_effect_price: number
 
@@ -62,8 +64,11 @@ export interface PaidOrderItemDTO {
   variant: Variant
   count: number
   refund_status: RefundStatusDTO
+  is_special: boolean
   final_price: number
   final_price_before_discount: number
+  final_discount: number
+  final_profit: number
 }
 
 export enum RefundStatusDTO {

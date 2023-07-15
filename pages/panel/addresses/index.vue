@@ -143,6 +143,12 @@ function createdAddress(newAddress: AddressDetailDTO) {
                 {{ item.receiver_address }}
               </p>
               <div class="grid grid-cols-4 lg:grid-cols-2 items-center  center gap-4  w-fit lg:w-full">
+                <div class="flex items-center gap-x-2">
+                  <Icon name="solar:user-outline" size="20" class="text-sky-500 dark:text-sky-400" />
+                  <p class="text-slate-600 dark:text-slate-300">
+                    {{ item.receiver_name }} {{ item.receiver_family }}
+                  </p>
+                </div>
                 <div class="flex items-center  gap-x-2">
                   <Icon name="solar:signpost-broken" size="20" class="text-sky-500 dark:text-sky-400" />
                   <p class="text-slate-600 dark:text-slate-300">
@@ -159,12 +165,6 @@ function createdAddress(newAddress: AddressDetailDTO) {
                   <Icon name="solar:phone-linear" size="20" class="text-sky-500 dark:text-sky-400" />
                   <p class="text-slate-600 dark:text-slate-300">
                     {{ item.receiver_phone }}
-                  </p>
-                </div>
-                <div class="flex items-center gap-x-2">
-                  <Icon name="solar:user-outline" size="20" class="text-sky-500 dark:text-sky-400" />
-                  <p class="text-slate-600 dark:text-slate-300">
-                    {{ item.receiver_name }} {{ item.receiver_family }}
                   </p>
                 </div>
               </div>
