@@ -23,14 +23,10 @@ defineProps<{
             placeholder
           />
         </BaseBeutyBorderColor>
-        <div class="text-sm sm:text-xs text-slate-500 dark:text-slate-400">
+        <div class="sm:text-sm text-slate-500 dark:text-slate-400">
           {{ category.title_ir }}
         </div>
       </div>
     </nuxt-link>
   </div>
 </template>
-
-<style scoped>
-
-</style>

@@ -41,7 +41,9 @@ watch(() => route.query, () => {
         <nuxt-link to="/">
           <BaseLogo />
         </nuxt-link>
-        <SharedHeaderDesktopItemsSearch />
+        <div class="flex-1 max-w-xl ">
+          <SharedHeaderDesktopItemsSearch />
+        </div>
 
         <div class="flex items-center justify-between gap-x-4">
           <SharedHeaderDesktopItemsAccount />

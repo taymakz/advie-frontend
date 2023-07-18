@@ -170,6 +170,7 @@ function stopTimer() {
           </div>
           <div v-if="canLoginWithPassword">
             <button
+              type="button"
               :disabled="loading"
               class="flex items-center py-1 px-2 text-[14px] text-sky-600"
               @click="redirectToPassword"

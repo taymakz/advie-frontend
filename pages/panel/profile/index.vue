@@ -27,11 +27,8 @@ definePageMeta({
       <div class="col-span-6 md:col-span-12 ">
         <PagesPanelProfileEmail />
       </div>
-      <div class="col-span-6 md:col-span-12 ">
+      <div class="col-span-12 ">
         <PagesPanelProfilePassword />
-      </div>
-      <div class="col-span-6 md:col-span-12 ">
-        <PagesPanelProfileNotification />
       </div>
     </div>
   </div>
