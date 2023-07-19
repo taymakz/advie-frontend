@@ -6,6 +6,7 @@ import type { ProductSearchResultDTO } from '~/models/shop/search/SearchResultDT
 const searchModal = ref(false)
 
 const router = useRouter()
+const route = useRoute()
 const searchValue = ref('')
 
 const loading = ref(false)
@@ -56,6 +57,14 @@ watch(
   },
   { flush: 'sync' },
 )
+watch(() => route.query.q, (newVal) => {
+  searchModal.value = false
+  if (!newVal)
+    searchValue.value = ''
+})
+watch(() => route.fullPath, () => {
+  searchModal.value = false
+})
 </script>
 
 <template>
@@ -65,9 +74,7 @@ watch(
         class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 hover:dark:bg-gray-700  flex items-center justify-between rounded-xl py-2 px-4 cursor-pointer"
         @click="searchModal = true"
       >
-        <div class="text-sm text-slate-600 dark:text-slate-400">
-          جستجو کنید ...
-        </div>
+        <div class="text-sm text-slate-600 dark:text-slate-400" v-text="searchValue ? searchValue : 'جستجو کنید ...'" />
         <div>
           <Icon name="iconoir:search" size="22" class="text-sky-500 dark:text-sky-400" />
         </div>

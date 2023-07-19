@@ -25,10 +25,13 @@ const basketStore = useBasketStore()
             class="relative bg-gray-100 dark:bg-gray-800  hover:bg-sky-500 dark:hover:bg-sky-500 group flex items-center justify-center w-8 h-8 transition-colors duration-150 rounded-full cursor-pointer"
           >
             <div class="sr-only">
-              User Basket
+              User Account
             </div>
-            <div v-if="basketStore.currentPendingOrder.length > 0" class="absolute -top-0 -right-0 ">
-              <BaseBeutyPing wrapper-class="bg-yellow-400" ping-class="bg-yellow-500" />
+            <div
+              v-if="basketStore.currentPendingOrder.length > 0 || authStore.currentUser!.notification_count > 0 || !authStore.currentUser?.has_password"
+              class="absolute -top-0 -right-0 "
+            >
+              <BaseBeutyPing />
             </div>
             <Icon
               name="solar:user-outline" size="20"
@@ -58,14 +61,14 @@ const basketStore = useBasketStore()
                     </div>
                     <div>
                       <p v-if="authStore.currentUser?.full_name " class="text-sm font-medium">
-                        {{ truncatedText(authStore.currentUser?.full_name, 18) }}
+                        {{ truncatedText(authStore?.currentUser?.full_name, 18) }}
                       </p>
                       <p v-else class="text-base font-medium">
                         <template v-if="authStore.currentUser?.phone ">
-                          {{ truncatedText(authStore.currentUser?.phone, 18) }}
+                          {{ truncatedText(authStore?.currentUser?.phone, 18) }}
                         </template>
                         <template v-else>
-                          {{ truncatedText(authStore.currentUser?.email, 18) }}
+                          {{ truncatedText(authStore?.currentUser?.email, 18) }}
                         </template>
                       </p>
                     </div>
@@ -78,25 +81,58 @@ const basketStore = useBasketStore()
 
               <!--     items       -->
               <ul class="flex flex-col ">
-                <li>
+                <li v-if="authStore.currentUser!.notification_count > 0">
                   <nuxt-link
-                    to="/"
-                    class="flex items-center justify-between py-4 px-5   dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800   text-sm"
+                    to="/panel/notification/"
+                    class="flex items-center justify-between py-4 px-5 gap-x-2  text-yellow-600 dark:text-yellow-500 hover:bg-gray-100 dark:hover:bg-slate-800  text-sm"
                   >
                     <div class="flex items-center gap-x-2">
-                      <Icon name="solar:bag-3-linear" size="22" />
-                      <span>سفارش های من</span>
+                      <Icon name="ph:bell" size="22" />
+                      <span>{{ authStore.currentUser?.notification_count }} پیام جدید</span>
                     </div>
-                    <div v-if="basketStore.currentPendingOrder.length > 0">
-                      <BaseBeutyPing wrapper-class="bg-yellow-400" ping-class="bg-yellow-500" />
+                    <div>
+                      <BaseBeutyPing wrapper-class="bg-yellow-400" ping-class="bg-yellow-500 h-2 w-2" />
+                    </div>
+                  </nuxt-link>
+                </li>
+                <li v-if="!authStore.currentUser?.has_password">
+                  <nuxt-link
+                    to="/panel/profile/"
+                    class="flex items-center justify-between py-4 px-5 gap-x-2  text-red-600 dark:text-red-500 hover:bg-gray-100 dark:hover:bg-slate-800  text-sm"
+                  >
+                    <div class="flex items-center gap-x-2">
+                      <Icon name="solar:lock-password-broken" size="22" />
+                      <span> ثبت کلمه عبور</span>
+                    </div>
+                    <div>
+                      <BaseBeutyPing wrapper-class="bg-red-400" ping-class="bg-red-500 h-2 w-2" />
                     </div>
                   </nuxt-link>
                 </li>
 
                 <li>
                   <nuxt-link
-                    to="/"
-                    class="flex items-center justify-start py-4 px-5 gap-x-2  dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800  text-sm"
+                    to="/panel/orders/"
+                    class="flex items-center justify-between py-4 px-5   dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800   text-sm"
+                  >
+                    <div
+                      class="flex items-center gap-x-2"
+
+                      :class="basketStore.currentPendingOrder.length > 0 ? 'text-sky-500 dark:text-sky-400' : 'text-slate-600 dark:text-slate-300'"
+                    >
+                      <Icon name="solar:bag-3-linear" size="22" />
+                      <span>سفارش های من</span>
+                    </div>
+                    <div v-if="basketStore.currentPendingOrder.length > 0">
+                      <BaseBeutyPing />
+                    </div>
+                  </nuxt-link>
+                </li>
+
+                <li>
+                  <nuxt-link
+                    to="/panel/favorite/"
+                    class="flex items-center  py-4 px-5 gap-x-2  dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800  text-sm"
                   >
                     <Icon name="ph:heart-straight" size="22" />
                     <span>علاقه مندی های من</span>
@@ -104,7 +140,7 @@ const basketStore = useBasketStore()
                 </li>
                 <li>
                   <div
-                    class="group flex items-center justify-start py-4 px-5 gap-x-2 cursor-pointer dark:text-slate-300 hover:bg-red-100 hover:dark:bg-red-900   text-sm"
+                    class="group flex items-center justify-start py-4 px-5 gap-x-2 cursor-pointer hover:bg-red-100 hover:dark:bg-red-900   text-sm"
                     @click="authStore.Logout"
                   >
                     <Icon

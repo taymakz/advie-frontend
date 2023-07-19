@@ -10,7 +10,7 @@ const loading = ref(false)
   <div>
     <div v-if="loading">
       <div
-        class="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 p-4 cursor-pointer select-none"
+        class="flex items-center justify-between rounded-lg bg-gray-200 dark:bg-gray-900 p-4 cursor-pointer select-none"
         @click="isOpenModal = true"
       >
         <div class="flex flex-col gap-y-2">
@@ -22,16 +22,14 @@ const loading = ref(false)
         </div>
         <div>
           <USkeleton
-            class="w-6 h-6 rounded-full" :ui="{
-              background: 'bg-gray-100 dark:bg-gray-900',
-            }"
+            class="w-6 h-6 rounded-full"
           />
         </div>
       </div>
     </div>
     <div v-else>
       <div
-        class="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 p-4 cursor-pointer select-none"
+        class="flex items-center justify-between rounded-lg bg-gray-200 dark:bg-gray-900 p-4 cursor-pointer select-none"
         @click="isOpenModal = true"
       >
         <div class="flex flex-col gap-y-2">

@@ -11,6 +11,7 @@ export interface UserDetailDTO {
   is_active: boolean
   is_superuser: boolean
   verified: boolean
+  notification_count: number
 }
 
 export enum RequestOTPUsage {

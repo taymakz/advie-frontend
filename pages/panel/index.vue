@@ -17,7 +17,7 @@ const authStore = useAuthenticateStore()
           <span class="absolute right-0 bottom-0 w-full bg-sky-500 rounded-full h-[3px]" />
         </h1>
       </div>
-      <div class="grid grid-cols-4 md:grid-cols-2  gap-6 md:gap-2">
+      <div class="grid grid-cols-3 md:grid-cols-2  gap-6 md:gap-2">
         <nuxt-link
           v-if="!authStore.currentUser?.has_password"
           to="/panel/profile/"
@@ -42,7 +42,7 @@ const authStore = useAuthenticateStore()
         <nuxt-link
           v-if="!authStore.currentUser?.first_name || !authStore.currentUser?.last_name || !authStore.currentUser?.email || !authStore.currentUser?.phone || !authStore.currentUser?.national_code"
           to="/panel/profile/"
-          class="flex md:flex-col items-center  gap-4 border border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4"
+          class="flex md:flex-col items-center  gap-4 border  border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4"
         >
           <div class="relative">
             <Icon name="tabler:user-cog" size="40" class="text-sky-500 dark:text-sky-400" />
@@ -68,6 +68,7 @@ const authStore = useAuthenticateStore()
           </div>
         </nuxt-link>
         <nuxt-link
+          v-if="authStore?.currentUser?.notification_count > 0"
           to="/panel/notification/"
           class="flex md:flex-col items-center  gap-4 border border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4"
         >
@@ -84,7 +85,7 @@ const authStore = useAuthenticateStore()
             </div>
           </div>
           <div class="text-slate-600 dark:text-slate-300">
-            10 پیام جدید
+            {{ authStore.currentUser?.notification_count }} پیام جدید
           </div>
         </nuxt-link>
       </div>

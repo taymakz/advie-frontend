@@ -11,7 +11,7 @@ const {
   data: result,
   refresh,
   pending,
-} = await useAsyncData('panel_favorite', () => GetUserRecent(pageNumber.value, takeNumber.value))
+} = await useAsyncData('panel_recent', () => GetUserRecent(pageNumber.value, takeNumber.value))
 watch(() => pageNumber.value, () => {
   refresh()
 })

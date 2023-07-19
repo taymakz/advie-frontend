@@ -13,7 +13,7 @@ function toggleTheme() {
   <client-only>
     <div class="w-full mb-4">
       <div
-        class="relative flex cursor-pointer items-center justify-between   gap-2 rounded-md border border-gray-200 bg-white  py-3 px-4 text-slate-500  dark:border-gray-800 dark:bg-gray-900 dark:text-slate-400 "
+        class="relative flex cursor-pointer items-center justify-between   gap-2 rounded-md border border-gray-200 bg-white  py-3 px-4 text-slate-600  dark:border-gray-800 dark:bg-gray-900 dark:text-slate-300 "
         @click="toggleTheme"
       >
         <span class="text-sm ">

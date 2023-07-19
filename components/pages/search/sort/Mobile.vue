@@ -39,9 +39,9 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
 </script>
 
 <template>
-  <div class="w-1/2 ">
+  <div class="w-full">
     <div
-      class="flex items-center  gap-x-2 py-3 px-2 bg-white dark:bg-gray-800 rounded-lg cursor-pointer"
+      class="flex items-center  gap-x-2 py-3 px-2 bg-white dark:bg-gray-800 text-slate-600 dark:text-slate-300 rounded-lg cursor-pointer"
       @click="showSort = true;utilStore.changeHeaderOverlay(true, 30)"
     >
       <div>
@@ -49,7 +49,7 @@ watch(() => router.currentRoute.value.query.sort, (newVal) => {
           <Icon name="ph:sort-ascending" size="25" />
         </ClientOnly>
       </div>
-      <div class="text-slate-500 dark:text-slate-400 text-xs">
+      <div class="text-xs">
         مرتب سازی بر اساس
       </div>
     </div>

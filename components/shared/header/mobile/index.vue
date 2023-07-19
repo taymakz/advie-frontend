@@ -96,25 +96,40 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                draggable="false"
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg select-none text-slate-600 dark:text-slate-300 hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <ClientOnly>
                   <Icon name="solar:home-smile-linear" size="24" />
                 </ClientOnly>
-                <span class="text-slate-500 dark:text-slate-400 text-sm">
+                <span class=" text-sm">
                   صفحه اصلی
                 </span>
               </nuxt-link>
             </li>
             <li>
               <nuxt-link
+                to="/search/?special=1"
+                draggable="false"
+                class="flex items-center justify-start gap-x-2  py-3 px-2 select-none text-slate-600 dark:text-slate-300 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+              >
+                <span><Icon name="mdi:sale-outline" size="24" /> </span>
+                <span class=" text-sm">
+                  فروش ویژه
+                </span>
+              </nuxt-link>
+            </li>
+
+            <li>
+              <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                draggable="false"
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg select-none text-slate-600 dark:text-slate-300 hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <ClientOnly>
                   <Icon name="solar:shop-2-outline" size="24" />
                 </ClientOnly>
-                <span class="text-slate-500 dark:text-slate-400 text-sm">
+                <span class=" text-sm">
 
                   درباره ما
                 </span>
@@ -123,8 +138,9 @@ watch(() => router.currentRoute.value, () => {
 
             <li>
               <nuxt-link
+                draggable="false"
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg select-none text-slate-600 dark:text-slate-300 hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <ClientOnly>
                   <Icon
@@ -132,7 +148,7 @@ watch(() => router.currentRoute.value, () => {
                     size="24"
                   />
                 </ClientOnly>
-                <span class="text-slate-500 dark:text-slate-400 text-sm">
+                <span class=" text-sm">
 
                   تماس با ما
                 </span>
@@ -141,14 +157,15 @@ watch(() => router.currentRoute.value, () => {
             <li>
               <nuxt-link
                 to="/"
-                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
+                draggable="false"
+                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg select-none text-slate-600 dark:text-slate-300 hover:bg-gray-100 hover:dark:bg-gray-800 "
               >
                 <span>
                   <ClientOnly>
                     <Icon name="fluent:question-circle-20-regular" size="24" />
                   </ClientOnly>
                 </span>
-                <span class="text-slate-500 dark:text-slate-400 text-sm">
+                <span class=" text-sm">
 
                   سوالات متداول
                 </span>
@@ -159,20 +176,8 @@ watch(() => router.currentRoute.value, () => {
         <div>
           <ul class="flex flex-col gap-y-2 mb-2 ">
             <li>
-              <nuxt-link
-                to="/search/?special=1"
-                class="flex items-center justify-start gap-x-2  py-3 px-2 rounded-lg hover:bg-gray-100 hover:dark:bg-gray-800 "
-              >
-                <span><Icon name="mdi:sale-outline" size="24" /> </span>
-                <span class="text-slate-500 dark:text-slate-400 text-sm">
-                  فروش ویژه
-                </span>
-              </nuxt-link>
-            </li>
-
-            <li>
               <div
-                class="flex items-center gap-x-2 justify-start py-3 px-2 text-sm text-slate-500 dark:text-slate-400 select-none font-medium"
+                class="flex items-center gap-x-2 justify-start py-3 px-2 text-sm text-slate-600 dark:text-slate-300 select-none font-medium"
               >
                 <span><Icon name="icon-park-outline:ad-product" size="24" /> </span>
                 <span>
@@ -184,85 +189,39 @@ watch(() => router.currentRoute.value, () => {
         </div>
         <!-- Categories -->
         <div>
-          <details
+          <BaseUtilMenuAccordian
             v-for="item in utilStore.categories" :key="item.id"
-            class="group [&_summary::-webkit-details-marker]:hidden py-2"
+            :have-child="item.children.length > 0"
           >
-            <summary class="flex cursor-pointer items-center justify-between rounded-lg  py-2">
-              <span class="flex items-center gap-x-4">
-                <span v-if="item.children" class="w-0.5 h-5 bg-sky-600" />
-                <span v-else class="w-0.5 h-5" />
-                <span class="text-slate-500 dark:text-slate-400 text-sm">
-                  {{ item.display_title }}
-                </span>
-              </span>
-
-              <span
-                v-if="item.children"
-                class="shrink-0 transition duration-300 group-open:-rotate-90"
-              >
-                <Icon name="ic:outline-chevron-left" size="18" />
-              </span>
-              <span v-else class="h-6" />
-            </summary>
-
-            <ul v-if="item.children" class="mt-2  px-4 divide-y-[0.5px] divide-gray-200 dark:divide-gray-800">
-              <li class="pb-4">
-                <nuxt-link :to="item.url" class="text-sky-500 dark:text-sky-500  text-xs">
-                  همه محصولات {{ truncatedText(item.title_ir, 18) }}
-                </nuxt-link>
-              </li>
-              <li>
-                <details
-                  v-for="child in item.children" :key="child.id"
-                  class="group [&_summary::-webkit-details-marker]:hidden py-2"
+            <template #title>
+              {{ item.display_title }}
+            </template>
+            <nuxt-link :to="item.url" class="text-sm text-sky-500 dark:text-sky-400 ">
+              همه محصولات {{ truncatedText(item.title_ir, 18) }}
+            </nuxt-link>
+            <BaseUtilMenuAccordian
+              v-for="child in item.children"
+              :key="child.id"
+              :have-child="child.products.length > 0"
+            >
+              <template #title>
+                {{ child.display_title }}
+              </template>
+              <nuxt-link :to="item.url" class="text-xs text-sky-500 dark:text-sky-400">
+                همه محصولات {{ truncatedText(child.title_ir, 18) }}
+              </nuxt-link>
+              <div class="flex flex-col gap-y-4 mt-4">
+                <nuxt-link
+                  v-for="product in child.products" :key="product.id" :to="product.url"
+                  class="text-slate-500 dark:text-slate-400 text-sm"
                 >
-                  <summary class="flex cursor-pointer items-center justify-between rounded-lg  py-2">
-                    <span class="flex items-center gap-x-4">
-                      <span v-if="child.products" class="w-0.5 h-5 bg-sky-600" />
-                      <span v-else class="w-0.5 h-5" />
-                      <span class="text-slate-500 dark:text-slate-400  text-sm">
-                        {{ child.display_title }}
-                      </span>
-                    </span>
-
-                    <span
-                      v-if="child.products"
-                      class="shrink-0 transition duration-300 group-open:-rotate-90"
-                    >
-                      <Icon name="ic:outline-chevron-left" size="18" />
-                    </span>
-                    <span v-else class="h-6" />
-                  </summary>
-
-                  <ul v-if="child.products" class="mt-2  px-4 divide-y-[0.5px] divide-gray-200 dark:divide-gray-800">
-                    <li class="pb-4">
-                      <nuxt-link :to="child.url" class="text-sky-500 dark:text-sky-500  text-xs">
-                        همه محصولات {{ truncatedText(child.title_ir, 12) }}
-                      </nuxt-link>
-                    </li>
-                    <li v-for="product in child.products" :key="product.id">
-                      <nuxt-link
-                        :to="product.url"
-
-                        class="flex items-center  rounded-lg px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400 cursor-pointer"
-                      >
-                        <span>
-                          {{ product.title_ir }}
-                        </span>
-                      </nuxt-link>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-            </ul>
-          </details>
+                  {{ product.title_ir }}
+                </nuxt-link>
+              </div>
+            </BaseUtilMenuAccordian>
+          </BaseUtilMenuAccordian>
         </div>
       </div>
     </USlideover>
   </div>
 </template>
-
-<style scoped>
-
-</style>
