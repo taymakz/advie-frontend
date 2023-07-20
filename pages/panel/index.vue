@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
+import type { PanelDataDTO } from '~/models/panel/PanelDataDTO'
 
 definePageMeta({
   layout: 'user-panel',
 })
 const authStore = useAuthenticateStore()
+
+const { data, error, pending } = useAsyncData('user_panel_data', () => FetchApi<PanelDataDTO>('/data/page/panel/'))
 </script>
 
 <template>
@@ -64,7 +67,7 @@ const authStore = useAuthenticateStore()
             <Icon name="ph:heart-straight" size="40" class="text-rose-500 dark:text-rose-400" />
           </div>
           <div class="text-slate-600 dark:text-slate-300">
-            10 علاقه مندی
+            {{ data?.data.favorite_count }} علاقه مندی
           </div>
         </nuxt-link>
         <nuxt-link
@@ -112,7 +115,7 @@ const authStore = useAuthenticateStore()
             <div
               class="absolute -top-1 -right-1 flex items-center justify-center text-sm text-white font-iranyekanBold bg-sky-500 dark:bg-sky-400 rounded-full w-5 h-5"
             >
-              10
+              {{ data?.data.orders_count.current }}
             </div>
           </div>
           <div class="text-slate-600 dark:text-slate-300">
@@ -125,7 +128,7 @@ const authStore = useAuthenticateStore()
             <div
               class="absolute -top-1 -right-1 flex items-center justify-center text-sm text-white font-iranyekanBold bg-green-600 dark:bg-green-500 rounded-full w-5 h-5"
             >
-              10
+              {{ data?.data.orders_count.delivered }}
             </div>
           </div>
           <div class="text-slate-600 dark:text-slate-300">
@@ -138,7 +141,7 @@ const authStore = useAuthenticateStore()
             <div
               class="absolute -top-1 -right-1 flex items-center justify-center text-sm text-white font-iranyekanBold bg-red-500 dark:bg-red-400 rounded-full w-5 h-5"
             >
-              10
+              {{ data?.data.orders_count.canceled }}
             </div>
           </div>
           <div class="text-slate-600 dark:text-slate-300">
@@ -171,7 +174,7 @@ const authStore = useAuthenticateStore()
             <div
               class="absolute -top-1 -right-1 flex items-center justify-center text-sm text-white font-iranyekanBold bg-amber-600 dark:bg-amber-500 rounded-full w-5 h-5"
             >
-              10
+              {{ data?.data.orders_count.refunded }}
             </div>
           </div>
           <div class="text-slate-600 dark:text-slate-300">

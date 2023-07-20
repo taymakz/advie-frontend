@@ -75,54 +75,53 @@ async function removeFavorite(id: number) {
 
         <template v-else>
           <div>
-            <template v-if="result!.data?.data.length > 0">
-              <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
+              <div
+                v-for="item in result!.data?.data" :key="item.id"
+                class="relative rounded-lg bg-gray-100 dark:bg-gray-900 p-4 flex flex-col gap-y-2 "
+                :class="{ 'blur select-none': removePendingItemId === item.id }"
+              >
                 <div
-                  v-for="item in result!.data?.data" :key="item.id"
-                  class="relative rounded-lg bg-gray-100 dark:bg-gray-900 p-4 flex flex-col gap-y-2 "
-                  :class="{ 'blur select-none': removePendingItemId === item.id }"
+                  v-if="!item.is_available_in_stock"
+                  class="absolute top-0 left-0 bg-red-600 dark:bg-red-500 rounded-tl-lg rounded-br-lg  py-1 px-2 text-sm text-white dark:text-white"
                 >
-                  <div
-                    v-if="!item.is_available_in_stock"
-                    class="absolute top-0 left-0 bg-red-600 dark:bg-red-500 rounded-tl-lg rounded-br-lg  py-1 px-2 text-sm text-white dark:text-white"
-                  >
-                    ناموجود
-                  </div>
-                  <div class="flex items-center gap-x-4 ">
-                    <div class="min-w-fit">
-                      <nuxt-link :to="item.url">
-                        <nuxt-img
-                          :src="GetImageUrl(item.image)"
-                          width="80"
-                          height="80"
-                          loading="lazy"
-                          placeholder
-                          class="rounded-full "
-                          :alt="item.title_ir"
-                        />
-                      </nuxt-link>
-                    </div>
-
-                    <div
-                      class="flex items-center text-sm text-slate-800 dark:text-slate-300 h-auto text-ellipsis overflow-hidden"
-                    >
-                      <nuxt-link :to="item.url">
-                        {{ item.title_ir }}
-                      </nuxt-link>
-                    </div>
-                  </div>
-                  <div class="flex justify-end">
-                    <div class="w-20 sm:w-32">
-                      <UButton
-                        label="حذف"
-                        color="red" block :disabled="loading" :loading="removePendingItemId === item.id"
-                        @click="removeFavorite(item.id)"
+                  ناموجود
+                </div>
+                <div class="flex items-center gap-x-4 ">
+                  <div class="min-w-fit">
+                    <nuxt-link :to="item.url">
+                      <nuxt-img
+                        :src="GetImageUrl(item.image)"
+                        width="80"
+                        height="80"
+                        loading="lazy"
+                        placeholder
+                        class="rounded-full "
+                        :alt="item.title_ir"
                       />
-                    </div>
+                    </nuxt-link>
+                  </div>
+
+                  <div
+                    class="flex items-center text-sm text-slate-800 dark:text-slate-300 h-auto text-ellipsis overflow-hidden"
+                  >
+                    <nuxt-link :to="item.url">
+                      {{ item.title_ir }}
+                    </nuxt-link>
+                  </div>
+                </div>
+                <div class="flex justify-end">
+                  <div class="w-20 sm:w-32">
+                    <UButton
+                      label="حذف"
+                      color="red" block :disabled="loading" :loading="removePendingItemId === item.id"
+                      @click="removeFavorite(item.id)"
+                    />
                   </div>
                 </div>
               </div>
-            </template>
+            </div>
+
             <template v-if="result!.data?.data.length <= 0 && !pending">
               <div class="flex flex-col gap-y-4 items-center justify-center">
                 <div>

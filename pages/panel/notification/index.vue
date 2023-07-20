@@ -1,16 +1,33 @@
 <script setup lang="ts">
-import { GetUserNotification } from '~/services/account/user.notification.service'
+import { GetUserNotification, RemoveUserAllNotification } from '~/services/account/user.notification.service'
 import { UserNotificationTemplate } from '~/models/account/user/UserNotificationDTO'
+import { useAuthenticateStore } from '~/store/account/AuthenticateStore'
 
 definePageMeta({
   layout: 'user-panel',
 })
 const loading = ref(false)
+const toast = useToast()
 const {
   data: result,
-  // refresh,
+  refresh,
   pending,
 } = await useAsyncData('panel_notification', () => GetUserNotification())
+
+async function removeAllNotifications() {
+  loading.value = true
+  const result = await RemoveUserAllNotification()
+  loading.value = false
+  if (result.success) {
+    await refresh()
+    const authStore = useAuthenticateStore()
+    await authStore.SetCurrentUserValue()
+    toast.add({ title: result.message, color: 'green' })
+  }
+  else {
+    toast.add({ title: result.message, color: 'red' })
+  }
+}
 </script>
 
 <template>
@@ -25,13 +42,14 @@ const {
           </h1>
         </div>
 
-        <template v-if="result?.data?.length > 0">
+        <template v-if="result!.data?.length > 0">
           <UButton
             size="lg"
             color="red"
             label="حدف همه پیام ها"
-            :disabled="pending "
-            :loading="loading"
+            :disabled="pending || loading"
+            :loading="pending || loading"
+            @click="removeAllNotifications"
           />
         </template>
       </div>
@@ -64,7 +82,7 @@ const {
           <!-- Content -->
           <div>
             <template v-if="item.template === UserNotificationTemplate.COMMENT">
-              <div class=" rounded-lg border border-gray-200 dark:border-gray-700 w-fit md:w-full">
+              <div class=" rounded-lg border border-gray-300 dark:border-gray-700 w-fit md:w-full">
                 <nuxt-link
                   :to="item.product.url"
                 >
@@ -91,7 +109,7 @@ const {
               <div class="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
                 <div
                   v-for="(product, index) in item.order_items" :key="index"
-                  class=" rounded-lg border border-gray-200 dark:border-gray-700 "
+                  class=" rounded-lg border border-gray-300 dark:border-gray-700 "
                 >
                   <nuxt-link
                     :to="product.url"
@@ -136,6 +154,16 @@ const {
             </template>
           </div>
         </div>
+        <template v-if="result!.data?.length <= 0 && !pending">
+          <div class="flex flex-col gap-y-4 items-center justify-center">
+            <div>
+              <Icon name="ph:bell-slash" size="100" class="!text-slate-500 dark:text-slate-400" />
+            </div>
+            <div class="text-slate-500 dark:text-slate-400 text-xl">
+              لیست پیام های شما خالی میباشد
+            </div>
+          </div>
+        </template>
       </div>
     </div>
   </div>

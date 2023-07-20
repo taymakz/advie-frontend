@@ -36,6 +36,7 @@ basketStore.Init()
   <div>
     <NuxtLayout>
       <NuxtLoadingIndicator :height="3" />
+
       <NuxtPage />
       <UNotifications />
     </NuxtLayout>

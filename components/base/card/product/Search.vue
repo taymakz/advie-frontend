@@ -45,7 +45,7 @@ function updateProgress() {
               :alt="product.title_ir"
               draggable="false"
               class="rounded-lg"
-              :quality="product.is_available_in_stock ? 80 : 10"
+              :quality="product.is_available_in_stock ? 60 : 10"
               :class="{ 'opacity-25': !product.is_available_in_stock }"
               width="240"
               height="240"

@@ -43,7 +43,7 @@ function updateProgress() {
             <nuxt-img
               :src="GetImageUrl(product.image)"
               :alt="product.title_ir"
-              :quality="product.is_available_in_stock ? 80 : 10"
+              :quality="product.is_available_in_stock ? 50 : 10"
               class="rounded-lg"
               draggable="false"
               :class="{ 'opacity-25': !product.is_available_in_stock }"

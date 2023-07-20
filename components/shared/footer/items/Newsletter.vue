@@ -46,7 +46,7 @@ async function submitEmail() {
               v-bind="field"
               placeholder="ایمیل شما"
               autocomplete="off"
-              :disabled="loading"
+              disabled
             >
             <div class="w-24">
               <UButton

@@ -20,6 +20,8 @@ defineProps<{
             :src="GetImageUrl(category.image)"
             :alt="category.title_ir"
             class="relative rounded-full w-40 h-40 lg:w-32 lg:h-32 md:w-28 md:h-28 sm:w-20 sm:h-20"
+            quality="60"
+            loading="lazy"
             placeholder
           />
         </BaseBeutyBorderColor>

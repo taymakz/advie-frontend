@@ -19,8 +19,12 @@ defineProps<{
       </div>
       <div class="w-24 h-24 md:w-16 md:h-16">
         <nuxt-img
-          :src="GetImageUrl(category.image)" :alt="category.title_ir" :title="category.title_ir" placeholder
+          :src="GetImageUrl(category.image)"
+          :alt="category.title_ir"
+          :title="category.title_ir"
+          placeholder
           class="rounded-full w-full h-auto"
+          quality="50"
         />
       </div>
     </div>

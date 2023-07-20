@@ -57,51 +57,53 @@ watch(() => pageNumber.value, () => {
 
         <template v-else>
           <div>
-            <template v-if="result!.data?.data.length > 0">
-              <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
-                <div
-                  v-for="item in result!.data?.data" :key="item.id"
+            <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
+              <div
+                v-for="item in result!.data?.data" :key="item.id"
+              >
+                <nuxt-link
+                  :to="item.url"
+                  class="relative rounded-lg bg-gray-100 dark:bg-gray-900 p-4 flex flex-col gap-y-2"
                 >
-                  <nuxt-link
-                    :to="item.url"
-                    class="relative rounded-lg bg-gray-100 dark:bg-gray-900 p-4 flex flex-col gap-y-2"
+                  <div
+                    v-if="!item.is_available_in_stock"
+                    class="absolute top-0 left-0 bg-red-600 dark:bg-red-500 rounded-tl-lg rounded-br-lg  py-1 px-2 text-sm text-white dark:text-white"
                   >
-                    <div
-                      v-if="!item.is_available_in_stock"
-                      class="absolute top-0 left-0 bg-red-600 dark:bg-red-500 rounded-tl-lg rounded-br-lg  py-1 px-2 text-sm text-white dark:text-white"
-                    >
-                      ناموجود
+                    ناموجود
+                  </div>
+                  <div class="flex items-center gap-x-4 ">
+                    <div class="min-w-fit">
+                      <nuxt-img
+                        :src="GetImageUrl(item.image)"
+                        width="80"
+                        height="80"
+                        loading="lazy"
+                        placeholder
+                        class="rounded-full "
+                        :alt="item.title_ir"
+                      />
                     </div>
-                    <div class="flex items-center gap-x-4 ">
-                      <div class="min-w-fit">
-                        <nuxt-img
-                          :src="GetImageUrl(item.image)"
-                          width="80"
-                          height="80"
-                          loading="lazy"
-                          placeholder
-                          class="rounded-full "
-                          :alt="item.title_ir"
-                        />
-                      </div>
 
-                      <div
-                        class="flex items-center text-sm text-slate-800 dark:text-slate-300 h-auto text-ellipsis overflow-hidden"
-                      >
-                        {{ item.title_ir }}
-                      </div>
+                    <div
+                      class="flex items-center text-sm text-slate-800 dark:text-slate-300 h-auto text-ellipsis overflow-hidden"
+                    >
+                      {{ item.title_ir }}
                     </div>
-                  </nuxt-link>
-                </div>
+                  </div>
+                </nuxt-link>
               </div>
-            </template>
+            </div>
+
             <template v-if="result!.data?.data.length <= 0 && !pending">
               <div class="flex flex-col gap-y-4 items-center justify-center">
                 <div>
-                  <Icon name="mdi:heart-off-outline" size="100" class="!text-slate-500 dark:text-slate-400" />
+                  <Icon
+                    name="material-symbols:alarm-off-outline-rounded" size="100"
+                    class="!text-slate-500 dark:text-slate-400"
+                  />
                 </div>
                 <div class="text-slate-500 dark:text-slate-400 text-xl">
-                  لیست علاقه مندی شما خالی میباشد
+                  لیست بازدید های شما خالی میباشد
                 </div>
               </div>
             </template>
