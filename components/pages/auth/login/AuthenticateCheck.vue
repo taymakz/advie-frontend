@@ -65,10 +65,10 @@ async function authenticateUser(data: any, formEvent: any) {
     </div>
     <div class="mb-8">
       <p class="text-xs text-center text-slate-500 dark:text-slate-400">
-        با ورود به لیون کامپیوتر،
+        با ورود به فروشگاه،
 
         <nuxt-link to="/" class="text-sky-500 dark:text-sky-400">
-          کلیه قوانین و مقررات
+          کلیه قوانین
         </nuxt-link>
 
         را می‌پذیرم

@@ -42,29 +42,3 @@ basketStore.Init()
     </NuxtLayout>
   </div>
 </template>
-
-<style>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.1s;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
-}
-
-.layout-enter-active {
-  transition: all 0.1s ease-out;
-}
-
-.layout-leave-active {
-  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.layout-enter-from,
-.layout-leave-to {
-  opacity: 0;
-}
-</style>
