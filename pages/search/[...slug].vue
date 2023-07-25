@@ -66,11 +66,10 @@ useServerSeoMeta({
         <!-- sidebar section -->
         <PagesSearchFilterDesktop />
 
-        <!-- sort section -->
-        <PagesSearchSortDesktop />
-
         <!-- products section -->
-        <div class="col-span-10 2xl:col-span-9  lg:col-span-8 md:col-span-12">
+        <div class="col-span-10 2xl:col-span-9  lg:col-span-8 md:col-span-12 space-y-4">
+          <!-- sort section -->
+          <PagesSearchSortDesktop />
           <!-- Empty Message -->
           <div v-if="!filterResult?.data.data.length && !pending">
             <div class="flex flex-col gap-y-4 items-center justify-center">
