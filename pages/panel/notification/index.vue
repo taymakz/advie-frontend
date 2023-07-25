@@ -56,7 +56,7 @@ async function removeAllNotifications() {
 
       <!-- Section Content -->
       <div class="space-y-4">
-        <div v-for="item in result?.data" :key="item.id" class="bg-gray-200 dark:bg-gray-900 rounded-lg p-4 space-y-4">
+        <div v-for="item in result?.data" :key="item.id" class="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 space-y-4">
           <!-- Title -->
 
           <div class="flex items-center gap-x-4">
