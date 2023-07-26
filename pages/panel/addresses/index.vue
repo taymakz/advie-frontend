@@ -109,17 +109,17 @@ function createdAddress(newAddress: AddressDetailDTO) {
       <!-- Address List -->
       <div class="flex flex-col gap-y-2">
         <!-- Address Skeleton -->
-        <template v-if="pending">
+        <template v-if="!pending">
           <div v-for="i in 3" :key="i" class="relative bg-gray-100 dark:bg-gray-900 py-4 px-4 rounded-lg">
             <div class="flex flex-col gap-y-4 text-sm">
               <p class=" text-slate-700 dark:text-slate-200">
-                <USkeleton class="w-96 h-5" />
+                <USkeleton class="w-96 sm:w-full  h-5" />
               </p>
               <div class="grid grid-cols-4 lg:grid-cols-2 items-center  center gap-4  w-fit lg:w-full">
-                <USkeleton class="w-28 h-5" />
-                <USkeleton class="w-28 h-5" />
-                <USkeleton class="w-28 h-5" />
-                <USkeleton class="w-28 h-5" />
+                <USkeleton class="w-28 sm:w-full h-5" />
+                <USkeleton class="w-28 sm:w-full h-5" />
+                <USkeleton class="w-28 sm:w-full h-5" />
+                <USkeleton class="w-28 sm:w-full h-5" />
               </div>
               <div class="hidden md:flex items-center justify-end gap-x-4">
                 <USkeleton class="w-32 h-11 sm:w-full" />
