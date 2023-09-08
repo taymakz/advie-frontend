@@ -107,12 +107,14 @@ async function addToFavorite() {
           انتخاب {{ product.variant_type.title_ir }}
         </p>
       </div>
+
       <div
         v-if="product.is_available_in_stock"
         class="grid grid-cols-12 gap-x-4 border   p-3 rounded-lg border-gray-200 dark:border-gray-700"
       >
         <template v-if="product.variant_type.select_style === VariantSelectStyle.RADIO_BOX">
           <div v-for="item in product.variants" :key="item.id" class="col-span-3 xl:col-span-4 sm:col-span-6">
+
             <template v-if="fetchPending">
               <USkeleton class="h-10 w-28" />
             </template>
